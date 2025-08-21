@@ -2,354 +2,224 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>东乡语翻译平台</title>
+  <meta name="description" content="东乡语翻译平台：东乡语与中英互译、文化与历史介绍。">
+
   <style>
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+    :root{ --brand:#8B0000; --accent:#004f97; --header-h:60px; --nav-w:220px; }
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    html, body{ height:100%; }
+    body{
+      min-height:100vh; display:flex; flex-direction:column;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC","Microsoft YaHei", Arial, sans-serif;
+      color:#222; line-height:1.6;
+    }
+    body.en-mode{ font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
 
-  body {
-    font-family: 'Microsoft YaHei', sans-serif;
-    min-height: 100vh;
-  }
+    header{
+      background:var(--brand); color:#fff; padding:15px 20px; height:var(--header-h);
+      display:flex; justify-content:space-between; align-items:center;
+      position:sticky; top:0; z-index:1000;
+    }
+    .logo{ font-size:20px; text-decoration:none; color:#fff; }
+    .lang-toggle{ background:#fff; color:var(--brand); border:0; padding:8px 16px; border-radius:4px; cursor:pointer; }
 
-  body.en-mode {
-    font-family: 'Calibri', sans-serif;
-  }
+    .container{ display:flex; flex:1; } /* 占满剩余高度，保证 footer 贴底 */
 
-  header {
-    background-color: #8B0000;
-    color: white;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-
-  .logo {
-    font-size: 20px;
-  }
-
-  .lang-toggle {
-    background: white;
-    color: #8B0000;
-    border: none;
-    padding: 8px 16px;
-    font-size: 14px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-
-  .container {
-    display: flex;
-  }
-
-  nav {
-    position: fixed;
-    top: 60px; /* 60px = header 高度 */
-    left: 0;
-    width: 220px;
-    height: calc(100vh - 60px);
-    background-color: #fff;
-    border-right: 1px solid #ddd;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow-y: auto;
-    z-index: 999;
-  }
-
-  nav ul {
-    list-style: none;
-    flex-grow: 1;
-  }
-
-  nav li {
-    border-bottom: 1px solid #ddd;
-  }
-
-  nav a {
-    display: block;
-    padding: 16px;
-    text-decoration: none;
-    color: #222;
-    transition: background 0.3s;
-  }
-
-  nav a:hover {
-    background-color: #eee;
-  }
-
-  nav a.active {
-    background-color: #004f97;
-    color: white;
-    position: relative;
-  }
-
-  nav a.active::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    border-left: 10px solid white;
-  }
-
-  .ad-space {
-    height: 120px;
-    border-top: 1px solid #ddd;
-    text-align: center;
-    padding: 10px;
-    font-size: 14px;
-    color: #999;
-  }
-
-  html, body {
-  margin: 0;
-  padding: 0;
-  height: auto;
-}
-
-body {
-  font-family: 'Microsoft YaHei', sans-serif;
-  flex: 1;
-}
-
-body.en-mode {
-  font-family: 'Calibri', sans-serif;
-}
-
-.container {
-  display: flex;
-  flex: 1;
-}
-
-main {
-  margin-left: 220px;
-  padding: 20px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow-x: auto;
-}
-
-.main-content {
-  flex: 1;
-}
-
-footer {
-  background-color: #f8f8f8;
-  text-align: center;
-  padding: 15px;
-  font-size: 14px;
-  border-top: 1px solid #ddd;
-}
-
-  @media (max-width: 768px) {
-    nav {
-      position: relative;
-      top: 0;
-      width: 100%;
-      height: auto;
-      border-right: none;
-      border-bottom: 1px solid #ccc;
+    nav{
+      position:fixed; left:0; top:var(--header-h);
+      width:var(--nav-w); height:calc(100vh - var(--header-h));
+      background:#fff; border-right:1px solid #ddd;
+      display:flex; flex-direction:column; justify-content:space-between; overflow-y:auto; z-index:999;
+    }
+    nav ul{ list-style:none; flex-grow:1; }
+    nav li{ border-bottom:1px solid #ddd; }
+    nav a{ display:block; padding:16px; text-decoration:none; color:#222; transition:background .3s; }
+    nav a:hover{ background:#eee; }
+    nav a.active{ background:var(--accent); color:#fff; position:relative; }
+    nav a.active::after{
+      content:""; position:absolute; right:0; top:50%; transform:translateY(-50%);
+      border-top:10px solid transparent; border-bottom:10px solid transparent; border-left:10px solid #fff;
     }
 
-    main {
-      margin-left: 0;
+    main{
+      margin-left:var(--nav-w); padding:20px; flex:1;
+      display:flex; flex-direction:column; gap:16px; overflow-x:auto;
+    }
+    .card{ background:#f5f5f5; padding:18px; border-radius:8px; }
+
+    footer{
+      background:#f8f8f8; text-align:center; padding:15px; font-size:14px; border-top:1px solid #ddd;
     }
 
-    .container {
-      flex-direction: column;
+    @media (max-width:768px){
+      nav{ position:relative; top:0; width:100%; height:auto; border-right:none; border-bottom:1px solid #ccc; }
+      main{ margin-left:0; }
+      .container{ flex-direction:column; }
     }
-  }
-</style>
+  </style>
 </head>
 
 <body>
   <header>
-    <a href="index.html" class="logo" id="logo-text" title="返回主页/Back to Home" style="text-decoration: none; color: white;">东乡语翻译</a>
-    <button class="lang-toggle" onclick="toggleLang()" title="切换语言 / Switch language">English</button>
+    <a href="index.html" class="logo" id="logo-text" title="返回主页 / Back to Home">东乡语翻译</a>
+    <button class="lang-toggle" id="langBtn" type="button" title="切换语言 / Switch language">English</button>
   </header>
 
   <div class="container">
-    <nav>
+    <nav aria-label="侧边导航">
       <div>
         <ul>
           <li><a href="bilingual.html" id="menu-1">双语翻译</a></li>
           <li><a href="dictionary.html" id="menu-2">字典</a></li>
-          <li><a href="overview.html" id="menu-3">概况</a></li>
-          <li><a href="history.html" id="menu-4">历史沿革</a></li>
-          <li><a href="customs.html" id="menu-5">风俗习惯</a></li>
-          <li><a href="status.html" id="menu-6">发展现状</a></li>
-          <li><a href="about.html" id="menu-7">关于我们</a></li>
+          <li><a href="overview.html"  id="menu-3">概况</a></li>
+          <li><a href="history.html"   id="menu-4">历史沿革</a></li>
+          <li><a href="customs.html"   id="menu-5">风俗习惯</a></li>
+          <li><a href="status.html"    id="menu-6">发展现状</a></li>
+          <li><a href="about.html"     id="menu-7">关于我们</a></li>
         </ul>
       </div>
-      <div class="ad-space">此处预留 Google 广告位</div>
     </nav>
 
-    <main>
-      <div class="main-content">
+    <main id="main" role="main">
+      <div>
         <h1 id="main-title">欢迎使用东乡语翻译平台</h1>
         <p id="main-desc">请选择左侧内容开始使用。</p>
       </div>
-      <section style="background-color: #f5f5f5; padding: 18px; margin: 20px;">
-      <div id="en-content" style="display: none;  line-height: 2;" >
-      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
-        Over the course of their long historical development, the Dongxiang people have cultivated distinctive production and lifestyle
-        practices and have created a rich and diverse body of cultural and artistic traditions.</p>
-      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
-        The traditional attire of the Dongxiang people is characterized by simplicity, neatness, and modest elegance.
-        Historically, women favored embroidered garments featuring stand-up collars, overlapping front panels, and wide sleeves.
-        The cuffs were often trimmed with decorative lace or embroidery. For the lower body, they wore layered trousers with embroidered bands
-        along the pant legs and small slits at the back of the cuffs, which were tied with decorative ribbons.
-        On festive or ceremonial occasions, women would wear embroidered skirts known as <em> guomei </em> (过美), which held particular cultural significance.
-        Footwear typically consisted of delicately embroidered shoes with heels approximately an inch high.
-        In earlier times, women did not wear head veils but instead wrapped their hair with headscarves,
-        often adorning their hair buns with decorative pins and wearing silver ornaments on their chests.
-        It was also common for women’s sleeves to be composed of several fabric segments stitched together, each embroidered with floral or lace patterns.
-        Over time, women's clothing evolved. Most Dongxiang women came to wear head veils (<em>gaitou</em>),
-        typically in green, black, or white. Young women and newlyweds wore green silk or satin veils;
-        women married for one or two years and middle-aged women wore black; elderly women typically wore white. Outer garments were usually made of dark navy or
-        black-blue cloth, while younger women occasionally wore red or green. The tunics were wide and knee-length,
-        with the front panel extending to the back, often layered with a similarly long vest. The trousers were long and extended down to the tops of the feet.</p>
-      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
-        Historically, Dongxiang men typically wore loose, long robes secured with wide sashes around the waist.
-        Various personal items—such as small knives, embroidered pouches, snuff bottles, and eyeglass cases — were commonly suspended from the belt.
-        On their heads, they wore soft, flat-topped caps in either black or white. Middle-aged and elderly men often favored traditional long robes and a garment known as
-        <em>zhongbai</em> (仲白), which closely resembles the front-opening robe worn by the Uyghur ethnic group.
-        The <em>zhongbai</em> was usually made from black or gray cloth and was expected to be worn in a neat and orderly manner,
-        with buttons properly fastened and the garment kept clean and presentable.</p>
-      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
-        The Dongxiang people have a deep appreciation for tea and traditionally include it in every meal.
-        Their preferred varieties include Yunnan Chunjian and Shaanxi Green Tea (Shanqing). Guests are welcomed with a special offering known as Three-Fragrance Tea,
-        which is served in a covered bowl containing tea leaves, rock sugar, and dried fruits such as longan, cooked red dates, or raisins.
-        This distinctive preparation is referred to as <em>Sanpao Tai</em>. Smoking and alcohol consumption are generally avoided in Dongxiang culture.
-        </p>
-      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
-        The Dongxiang people are known for their deep respect for elders, care for the young, and generous hospitality.
-        When guests arrive, they are immediately invited to sit on the <em>kang</em> (heated brick bed) and are served the finest tea and food available.
-        While the host remains present during the meal, they typically do not eat or drink with the guest.
-        Instead, they serve food and pour tea while standing nearby, demonstrating courtesy and respect.
-        Common dishes offered to guests include fried dough pastries, hand-pulled mutton (<em>shouzhuayangrou</em>),
-        and stewed chicken. In Dongxiang tradition, a whole chicken is divided into thirteen distinct portions.
-        The tail is considered the most prized part and is served to the eldest or most honored guest.
-        </p>
-      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
-        The Dongxiang people have preserved a rich tradition of oral narrative poetry and folklore.
-        Many of their epic poems are performed or chanted in the Dongxiang language and follow a spoken-sung style
-        (<em>shuochangti</em>) characterized by flexible form.
-        These narrative poems often include frequent changes in rhyme and lack a fixed melodic structure.
-        The rhythm expands or contracts according to the phrasing of the lyrics, and two alternating melodic motifs
-        are repeated throughout the performance, creating a distinctly chant-like quality.
-        Notable examples still performed today include <em>Milagahai</em>, <em>Zhan Heinam</em>,
-        <em>Shi Sinibi</em>, <em>Hezhe Agu</em>, and <em>Putao E’er</em>.
-        Dongxiang folklore also includes a wealth of legends and tales, which are generally classified into personal legends, place-name legends,
-        and object or landscape-related stories. According to ethnographic surveys, over 1,600 well-documented legends and folk narratives have been collected. </p>
-      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
-        In addition, Dongxiang folk art includes distinctive forms such as painted cabinet panels
-        and wall-mounted fabric pocket paintings. Cabinet panel paintings are typically rendered in black and white, featuring fine linework and detailed brush techniques.
-        These works often depict natural landscapes and are marked by a rustic yet elegant aesthetic.
-        Fabric pocket paintings, usually displayed on interior walls, are commonly created with crayon or wax pencil, and often portray themes such as flowers and trees.
-        Since the founding of the People's Republic of China, Dongxiang artists have continually drawn inspiration
-        from their own cultural heritage, producing artworks that reflect the everyday lives and customs of the Dongxiang people.
-        One notable example is the painting <em>Wedding</em>, which employs a blend of meticulous brushwork and expressive strokes,
-        using techniques from traditional Chinese painting to vividly portray Dongxiang wedding rituals and social traditions.</p>
-      <p style="font-size: 14px; color: #555; margin-bottom: 1em;font-family: 微软雅黑;">— Source: <a href="https://www.neac.gov.cn/seac/ztzl/dxz/fsxg.shtml" target="_blank" rel="noopener">
-           National Ethnic Affairs Commission of the P.R.China</a></p></div>
 
-      <div id="zh-content" style="font-family: 'Microsoft YaHei', sans-serif; font-size: 12pt; line-height: 2; color: #333;">
-      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
-        东乡族在长期的历史的发展过程中，形成了自己独特的生产、生活习俗，创造了丰富多彩的文化艺术。</p>
-      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
-        东乡族的服饰衣着大方整洁。古时的妇女爱穿一种有领圈、大襟和宽袖的绣花衣服，袖子宽大，袖口上镶一道花边。下穿套裤，裤管镶两道绣花边，裤管的后面开小叉，用飘带束住脚管。
-        逢喜庆大事，穿绣花裙子，他们把这种绣花裙子叫“过美”。足登后跟高寸许的绣花鞋，当时不戴盖头，只戴包头巾，发髻上插饰物，胸前一般都佩带银饰。当时妇女的上衣还流行用各色布缝成数段的假袖，
-        并在假袖各段绣有花边。后来，妇女的服饰逐渐变化。女的一般都戴盖头，分绿、黑、白3种颜色。少女和新媳妇戴绿绸和绿缎子盖头，结婚一两年后的妇女和中年妇女戴黑盖头，老年妇女戴白盖头。
-        衣着都是藏青色或黑蓝色布衣，青年妇女穿红的或绿的，上衣宽大，齐膝盖，大襟在后边，并外加一件齐膝的坎肩，长裤一直拖到脚面。</p>
-      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
-        过去，男子多穿宽大的长袍，束宽腰带，腰带上挂有小刀、荷包、鼻烟壶和眼镜盒之类的物件。头戴黑、白二色的平顶软帽。中年人和老年人喜穿长袍和“仲白”。
-        “仲白”类似维吾尔族的对襟长服，一般用黑布和灰布缝制，穿用时，要整齐净洁，纽扣系端正。</p>
-      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
-        东乡族特别喜欢饮茶，一般每餐必有茶，最喜用云南春尖茶和陕青茶，来客人则待以“三香茶”。在盖碗内放有茶叶、冰糖、桂圆或烧熟的红枣、葡萄干等物，叫“三泡台”。忌抽烟、喝酒。</p>
-      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
-        东乡族尊老爱幼，热情好客。客人到家，立即请到炕上，用最好的茶、饭招待。主人陪客，但不和客人一起饮茶用餐，而是在一旁端饭倒茶，自己不坐也不吃，以示尊敬。炸油果、手抓羊肉、炖鸡都是待客的食品。
-        东乡人吃鸡，是把鸡的各部分分为13块，鸡尾最贵重，最年长或最尊贵的主客吃鸡尾。</p>
-      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
-        东乡族还有不少流传在民间的叙事诗和故事。用东乡语演唱吟诵的民间叙事长诗，都是说唱体，形式比较自由，中途换韵较多，旋律结构不甚定型，随着唱词的长短和变化自由伸缩，两段曲谱交替，
-        不断地反复，有较强的吟诵性，至今尚在流传的有《米拉尕黑》、《战黑那姆》、《诗司尼比》、《和哲阿姑》、《葡萄蛾儿》等。东乡族民间的传说和故事，按其内容可分为人物传说、地名传说、风物传说等，据调查，
-        已基本定型的传说和故事多达1600多种。</p>
-      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
-        此外，东乡族民间的板柜画和墙壁布兜画也很有特色。板柜画主要以黑白色为主，工笔勾勒，内容以描绘自然景色为主，朴拙典雅。墙壁布兜画多以蜡笔绘彩，内容也大多为花卉树木。
-        新中国成立后，东乡族的美术工作者从本民族文化艺术传统中不断吸取营养，创作出了一幅幅反映东乡族人民生活面貌的美术作品，其中，《婚礼》以中国画兼带工带写的细腻手法，展示了东乡族婚礼的风俗人情。</p>
-      <p style="font-size: 14px; color: #555; margin-bottom: 1em;">—— 摘自《中国少数民族》（《民族问题五种丛书》），来源：
-        <a href="https://www.neac.gov.cn/seac/ztzl/dxz/fsxg.shtml" target="_blank" rel="noopener noreferrer">中国国家民族事务委员会官网</a></p>
-        </div></section>
-    </main>
+      <!-- 内容卡片：中英两块，通过 display 切换 -->
+      <section class="card">
+        <div id="en-content" style="display:none; line-height:2;">
+          <p style="text-indent:2em; margin-bottom:1em;">
+            Over the course of their long historical development, the Dongxiang people have cultivated distinctive production and lifestyle practices and have created a rich and diverse body of cultural and artistic traditions.
+          </p>
+          <p style="text-indent:2em; margin-bottom:1em;">
+            The traditional attire of the Dongxiang people is characterized by simplicity, neatness, and modest elegance. Historically, women favored embroidered garments featuring stand-up collars, overlapping front panels, and wide sleeves. The cuffs were often trimmed with decorative lace or embroidery. For the lower body, they wore layered trousers with embroidered bands along the pant legs and small slits at the back of the cuffs, which were tied with decorative ribbons. On festive or ceremonial occasions, women would wear embroidered skirts known as guomei (过美), which held particular cultural significance. Footwear typically consisted of delicately embroidered shoes with heels approximately an inch high. In earlier times, women did not wear head veils but instead wrapped their hair with headscarves, often adorning their hair buns with decorative pins and wearing silver ornaments on their chests. It was also common for women’s sleeves to be composed of several fabric segments stitched together, each embroidered with floral or lace patterns. Over time, women's clothing evolved. Most Dongxiang women came to wear head veils (gaitou), typically in green, black, or white. Young women and newlyweds wore green silk or satin veils; women married for one or two years and middle-aged women wore black; elderly women typically wore white. Outer garments were usually made of dark navy or black-blue cloth, while younger women occasionally wore red or green. The tunics were wide and knee-length, with the front panel extending to the back, often layered with a similarly long vest. The trousers were long and extended down to the tops of the feet.
+          </p>
+          <p style="text-indent:2em; margin-bottom:1em;">
+            Historically, Dongxiang men typically wore loose, long robes secured with wide sashes around the waist. Various personal items—such as small knives, embroidered pouches, snuff bottles, and eyeglass cases — were commonly suspended from the belt. On their heads, they wore soft, flat-topped caps in either black or white. Middle-aged and elderly men often favored traditional long robes and a garment known as zhongbai (仲白), which closely resembles the front-opening robe worn by the Uyghur ethnic group. The zhongbai was usually made from black or gray cloth and was expected to be worn in a neat and orderly manner, with buttons properly fastened and the garment kept clean and presentable.
+          </p>
+          <p style="text-indent:2em; margin-bottom:1em;">
+            The Dongxiang people have a deep appreciation for tea and traditionally include it in every meal. Their preferred varieties include Yunnan Chunjian and Shaanxi Green Tea (Shanqing). Guests are welcomed with a special offering known as Three-Fragrance Tea, which is served in a covered bowl containing tea leaves, rock sugar, and dried fruits such as longan, cooked red dates, or raisins. This distinctive preparation is referred to as Sanpao Tai. Smoking and alcohol consumption are generally avoided in Dongxiang culture.
+          </p>
+          <p style="text-indent:2em; margin-bottom:1em;">
+            The Dongxiang people are known for their deep respect for elders, care for the young, and generous hospitality. When guests arrive, they are immediately invited to sit on the kang (heated brick bed) and are served the finest tea and food available. While the host remains present during the meal, they typically do not eat or drink with the guest. Instead, they serve food and pour tea while standing nearby, demonstrating courtesy and respect. Common dishes offered to guests include fried dough pastries, hand-pulled mutton (shouzhuayangrou), and stewed chicken. In Dongxiang tradition, a whole chicken is divided into thirteen distinct portions. The tail is considered the most prized part and is served to the eldest or most honored guest.
+          </p>
+          <p style="text-indent:2em; margin-bottom:1em;">
+            The Dongxiang people have preserved a rich tradition of oral narrative poetry and folklore. Many of their epic poems are performed or chanted in the Dongxiang language and follow a spoken-sung style (shuochangti) characterized by flexible form. These narrative poems often include frequent changes in rhyme and lack a fixed melodic structure. The rhythm expands or contracts according to the phrasing of the lyrics, and two alternating melodic motifs are repeated throughout the performance, creating a distinctly chant-like quality. Notable examples still performed today include Milagahai, Zhan Heinam, Shi Sinibi, Hezhe Agu, and Putao E’er. Dongxiang folklore also includes a wealth of legends and tales, which are generally classified into personal legends, place-name legends, and object or landscape-related stories. According to ethnographic surveys, over 1,600 well-documented legends and folk narratives have been collected.
+          </p>
+          <p style="text-indent:2em; margin-bottom:1em;">
+            In addition, Dongxiang folk art includes distinctive forms such as painted cabinet panels and wall-mounted fabric pocket paintings. Cabinet panel paintings are typically rendered in black and white, featuring fine linework and detailed brush techniques. These works often depict natural landscapes and are marked by a rustic yet elegant aesthetic. Fabric pocket paintings, usually displayed on interior walls, are commonly created with crayon or wax pencil, and often portray themes such as flowers and trees. Since the founding of the People's Republic of China, Dongxiang artists have continually drawn inspiration from their own cultural heritage, producing artworks that reflect the everyday lives and customs of the Dongxiang people. One notable example is the painting Wedding, which employs a blend of meticulous brushwork and expressive strokes, using techniques from traditional Chinese painting to vividly portray Dongxiang wedding rituals and social traditions.
+          </p>  
+          <p style="font-size:14px; color:#555; margin-bottom:1em;">
+            — Source: <a href="https://www.neac.gov.cn/seac/ztzl/dxz/fzxz.shtml" target="_blank" rel="noopener noreferrer">
+            National Ethnic Affairs Commission of the P.R. China</a>
+          </p>
         </div>
-  <script>
-    let currentLang = 'zh';
 
+        <div id="zh-content" style="line-height:2; color:#333;">
+          <p style="text-indent:2em; margin-bottom:1em;">
+            东乡族在长期的历史的发展过程中，形成了自己独特的生产、生活习俗，创造了丰富多彩的文化艺术。
+          </p>
+          <p style="text-indent:2em; margin-bottom:1em;">
+            东乡族的服饰衣着大方整洁。古时的妇女爱穿一种有领圈、大襟和宽袖的绣花衣服，袖子宽大，袖口上镶一道花边。下穿套裤，裤管镶两道绣花边，裤管的后面开小叉，用飘带束住脚管。 逢喜庆大事，穿绣花裙子，他们把这种绣花裙子叫“过美”。足登后跟高寸许的绣花鞋，当时不戴盖头，只戴包头巾，发髻上插饰物，胸前一般都佩带银饰。当时妇女的上衣还流行用各色布缝成数段的假袖， 并在假袖各段绣有花边。后来，妇女的服饰逐渐变化。女的一般都戴盖头，分绿、黑、白3种颜色。少女和新媳妇戴绿绸和绿缎子盖头，结婚一两年后的妇女和中年妇女戴黑盖头，老年妇女戴白盖头。 衣着都是藏青色或黑蓝色布衣，青年妇女穿红的或绿的，上衣宽大，齐膝盖，大襟在后边，并外加一件齐膝的坎肩，长裤一直拖到脚面。
+          </p>
+          <p style="text-indent:2em; margin-bottom:1em;">
+            过去，男子多穿宽大的长袍，束宽腰带，腰带上挂有小刀、荷包、鼻烟壶和眼镜盒之类的物件。头戴黑、白二色的平顶软帽。中年人和老年人喜穿长袍和“仲白”。 “仲白”类似维吾尔族的对襟长服，一般用黑布和灰布缝制，穿用时，要整齐净洁，纽扣系端正。
+          </p>
+          <p style="text-indent:2em; margin-bottom:1em;">
+            东乡族特别喜欢饮茶，一般每餐必有茶，最喜用云南春尖茶和陕青茶，来客人则待以“三香茶”。在盖碗内放有茶叶、冰糖、桂圆或烧熟的红枣、葡萄干等物，叫“三泡台”。忌抽烟、喝酒。
+          </p>
+          <p style="text-indent:2em; margin-bottom:1em;">
+            东乡族尊老爱幼，热情好客。客人到家，立即请到炕上，用最好的茶、饭招待。主人陪客，但不和客人一起饮茶用餐，而是在一旁端饭倒茶，自己不坐也不吃，以示尊敬。炸油果、手抓羊肉、炖鸡都是待客的食品。 东乡人吃鸡，是把鸡的各部分分为13块，鸡尾最贵重，最年长或最尊贵的主客吃鸡尾。
+          </p>
+          <p style="text-indent:2em; margin-bottom:1em;">
+            东乡族还有不少流传在民间的叙事诗和故事。用东乡语演唱吟诵的民间叙事长诗，都是说唱体，形式比较自由，中途换韵较多，旋律结构不甚定型，随着唱词的长短和变化自由伸缩，两段曲谱交替， 不断地反复，有较强的吟诵性，至今尚在流传的有《米拉尕黑》、《战黑那姆》、《诗司尼比》、《和哲阿姑》、《葡萄蛾儿》等。东乡族民间的传说和故事，按其内容可分为人物传说、地名传说、风物传说等，据调查， 已基本定型的传说和故事多达1600多种。
+          </p>
+          <p style="text-indent:2em; margin-bottom:1em;">
+            此外，东乡族民间的板柜画和墙壁布兜画也很有特色。板柜画主要以黑白色为主，工笔勾勒，内容以描绘自然景色为主，朴拙典雅。墙壁布兜画多以蜡笔绘彩，内容也大多为花卉树木。 新中国成立后，东乡族的美术工作者从本民族文化艺术传统中不断吸取营养，创作出了一幅幅反映东乡族人民生活面貌的美术作品，其中，《婚礼》以中国画兼带工带写的细腻手法，展示了东乡族婚礼的风俗人情。
+          </p>
+          <p style="font-size:14px; color:#555; margin-bottom:1em;">
+            —— 摘自《中国少数民族》（《民族问题五种丛书》），来源：
+            <a href="https://www.neac.gov.cn/seac/ztzl/dxz/fzxz.shtml" target="_blank" rel="noopener noreferrer">中国国家民族事务委员会官网</a>
+          </p>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <footer>
+    <p>&copy; 2025 东乡语翻译平台 · All rights reserved.</p>
+  </footer>
+
+  <script>
+    // ===== 文案字典（沿用你的结构，并补上页面标题位于索引 11） =====
     const menuItems = {
-      zh: [
-        '双语翻译',
-        '字典',
-        '概况',
-        '历史沿革',
-        '风俗习惯',
-        '发展现状',
-        '关于我们',
-        '东乡语翻译',
-        '欢迎使用东乡语翻译平台',
-        '请选择左侧内容开始使用。',
-        'English'
-      ],
-      en: [
-        'Bilingual Translation',
-        'Dictionary',
-        'Overview',
-        'History',
-        'Customs',
-        'Current Status',
-        'About Us',
-        'Dongxiang Language Translation',
-        'Welcome to the Dongxiang Translation Platform',
-        'Please choose a menu item from the left.',
-        '中文'
-      ]
+      zh:['双语翻译','字典','概况','历史沿革','风俗习惯','发展现状','关于我们','东乡语翻译','欢迎使用东乡语翻译平台','请选择左侧内容开始使用。','English','东乡语翻译平台'],
+      en:['Bilingual Translation','Dictionary','Overview','History','Customs','Current Status','About Us','Dongxiang Language Translation','Welcome to the Dongxiang Translation Platform','Please choose a menu item from the left.','中文','Dongxiang Translation Platform']
     };
 
+    let currentLang = 'zh';
 
-
-    function toggleLang() {
-      setLang(currentLang === 'zh' ? 'en' : 'zh');
-    }
-    function setLang(lang) {
+    function setLang(lang){
       currentLang = lang;
       localStorage.setItem('preferredLang', lang);
+
+      // 字体/语言属性
       document.body.classList.toggle('en-mode', lang === 'en');
+      document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'zh');
+
       const labels = menuItems[lang];
+
+      // 菜单文本
       for (let i = 1; i <= 7; i++) {
-        document.getElementById(`menu-${i}`).innerText = labels[i - 1];
+        const el = document.getElementById(`menu-${i}`);
+        if (el) el.textContent = labels[i - 1];
       }
-      document.getElementById('logo-text').innerText = labels[7];
-      document.getElementById('main-title').innerText = labels[8];
-      document.getElementById('main-desc').innerText = labels[9];
-      document.querySelector('.lang-toggle').innerText = labels[10];
-      document.getElementById('zh-content').style.display = lang === 'zh' ? 'block' : 'none';
-      document.getElementById('en-content').style.display = lang === 'en' ? 'block' : 'none';}
+      // 头部与主文案
+      const logo = document.getElementById('logo-text');
+      if (logo) logo.textContent = labels[7];
+      const title = document.getElementById('main-title');
+      if (title) title.textContent = labels[8];
+      const desc = document.getElementById('main-desc');
+      if (desc) desc.textContent = labels[9];
+      const btn = document.getElementById('langBtn');
+      if (btn){
+        btn.textContent = labels[10];
+        btn.title = (lang === 'en' ? 'Switch language / 切换语言' : '切换语言 / Switch language');
+      }
+      // 页面标题
+      document.title = labels[11] || document.title;
+
+      // 内容切换
+      const zh = document.getElementById('zh-content');
+      const enC = document.getElementById('en-content');
+      if (zh && enC){
+        zh.style.display = (lang === 'zh' ? 'block' : 'none');
+        enC.style.display = (lang === 'en' ? 'block' : 'none');
+      }
+    }
+
+    function toggleLang(){ setLang(currentLang === 'zh' ? 'en' : 'zh'); }
+
+    // 事件绑定 & 初始化
+    document.getElementById('langBtn').addEventListener('click', toggleLang);
     const savedLang = localStorage.getItem('preferredLang');
     const userLang = navigator.language || 'en';
-    const defaultLang = savedLang || (userLang.startsWith('zh') ? 'zh' : 'en');
-    setLang(defaultLang);
+    setLang(savedLang || (userLang.startsWith('zh') ? 'zh' : 'en'));
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
 
