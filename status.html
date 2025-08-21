@@ -2,335 +2,258 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>东乡语翻译平台</title>
+  <meta name="description" content="东乡语翻译平台：东乡语与中英互译、文化与历史介绍。">
+
   <style>
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+    :root{ --brand:#8B0000; --accent:#004f97; --header-h:60px; --nav-w:220px; }
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    html, body{ height:100%; }
+    body{
+      min-height:100vh; display:flex; flex-direction:column;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC","Microsoft YaHei", Arial, sans-serif;
+      color:#222; line-height:1.6;
+    }
+    body.en-mode{ font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
 
-  body {
-    font-family: 'Microsoft YaHei', sans-serif;
-    min-height: 100vh;
-  }
+    header{
+      background:var(--brand); color:#fff; padding:15px 20px; height:var(--header-h);
+      display:flex; justify-content:space-between; align-items:center;
+      position:sticky; top:0; z-index:1000;
+    }
+    .logo{ font-size:20px; text-decoration:none; color:#fff; }
+    .lang-toggle{ background:#fff; color:var(--brand); border:0; padding:8px 16px; border-radius:4px; cursor:pointer; }
 
-  body.en-mode {
-    font-family: 'Calibri', sans-serif;
-  }
+    .container{ display:flex; flex:1; } /* 占满剩余高度，保证 footer 贴底 */
 
-  header {
-    background-color: #8B0000;
-    color: white;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-
-  .logo {
-    font-size: 20px;
-  }
-
-  .lang-toggle {
-    background: white;
-    color: #8B0000;
-    border: none;
-    padding: 8px 16px;
-    font-size: 14px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-
-  .container {
-    display: flex;
-  }
-
-  nav {
-    position: fixed;
-    top: 60px; /* 60px = header 高度 */
-    left: 0;
-    width: 220px;
-    height: calc(100vh - 60px);
-    background-color: #fff;
-    border-right: 1px solid #ddd;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow-y: auto;
-    z-index: 999;
-  }
-
-  nav ul {
-    list-style: none;
-    flex-grow: 1;
-  }
-
-  nav li {
-    border-bottom: 1px solid #ddd;
-  }
-
-  nav a {
-    display: block;
-    padding: 16px;
-    text-decoration: none;
-    color: #222;
-    transition: background 0.3s;
-  }
-
-  nav a:hover {
-    background-color: #eee;
-  }
-
-  nav a.active {
-    background-color: #004f97;
-    color: white;
-    position: relative;
-  }
-
-  nav a.active::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    border-left: 10px solid white;
-  }
-
-  .ad-space {
-    height: 120px;
-    border-top: 1px solid #ddd;
-    text-align: center;
-    padding: 10px;
-    font-size: 14px;
-    color: #999;
-  }
-
-  html, body {
-  margin: 0;
-  padding: 0;
-  height: auto;
-}
-
-
-body {
-  font-family: 'Microsoft YaHei', sans-serif;
-  flex: 1;
-}
-
-body.en-mode {
-  font-family: 'Calibri', sans-serif;
-}
-
-.container {
-  display: flex;
-  flex: 1;
-}
-
-main {
-  margin-left: 220px;
-  padding: 20px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow-x: auto;
-}
-
-.main-content {
-  flex: 1;
-}
-
-footer {
-  background-color: #f8f8f8;
-  text-align: center;
-  padding: 15px;
-  font-size: 14px;
-  border-top: 1px solid #ddd;
-}
-
-  @media (max-width: 768px) {
-    nav {
-      position: relative;
-      top: 0;
-      width: 100%;
-      height: auto;
-      border-right: none;
-      border-bottom: 1px solid #ccc;
+    nav{
+      position:fixed; left:0; top:var(--header-h);
+      width:var(--nav-w); height:calc(100vh - var(--header-h));
+      background:#fff; border-right:1px solid #ddd;
+      display:flex; flex-direction:column; justify-content:space-between; overflow-y:auto; z-index:999;
+    }
+    nav ul{ list-style:none; flex-grow:1; }
+    nav li{ border-bottom:1px solid #ddd; }
+    nav a{ display:block; padding:16px; text-decoration:none; color:#222; transition:background .3s; }
+    nav a:hover{ background:#eee; }
+    nav a.active{ background:var(--accent); color:#fff; position:relative; }
+    nav a.active::after{
+      content:""; position:absolute; right:0; top:50%; transform:translateY(-50%);
+      border-top:10px solid transparent; border-bottom:10px solid transparent; border-left:10px solid #fff;
     }
 
-    main {
-      margin-left: 0;
+    main{
+      margin-left:var(--nav-w); padding:20px; flex:1;
+      display:flex; flex-direction:column; gap:16px; overflow-x:auto;
+    }
+    .card{ background:#f5f5f5; padding:18px; border-radius:8px; }
+
+    footer{
+      background:#f8f8f8; text-align:center; padding:15px; font-size:14px; border-top:1px solid #ddd;
     }
 
-    .container {
-      flex-direction: column;
+    @media (max-width:768px){
+      nav{ position:relative; top:0; width:100%; height:auto; border-right:none; border-bottom:1px solid #ccc; }
+      main{ margin-left:0; }
+      .container{ flex-direction:column; }
     }
-  }
-</style>
+  </style>
 </head>
 
 <body>
   <header>
-    <a href="index.html" class="logo" id="logo-text" title="返回主页/Back to Home" style="text-decoration: none; color: white;">东乡语翻译</a>
-    <button class="lang-toggle" onclick="toggleLang()" title="切换语言 / Switch language">English</button>
+    <a href="index.html" class="logo" id="logo-text" title="返回主页 / Back to Home">东乡语翻译</a>
+    <button class="lang-toggle" id="langBtn" type="button" title="切换语言 / Switch language">English</button>
   </header>
 
   <div class="container">
-    <nav>
+    <nav aria-label="侧边导航">
       <div>
         <ul>
           <li><a href="bilingual.html" id="menu-1">双语翻译</a></li>
           <li><a href="dictionary.html" id="menu-2">字典</a></li>
-          <li><a href="overview.html" id="menu-3">概况</a></li>
-          <li><a href="history.html" id="menu-4">历史沿革</a></li>
-          <li><a href="customs.html" id="menu-5">风俗习惯</a></li>
-          <li><a href="status.html" id="menu-6">发展现状</a></li>
-          <li><a href="about.html" id="menu-7">关于我们</a></li>
+          <li><a href="overview.html"  id="menu-3">概况</a></li>
+          <li><a href="history.html"   id="menu-4">历史沿革</a></li>
+          <li><a href="customs.html"   id="menu-5">风俗习惯</a></li>
+          <li><a href="status.html"    id="menu-6">发展现状</a></li>
+          <li><a href="about.html"     id="menu-7">关于我们</a></li>
         </ul>
       </div>
     </nav>
 
-    <main>
-      <div class="main-content">
+    <main id="main" role="main">
+      <div>
         <h1 id="main-title">欢迎使用东乡语翻译平台</h1>
         <p id="main-desc">请选择左侧内容开始使用。</p>
       </div>
-      <section style="background-color: #f5f5f5; padding: 18px; margin: 20px;">
-      <div id="en-content" style="display: none;  line-height: 2;" >
-      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
-        The establishment of autonomous administrative regions in areas inhabited by the Dongxiang people provided a structural framework
-        for local governance and development. In August 1949, the Dongxiang region came under the control of the central government. On September 25, 1950,
-        the Dongxiang Autonomous District was officially established. This designation was changed to Dongxiang Ethnic Autonomous District in December 1953,
-        and again renamed Dongxiang Autonomous County in 1955. In addition, during 1953 and 1954, several ethnic townships were created in areas with significant
-        Dongxiang populations, including Liangjiasi, Alimamu, and Ganggou in Hezheng County, and Anjiapo, Fujia, and Hulinjia in Linxia. By 2005, beyond the
-        Dongxiang Autonomous County in Gansu Province, other areas with notable Dongxiang communities included the Jishishan Bonan-Dongxiang-Salar Autonomous County,
-        Alimatu Dongxiang Township in Guanghe County, Jinggou and Anjiapo Dongxiang Townships in Linxia County, Liangjiasi Dongxiang Township in Hezheng County,
-        and Xiaojinwan Dongxiang Township in Yumen, Jiuquan City. The number of Dongxiang officials within local administrations also gradually increased.
-        In Dongxiang Autonomous County, the region with the largest Dongxiang population, there were 165 minority officials in 1951.
-        By 2005, that number had risen to 1,890, with Dongxiang individuals comprising approximately 55% of the total.</p>
-      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
-        Following the establishment of the People's Republic of China, significant efforts were made in Dongxiang-inhabited areas to advance soil and water conservation as well as afforestation.
-        Extensive irrigation development initiatives were undertaken, resulting in the gradual transformation of the region’s formerly arid and deforested terrain.
-        Since the launch of national economic reforms, a number of key water conservancy projects—such as the Daban Agricultural Canal, Hetan Eastern Trunk Canal,
-        Daban Ketuo Canal, Dayuan Electrified Irrigation System, and Nanyang Canal—have been successively implemented. These projects have contributed to the conversion of drylands into arable,
-        irrigated farmland and have led to the effective containment of severe soil erosion. As ecological conditions steadily improved, substantial progress was made in the agricultural,
-        forestry, and animal husbandry sectors. A dryland farming system adapted to mountainous topography and characterized by stability and high yields began to emerge.
-        Principal grain crops include wheat, potatoes, maize, and legumes, with potatoes being particularly renowned for their superior quality and high productivity.
-        Major cash crops cultivated in the region include rapeseed, flax, and sunflower. In addition, the cultivation of region-specific fruits—such as Dajie apricots,
-        Zaosu pears, Suanba pears, Huaxiang pears, and Sichuan pepper—has become an important source of household income.
-        The adoption of improved breeding techniques has also supported the development of livestock husbandry, particularly the scaled farming of sheep and cattle.</p>
-      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
-        Since the founding of the People's Republic of China, the Dongxiang region has experienced significant industrial development,
-        evolving from a state of minimal industrial infrastructure to one with diverse local industries.
-        In 1958, Dongxiang County established its first state-owned enterprise — the County Agricultural Machinery Factory.
-        This was followed by the development of other enterprises such as carpet manufacturing, flour processing, food production, hardware, and garment workshops.
-        After the Third Plenary Session of the 11th Central Committee, preferential policies were introduced to support industrial growth in the Dongxiang region.
-        With the reform of state-owned and collective industrial enterprises and a shift toward market-oriented mechanisms, industrial development accelerated.
-        A local industrial base gradually emerged, including sectors such as electricity, machinery, building materials, metallurgy, wool textiles, food processing,
-        printing, and the production of culturally specific goods.</p>
-      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
-        At the same time, education in Dongxiang communities experienced significant development, leading to a general improvement in the scientific and cultural literacy of the local population.
-        The advancement of education contributed to cultural flourishing, and the Dongxiang people began to produce their own poets, writers, professors, engineers,
-        physicians, and other professionals with advanced knowledge and skills. Cultural infrastructure also improved, with the establishment of performing arts troupes,
-        cultural centers, mobile film screening teams, and cinemas. Radio and television broadcasting became widely accessible across Dongxiang-inhabited areas.
-        Over several decades, healthcare infrastructure in Dongxiang County was gradually expanded and improved. Hospitals, township clinics, and village health stations were
-        established at respective administrative levels, forming an initial healthcare network. With the development and improvement of this healthcare system,
-        diseases that had long threatened public health—such as smallpox and kala-azar—were eradicated. Incidences of other infectious diseases, including diphtheria, measles,
-        poliomyelitis, pertussis, and typhoid fever, were significantly reduced. Endemic illnesses such as brucellosis, leprosy, and fluorosis were also brought under effective control.</p>
-      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
-        Over the course of more than fifty years of collective efforts by people of all ethnic groups, the Dongxiang population—who historically resided in areas with challenging natural conditions and experienced
-        considerable hardship—has made meaningful progress in various aspects of economic and social development. Significant improvements have been achieved in living standards,
-        and many of the conditions associated with poverty and underdevelopment have been alleviated.</p>
-      <p style="font-size: 14px; color: #555; margin-bottom: 1em;font-family: 微软雅黑;">— Source: <a href="https://www.neac.gov.cn/seac/ztzl/dxz/fzxz.shtml" target="_blank" rel="noopener">
-           National Ethnic Affairs Commission of the P.R.China</a></p></div>
 
-      <div id="zh-content" style="font-family: 'Microsoft YaHei', sans-serif; font-size: 12pt; line-height: 2; color: #333;">
-      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
-        东乡族地区的解放和各级自治地方的建立，为东乡族地区的发展奠定了坚实的基础。1949年8月，东乡族地区得到解放。1950年9月25日，东乡自治区成立。1953年12月，经批准，东乡自治区改名为东乡族自治区。
-        1955年，又改名为东乡族自治县。此外，在1953年和1954年，还相继在和政县的梁家寺、阿里麻木、甘沟和临夏的安家坡、付家、胡林家等地成立了民族乡。到2005年，除甘肃省东乡族自治县外，
-        东乡族比较集中的地区还建立了甘肃省积石山保安族东乡族撒拉族自治县、广河县阿里麻土东乡族乡、临夏县井沟东乡族乡和安家坡东乡族乡、和政县梁家寺东乡族乡、酒泉市玉门小金湾东乡族乡。东乡族干部队伍也得了不断发展壮大，
-        以东乡族最大聚居区东乡族自治县为例，1951年自治县的少数民族干部只有165人，到2005年已经增加到1890人，其中东乡族干部占到了55％。</p>
-      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
-        新中国成立后，东乡族人民大力发展水土保持和植树造林工作，积极兴修水利，使境内一改过去干旱秃山的旧面貌。改革开放以来，在党和政府的关心和帮助下，达板新农渠、河滩东干渠、
-        达板科妥渠、大塬电灌及南阳渠灌溉工程等一批重点水利工程相继建成，旱地逐步变成水地，严重的水土流失现象基本上得到控制。随着生态环境的逐步改善，东乡族地区的农林牧业得到了长足发展。
-        农业初步建立起以稳定、高产为特色的山地旱农耕作体系，粮食作物主要有小麦、洋芋、玉米、豆类等，尤其盛产洋芋，品优、质好、产量高，经济作物主要有油菜、胡麻、向日葵等。大接杏、早酥梨、酸巴梨、
-        桃梨和花椒的种植已成为东乡族群众增加收入的重要途径。随着科学养殖技术的推广，羊、牛等牲畜养殖也取得较大发展，并已渐成规模。</p>
-      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
-        新中国成立后，东乡族的现代工业实现了从无到有的巨大变化。1958年，东乡县第一家国营企业县农机厂建成，之后，又陆续办起了地毯厂、面粉加工厂、食品加工厂、五金社、服装社等。党的十一届三中全会后，东乡族地区制定扶持工业发展的优惠政策。
-        国营、集体工业企业深化改革，依靠市场，加快了发展步伐，初步形成了电力、机械、建材、冶炼、毛纺、食品、印刷、民族特需用品等地方基础工业。</p>
-      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
-        同时，东乡族教育事业有了很大发展，人民群众的科学文化素质得到普遍提高。教育的发展促进了文化的繁荣，东乡族有了本民族的诗人、作家、教授、工程师、医师等中高级知识分子。
-        东乡地区有了文工团、文化馆和电影放映队、电影院，广播、电视在东乡族族地区已经基本普及。经过几十年的努力，东乡县各级各类医疗卫生机构逐步健全，县、乡、村分别建立起了医院、卫生院和卫生所，初步形成了医疗卫生保健网络。
-        随着医疗卫生体系的建立和完善，东乡族地区长期危害人民的天花、黑热病已经绝迹；白喉、麻疹、脊灰炎、百日咳、伤寒等传染病总发病数大大减少；布鲁氏病、麻风病、地方性氟中毒等地方病的发病率得到了有效控制。</p>
-      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
-        经过50多年来各民族人民的努力，居住自然条件较差、曾历经磨难的东乡族人民，在经济社会各项事业上有了一定发展，贫穷落后的面貌有了很大的改善。</p>
-      <p style="font-size: 14px; color: #555; margin-bottom: 1em;">—— 摘自《中国少数民族》（《民族问题五种丛书》），来源：
-        <a href="https://www.neac.gov.cn/seac/ztzl/dxz/fzxz.shtml" target="_blank" rel="noopener noreferrer">中国国家民族事务委员会官网</a></p></div></section>
-    </main>
+      <!-- 内容卡片：中英两块，通过 display 切换 -->
+      <section class="card">
+        <div id="en-content" style="display:none; line-height:2;">
+          <p style="text-indent:2em; margin-bottom:1em;">
+            The establishment of autonomous administrative regions in areas inhabited by the Dongxiang people provided a structural framework
+            for local governance and development. In August 1949, the Dongxiang region came under the control of the central government. On September 25, 1950,
+            the Dongxiang Autonomous District was officially established. This designation was changed to Dongxiang Ethnic Autonomous District in December 1953,
+            and again renamed Dongxiang Autonomous County in 1955. In addition, during 1953 and 1954, several ethnic townships were created in areas with significant
+            Dongxiang populations, including Liangjiasi, Alimamu, and Ganggou in Hezheng County, and Anjiapo, Fujia, and Hulinjia in Linxia. By 2005, beyond the
+            Dongxiang Autonomous County in Gansu Province, other areas with notable Dongxiang communities included the Jishishan Bonan-Dongxiang-Salar Autonomous County,
+            Alimatu Dongxiang Township in Guanghe County, Jinggou and Anjiapo Dongxiang Townships in Linxia County, Liangjiasi Dongxiang Township in Hezheng County,
+            and Xiaojinwan Dongxiang Township in Yumen, Jiuquan City. The number of Dongxiang officials within local administrations also gradually increased.
+            In Dongxiang Autonomous County, the region with the largest Dongxiang population, there were 165 minority officials in 1951.
+            By 2005, that number had risen to 1,890, with Dongxiang individuals comprising approximately 55% of the total.
+          </p>
+          <p style="text-indent:2em; margin-bottom:1em;">
+            Following the establishment of the People's Republic of China, significant efforts were made in Dongxiang-inhabited areas to advance soil and water conservation as well as afforestation. 
+            Extensive irrigation development initiatives were undertaken, resulting in the gradual transformation of the region’s formerly arid and deforested terrain. 
+            Since the launch of national economic reforms, a number of key water conservancy projects—such as the Daban Agricultural Canal, 
+            Hetan Eastern Trunk Canal, Daban Ketuo Canal, Dayuan Electrified Irrigation System, and Nanyang Canal—have been successively implemented. 
+            These projects have contributed to the conversion of drylands into arable, irrigated farmland and have led to the effective containment of severe soil erosion. 
+            As ecological conditions steadily improved, substantial progress was made in the agricultural, forestry, and animal husbandry sectors. 
+            A dryland farming system adapted to mountainous topography and characterized by stability and high yields began to emerge. 
+            Principal grain crops include wheat, potatoes, maize, and legumes, with potatoes being particularly renowned for their superior quality and high productivity. 
+            Major cash crops cultivated in the region include rapeseed, flax, and sunflower. In addition, the cultivation of region-specific fruits—such as Dajie apricots, 
+            Zaosu pears, Suanba pears, Huaxiang pears, and Sichuan pepper—has become an important source of household income. 
+            The adoption of improved breeding techniques has also supported the development of livestock husbandry, particularly the scaled farming of sheep and cattle.
+          </p>
+          <p style="text-indent:2em; margin-bottom:1em;">
+            Since the founding of the People's Republic of China, the Dongxiang region has experienced significant industrial development, 
+            evolving from a state of minimal industrial infrastructure to one with diverse local industries. 
+            In 1958, Dongxiang County established its first state-owned enterprise — the County Agricultural Machinery Factory. 
+            This was followed by the development of other enterprises such as carpet manufacturing, flour processing, food production, hardware, and garment workshops. 
+            After the Third Plenary Session of the 11th Central Committee, preferential policies were introduced to support industrial growth in the Dongxiang region. 
+            With the reform of state-owned and collective industrial enterprises and a shift toward market-oriented mechanisms, industrial development accelerated. 
+            A local industrial base gradually emerged, including sectors such as electricity, machinery, building materials, metallurgy, wool textiles, 
+            food processing, printing, and the production of culturally specific goods.
+          </p>
+          <p style="text-indent:2em; margin-bottom:1em;">
+            At the same time, education in Dongxiang communities experienced significant development, 
+            leading to a general improvement in the scientific and cultural literacy of the local population. 
+            The advancement of education contributed to cultural flourishing, and the Dongxiang people began to produce their own poets, writers, 
+            professors, engineers, physicians, and other professionals with advanced knowledge and skills. Cultural infrastructure also improved, 
+            with the establishment of performing arts troupes, cultural centers, mobile film screening teams, and cinemas. 
+            Radio and television broadcasting became widely accessible across Dongxiang-inhabited areas. Over several decades, 
+            healthcare infrastructure in Dongxiang County was gradually expanded and improved. Hospitals, township clinics, 
+            and village health stations were established at respective administrative levels, forming an initial healthcare network. 
+            With the development and improvement of this healthcare system, diseases that had long threatened public health—such as smallpox and kala-azar—were eradicated. 
+            Incidences of other infectious diseases, including diphtheria, measles, poliomyelitis, pertussis, and typhoid fever, were significantly reduced. 
+            Endemic illnesses such as brucellosis, leprosy, and fluorosis were also brought under effective control.
+          </p>
+          <p style="text-indent:2em; margin-bottom:1em;">
+            Over the course of more than fifty years of collective efforts by people of all ethnic groups, 
+            the Dongxiang population—who historically resided in areas with challenging natural conditions and experienced considerable hardship—has made meaningful progress in various aspects of economic and social development. 
+            Significant improvements have been achieved in living standards, and many of the conditions associated with poverty and underdevelopment have been alleviated.
+          </p>
+          <p style="font-size:14px; color:#555; margin-bottom:1em;">
+            — Source: <a href="https://www.neac.gov.cn/seac/ztzl/dxz/fzxz.shtml" target="_blank" rel="noopener noreferrer">
+            National Ethnic Affairs Commission of the P.R. China</a>
+          </p>
         </div>
-  <script>
-    let currentLang = 'zh';
 
+        <div id="zh-content" style="line-height:2; color:#333;">
+          <p style="text-indent:2em; margin-bottom:1em;">
+            东乡族地区的解放和各级自治地方的建立，为东乡族地区的发展奠定了坚实的基础。1949年8月，东乡族地区得到解放。
+            1950年9月25日，东乡自治区成立。1953年12月，经批准，东乡自治区改名为东乡族自治区。 1955年，又改名为东乡族自治县。
+            此外，在1953年和1954年，还相继在和政县的梁家寺、阿里麻木、甘沟和临夏的安家坡、付家、胡林家等地成立了民族乡。到2005年，除甘肃省东乡族自治县外，
+            东乡族比较集中的地区还建立了甘肃省积石山保安族东乡族撒拉族自治县、广河县阿里麻土东乡族乡、临夏县井沟东乡族乡和安家坡东乡族乡、和政县梁家寺东乡族乡、
+            酒泉市玉门小金湾东乡族乡。东乡族干部队伍也得了不断发展壮大， 以东乡族最大聚居区东乡族自治县为例，1951年自治县的少数民族干部只有165人，
+            到2005年已经增加到1890人，其中东乡族干部占到了55％。
+          </p>
+          <p style="text-indent:2em; margin-bottom:1em;">
+            新中国成立后，东乡族人民大力发展水土保持和植树造林工作，积极兴修水利，
+            使境内一改过去干旱秃山的旧面貌。改革开放以来，在党和政府的关心和帮助下，达板新农渠、河滩东干渠、 
+            达板科妥渠、大塬电灌及南阳渠灌溉工程等一批重点水利工程相继建成，旱地逐步变成水地，严重的水土流失现象基本上得到控制。
+            随着生态环境的逐步改善，东乡族地区的农林牧业得到了长足发展。 农业初步建立起以稳定、高产为特色的山地旱农耕作体系，
+            粮食作物主要有小麦、洋芋、玉米、豆类等，尤其盛产洋芋，品优、质好、产量高，经济作物主要有油菜、胡麻、向日葵等。大接杏、早酥梨、
+            酸巴梨、桃梨和花椒的种植已成为东乡族群众增加收入的重要途径。随着科学养殖技术的推广，羊、牛等牲畜养殖也取得较大发展，并已渐成规模。
+          </p>
+          <p style="text-indent:2em; margin-bottom:1em;">
+            新中国成立后，东乡族的现代工业实现了从无到有的巨大变化。1958年，东乡县第一家国营企业县农机厂建成，之后，又陆续办起了地毯厂、
+            面粉加工厂、食品加工厂、五金社、服装社等。党的十一届三中全会后，东乡族地区制定扶持工业发展的优惠政策。 国营、集体工业企业深化改革，依靠市场，
+            加快了发展步伐，初步形成了电力、机械、建材、冶炼、毛纺、食品、印刷、民族特需用品等地方基础工业。
+          </p>
+          <p style="text-indent:2em; margin-bottom:1em;">
+            同时，东乡族教育事业有了很大发展，人民群众的科学文化素质得到普遍提高。教育的发展促进了文化的繁荣，东乡族有了本民族的诗人、
+            作家、教授、工程师、医师等中高级知识分子。 东乡地区有了文工团、文化馆和电影放映队、电影院，广播、电视在东乡族族地区已经基本普及。
+            经过几十年的努力，东乡县各级各类医疗卫生机构逐步健全，县、乡、村分别建立起了医院、卫生院和卫生所，初步形成了医疗卫生保健网络。 
+            随着医疗卫生体系的建立和完善，东乡族地区长期危害人民的天花、黑热病已经绝迹；白喉、麻疹、脊灰炎、百日咳、伤寒等传染病总发病数大大减少；
+            布鲁氏病、麻风病、地方性氟中毒等地方病的发病率得到了有效控制。
+          </p>
+          <p style="text-indent:2em; margin-bottom:1em;">
+            经过50多年来各民族人民的努力，居住自然条件较差、曾历经磨难的东乡族人民，在经济社会各项事业上有了一定发展，贫穷落后的面貌有了很大的改善。
+          </p>
+          <p style="font-size:14px; color:#555; margin-bottom:1em;">
+            —— 摘自《中国少数民族》（《民族问题五种丛书》），来源：
+            <a href="https://www.neac.gov.cn/seac/ztzl/dxz/fzxz.shtml" target="_blank" rel="noopener noreferrer">中国国家民族事务委员会官网</a>
+          </p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 东乡语翻译平台 · All rights reserved.</p>
+  </footer>
+
+  <script>
+    // ===== 文案字典（沿用你的结构，并补上页面标题位于索引 11） =====
     const menuItems = {
-      zh: [
-        '双语翻译',
-        '字典',
-        '概况',
-        '历史沿革',
-        '风俗习惯',
-        '发展现状',
-        '关于我们',
-        '东乡语翻译',
-        '欢迎使用东乡语翻译平台',
-        '请选择左侧内容开始使用。',
-        'English'
-      ],
-      en: [
-        'Bilingual Translation',
-        'Dictionary',
-        'Overview',
-        'History',
-        'Customs',
-        'Current Status',
-        'About Us',
-        'Dongxiang Language Translation',
-        'Welcome to the Dongxiang Translation Platform',
-        'Please choose a menu item from the left.',
-        '中文'
-      ]
+      zh:['双语翻译','字典','概况','历史沿革','风俗习惯','发展现状','关于我们','东乡语翻译','欢迎使用东乡语翻译平台','请选择左侧内容开始使用。','English','东乡语翻译平台'],
+      en:['Bilingual Translation','Dictionary','Overview','History','Customs','Current Status','About Us','Dongxiang Language Translation','Welcome to the Dongxiang Translation Platform','Please choose a menu item from the left.','中文','Dongxiang Translation Platform']
     };
 
+    let currentLang = 'zh';
 
-
-    function toggleLang() {
-      setLang(currentLang === 'zh' ? 'en' : 'zh');
-    }
-    function setLang(lang) {
+    function setLang(lang){
       currentLang = lang;
       localStorage.setItem('preferredLang', lang);
+
+      // 字体/语言属性
       document.body.classList.toggle('en-mode', lang === 'en');
+      document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'zh');
+
       const labels = menuItems[lang];
+
+      // 菜单文本
       for (let i = 1; i <= 7; i++) {
-        document.getElementById(`menu-${i}`).innerText = labels[i - 1];
+        const el = document.getElementById(`menu-${i}`);
+        if (el) el.textContent = labels[i - 1];
       }
-      document.getElementById('logo-text').innerText = labels[7];
-      document.getElementById('main-title').innerText = labels[8];
-      document.getElementById('main-desc').innerText = labels[9];
-      document.querySelector('.lang-toggle').innerText = labels[10];
-      document.getElementById('zh-content').style.display = lang === 'zh' ? 'block' : 'none';
-      document.getElementById('en-content').style.display = lang === 'en' ? 'block' : 'none';}
+      // 头部与主文案
+      const logo = document.getElementById('logo-text');
+      if (logo) logo.textContent = labels[7];
+      const title = document.getElementById('main-title');
+      if (title) title.textContent = labels[8];
+      const desc = document.getElementById('main-desc');
+      if (desc) desc.textContent = labels[9];
+      const btn = document.getElementById('langBtn');
+      if (btn){
+        btn.textContent = labels[10];
+        btn.title = (lang === 'en' ? 'Switch language / 切换语言' : '切换语言 / Switch language');
+      }
+      // 页面标题
+      document.title = labels[11] || document.title;
+
+      // 内容切换
+      const zh = document.getElementById('zh-content');
+      const enC = document.getElementById('en-content');
+      if (zh && enC){
+        zh.style.display = (lang === 'zh' ? 'block' : 'none');
+        enC.style.display = (lang === 'en' ? 'block' : 'none');
+      }
+    }
+
+    function toggleLang(){ setLang(currentLang === 'zh' ? 'en' : 'zh'); }
+
+    // 事件绑定 & 初始化
+    document.getElementById('langBtn').addEventListener('click', toggleLang);
     const savedLang = localStorage.getItem('preferredLang');
     const userLang = navigator.language || 'en';
-    const defaultLang = savedLang || (userLang.startsWith('zh') ? 'zh' : 'en');
-    setLang(defaultLang);
+    setLang(savedLang || (userLang.startsWith('zh') ? 'zh' : 'en'));
   </script>
 </body>
 </html>
+
+
 
 
