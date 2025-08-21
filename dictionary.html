@@ -1,10 +1,206 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>东乡语翻译平台</title>
+  <meta name="description" content="东乡语翻译平台：东乡语与中英互译、文化与历史介绍。">
 
+  <style>
+    :root{ --brand:#8B0000; --accent:#004f97; --header-h:60px; --nav-w:220px; }
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    html, body{ height:100%; }
+    body{
+      min-height:100vh; display:flex; flex-direction:column;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC","Microsoft YaHei", Arial, sans-serif;
+      color:#222; line-height:1.6;
+    }
+    body.en-mode{ font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+
+    header{
+      background:var(--brand); color:#fff; padding:15px 20px; height:var(--header-h);
+      display:flex; justify-content:space-between; align-items:center;
+      position:sticky; top:0; z-index:1000;
+    }
+    .logo{ font-size:20px; text-decoration:none; color:#fff; }
+    .lang-toggle{ background:#fff; color:var(--brand); border:0; padding:8px 16px; border-radius:4px; cursor:pointer; }
+
+    .container{ display:flex; flex:1; } /* 占满剩余高度，保证 footer 贴底 */
+
+    nav{
+      position:fixed; left:0; top:var(--header-h);
+      width:var(--nav-w); height:calc(100vh - var(--header-h));
+      background:#fff; border-right:1px solid #ddd;
+      display:flex; flex-direction:column; justify-content:space-between; overflow-y:auto; z-index:999;
+    }
+    nav ul{ list-style:none; flex-grow:1; }
+    nav li{ border-bottom:1px solid #ddd; }
+    nav a{ display:block; padding:16px; text-decoration:none; color:#222; transition:background .3s; }
+    nav a:hover{ background:#eee; }
+    nav a.active{ background:var(--accent); color:#fff; position:relative; }
+    nav a.active::after{
+      content:""; position:absolute; right:0; top:50%; transform:translateY(-50%);
+      border-top:10px solid transparent; border-bottom:10px solid transparent; border-left:10px solid #fff;
+    }
+
+    main{
+      margin-left:var(--nav-w); padding:20px; flex:1;
+      display:flex; flex-direction:column; gap:16px; overflow-x:auto;
+    }
+    .card{ background:#f5f5f5; padding:18px; border-radius:8px; }
+
+    footer{
+      background:#f8f8f8; text-align:center; padding:15px; font-size:14px; border-top:1px solid #ddd;
+    }
+
+    @media (max-width:768px){
+      nav{ position:relative; top:0; width:100%; height:auto; border-right:none; border-bottom:1px solid #ccc; }
+      main{ margin-left:0; }
+      .container{ flex-direction:column; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="index.html" class="logo" id="logo-text" title="返回主页 / Back to Home">东乡语翻译</a>
+    <button class="lang-toggle" id="langBtn" type="button" title="切换语言 / Switch language">English</button>
+  </header>
+
+  <div class="container">
+    <nav aria-label="侧边导航">
+      <div>
+        <ul>
+          <li><a href="bilingual.html" id="menu-1">双语翻译</a></li>
+          <li><a href="dictionary.html" id="menu-2">字典</a></li>
+          <li><a href="overview.html"  id="menu-3">概况</a></li>
+          <li><a href="history.html"   id="menu-4">历史沿革</a></li>
+          <li><a href="customs.html"   id="menu-5">风俗习惯</a></li>
+          <li><a href="status.html"    id="menu-6">发展现状</a></li>
+          <li><a href="about.html"     id="menu-7">关于我们</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main id="main" role="main">
+      <div>
+        <h1 id="main-title">欢迎使用东乡语翻译平台</h1>
+        <p id="main-desc">请选择左侧内容开始使用。</p>
+      </div>
+
+      <!-- 内容卡片：中英两块，通过 display 切换 -->
+      <section class="card">
+        <div id="en-content" style="display:none; line-height:2;">
+          <p style="text-indent:2em; margin-bottom:1em;">
+            
+          </p>
+          <p style="text-indent:2em; margin-bottom:1em;">
+            As of the 2010 national census, the Dongxiang ethnic group in China numbered approximately 621,500 individuals. The majority of the population is concentrated in the Linxia Hui Autonomous Prefecture of Gansu Province, specifically within the foothill areas west of the Tao River, east of the Daxia River, and south of the Yellow River. Of the total Dongxiang population, 438,000 reside in Linxia Prefecture, with the Dongxiang Autonomous County serving as the primary settlement area, accounting for approximately 215,000 individuals. The remainder are distributed across Hezheng County, Linxia County, and the Jishishan Bonan-Dongxiang-Salar Autonomous County. In addition, smaller Dongxiang communities are scattered across other regions of Gansu Province, including Lanzhou, the Dingxi area, and the Gannan Tibetan Autonomous Prefecture. Following the founding of the People’s Republic of China, some members of the Dongxiang ethnic group migrated from Gansu to the Xinjiang Uyghur Autonomous Region. As of today, it is estimated that 50,000 to 60,000 Dongxiang people reside in Xinjiang.
+          </p>
+          <p style="text-indent:2em; margin-bottom:1em;">
+            Dongxiang County, where the Dongxiang people predominantly reside, is located in the transitional zone between the Qinghai-Tibet Plateau and the Loess Plateau. The area is characterized by shallow highland hills, with an average elevation of around 2,000 meters. One-third of the region consists of river valleys and terraces, another third comprises arid loess hills, and the remaining third is marked by cold, damp highlands. The region has a temperate continental climate, featuring mild winters and cool summers. With four distinct seasons and a generally pleasant climate, the area is well-suited for human habitation and agricultural activity.
+          </p>
+          <p style="text-indent:2em; margin-bottom:1em;">
+            The Dongxiang people living on this land primarily rely on agriculture. Major crops include potatoes, wheat, highland barley, barley, millet, corn, and broad beans, among which potatoes are the most renowned. The locally grown potatoes are low in moisture, rich in texture, sandy yet sweet, and have a high starch content. They can be used to produce a variety of foods such as pastries, liquor, vinegar, and vermicelli, and are highly favored by people of all ethnic groups. Cash crops in the region include hemp, flaxseed, and rapeseed. Along the Tao River and Daxia River valleys, a wide variety of fruits and melons are cultivated. Among them, the peach-apricots of Tangwangchuan are particularly famous. These fruits are distinct from both peaches and apricots, featuring large size, vibrant color, thin skin, and thick flesh. They carry the delicate fragrance of Hami melons and are known for their sweet and refreshing taste. The mountainous areas are also rich in wild medicinal herbs, including gentian, winter aconite, wolf’s bane (aconitum), licorice root, saposhnikovia, bupleurum, and ephedra, among many others.
+          </p>
+          <p style="text-indent:2em; margin-bottom:1em;">
+            The Dongxiang language belongs to the Mongolic branch of the Altaic language family. Internally, it is relatively uniform and can be broadly divided into three dialects: Suonan, Wangjiajie, and Sijiaji. The differences among these dialects are minimal, mainly involving certain phonetic and lexical variations. Although preliminary work has been done on the vocabulary and grammar of Dongxiang, no comprehensive bilingual translation system has yet been established—either between Dongxiang and Chinese or between Dongxiang and English. This has limited the language’s potential for intergenerational transmission and cross-cultural communication. This website pioneers an online Dongxiang language translation service, filling a longstanding gap in systematic bilingual translation tools. It provides a new platform for language learning, cultural research, and intercultural exchange.
+          </p>
+          <p style="font-size:14px; color:#555; margin-bottom:1em;">
+            — Source: <a href="https://www.neac.gov.cn/seac/ztzl/dxz/gk.shtml" target="_blank" rel="noopener noreferrer">
+            National Ethnic Affairs Commission of the P.R. China</a>
+          </p>
+        </div>
+
+        <div id="zh-content" style="line-height:2; color:#333;">
+          <p style="text-indent:2em; margin-bottom:1em;">
+            我国有东乡族621500人（2010年），主要聚居在甘肃省临夏回族自治州境内洮河以西、大夏河以东和黄河以南的山麓地带。临夏回族自治州居住着43.8万东乡族，其中以东乡族自治县最为集中， 有21.5万人，其余分别聚居在和政县、临夏县和积石山保安族东乡族撒拉族自治县。在甘肃的兰州市、定西地区和甘南藏族自治州等地，还散居着一小部分东乡族。 新中国成立后，部分东乡族从甘肃迁徙到新疆居住，目前新疆的东乡族约有五六万人。
+          </p>
+          <p style="text-indent:2em; margin-bottom:1em;">
+            东乡族聚居的地区，处于青藏高原与黄土高原的过渡地带，属高原浅山丘陵区，平均海拔2000米。该地区三分之一面积为河谷川塬地区， 三分之一面积是黄土干旱山区，三分之一面积则高寒阴湿。这里属温带大陆性气候，冬无严寒，夏无酷暑，四季分明，气候适宜。
+          </p>
+          <p style="text-indent:2em; margin-bottom:1em;">
+            生活在这片土地上的东乡族，以农业生产为主，农作物有土豆、小麦、青稞、大麦、糜谷、玉米、蚕豆等，其中以土豆最为有名。这里出产的土豆， 水少面饱，沙而甜，含淀粉量高，可制点心、酒、醋、粉条等多种食品，深受各族人民的喜爱。经济作物有大麻、胡麻籽、油菜籽等。沿洮河、大夏河地区， 还出产大量瓜果，其中以唐汪川的桃杏最为出名，它既不同于桃，又不同于杏，个儿大，色泽美，皮薄肉厚，带有白兰瓜的醇香，甘甜爽口。山区还生长有秦艽、 冬花、狼毒、甘草、防风、柴胡、麻黄等多种野生药材。
+          </p>
+          <p style="text-indent:2em; margin-bottom:1em;">
+            东乡族的语言属阿尔泰语系蒙古语族。其语言内部比较一致，大体可分为锁南、汪家集、四甲集3个土语，各土语之间仅有个别语音和词汇方面的差异。 迄今为止，虽已有对东乡语词汇和语法的初步整理，但尚未建立系统的东乡语与汉语，东乡语与英语的双语翻译体系，限制了其在语言传承与跨文化交流中的应用。 本网站首创东乡语在线翻译服务，填补了长期以来缺乏系统双语转换工具的空白，为语言学习、文化研究和交流提供了全新平台。
+          </p>
+          <p style="font-size:14px; color:#555; margin-bottom:1em;">
+            —— 摘自《中国少数民族》（《民族问题五种丛书》），来源：
+            <a href="https://www.neac.gov.cn/seac/ztzl/dxz/gk.shtml" target="_blank" rel="noopener noreferrer">中国国家民族事务委员会官网</a>
+          </p>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <footer>
+    <p>&copy; 2025 东乡语翻译平台 · All rights reserved.</p>
+  </footer>
+
+  <script>
+    // ===== 文案字典（沿用你的结构，并补上页面标题位于索引 11） =====
+    const menuItems = {
+      zh:['双语翻译','字典','概况','历史沿革','风俗习惯','发展现状','关于我们','东乡语翻译','欢迎使用东乡语翻译平台','请选择左侧内容开始使用。','English','东乡语翻译平台'],
+      en:['Bilingual Translation','Dictionary','Overview','History','Customs','Current Status','About Us','Dongxiang Language Translation','Welcome to the Dongxiang Translation Platform','Please choose a menu item from the left.','中文','Dongxiang Translation Platform']
+    };
+
+    let currentLang = 'zh';
+
+    function setLang(lang){
+      currentLang = lang;
+      localStorage.setItem('preferredLang', lang);
+
+      // 字体/语言属性
+      document.body.classList.toggle('en-mode', lang === 'en');
+      document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'zh');
+
+      const labels = menuItems[lang];
+
+      // 菜单文本
+      for (let i = 1; i <= 7; i++) {
+        const el = document.getElementById(`menu-${i}`);
+        if (el) el.textContent = labels[i - 1];
+      }
+      // 头部与主文案
+      const logo = document.getElementById('logo-text');
+      if (logo) logo.textContent = labels[7];
+      const title = document.getElementById('main-title');
+      if (title) title.textContent = labels[8];
+      const desc = document.getElementById('main-desc');
+      if (desc) desc.textContent = labels[9];
+      const btn = document.getElementById('langBtn');
+      if (btn){
+        btn.textContent = labels[10];
+        btn.title = (lang === 'en' ? 'Switch language / 切换语言' : '切换语言 / Switch language');
+      }
+      // 页面标题
+      document.title = labels[11] || document.title;
+
+      // 内容切换
+      const zh = document.getElementById('zh-content');
+      const enC = document.getElementById('en-content');
+      if (zh && enC){
+        zh.style.display = (lang === 'zh' ? 'block' : 'none');
+        enC.style.display = (lang === 'en' ? 'block' : 'none');
+      }
+    }
+
+    function toggleLang(){ setLang(currentLang === 'zh' ? 'en' : 'zh'); }
+
+    // 事件绑定 & 初始化
+    document.getElementById('langBtn').addEventListener('click', toggleLang);
+    const savedLang = localStorage.getItem('preferredLang');
+    const userLang = navigator.language || 'en';
+    setLang(savedLang || (userLang.startsWith('zh') ? 'zh' : 'en'));
+  </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
