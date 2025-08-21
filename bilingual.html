@@ -1,10 +1,177 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>东乡语翻译平台</title>
+  <meta name="description" content="东乡语翻译平台：东乡语与中英互译、文化与历史介绍。">
 
+  <style>
+    :root{ --brand:#8B0000; --accent:#004f97; --header-h:60px; --nav-w:220px; }
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    html, body{ height:100%; }
+    body{
+      min-height:100vh; display:flex; flex-direction:column;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC","Microsoft YaHei", Arial, sans-serif;
+      color:#222; line-height:1.6;
+    }
+    body.en-mode{ font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+
+    header{
+      background:var(--brand); color:#fff; padding:15px 20px; height:var(--header-h);
+      display:flex; justify-content:space-between; align-items:center;
+      position:sticky; top:0; z-index:1000;
+    }
+    .logo{ font-size:20px; text-decoration:none; color:#fff; }
+    .lang-toggle{ background:#fff; color:var(--brand); border:0; padding:8px 16px; border-radius:4px; cursor:pointer; }
+
+    .container{ display:flex; flex:1; } /* 占满剩余高度，保证 footer 贴底 */
+
+    nav{
+      position:fixed; left:0; top:var(--header-h);
+      width:var(--nav-w); height:calc(100vh - var(--header-h));
+      background:#fff; border-right:1px solid #ddd;
+      display:flex; flex-direction:column; justify-content:space-between; overflow-y:auto; z-index:999;
+    }
+    nav ul{ list-style:none; flex-grow:1; }
+    nav li{ border-bottom:1px solid #ddd; }
+    nav a{ display:block; padding:16px; text-decoration:none; color:#222; transition:background .3s; }
+    nav a:hover{ background:#eee; }
+    nav a.active{ background:var(--accent); color:#fff; position:relative; }
+    nav a.active::after{
+      content:""; position:absolute; right:0; top:50%; transform:translateY(-50%);
+      border-top:10px solid transparent; border-bottom:10px solid transparent; border-left:10px solid #fff;
+    }
+
+    main{
+      margin-left:var(--nav-w); padding:20px; flex:1;
+      display:flex; flex-direction:column; gap:16px; overflow-x:auto;
+    }
+    .card{ background:#f5f5f5; padding:18px; border-radius:8px; }
+
+    footer{
+      background:#f8f8f8; text-align:center; padding:15px; font-size:14px; border-top:1px solid #ddd;
+    }
+
+    @media (max-width:768px){
+      nav{ position:relative; top:0; width:100%; height:auto; border-right:none; border-bottom:1px solid #ccc; }
+      main{ margin-left:0; }
+      .container{ flex-direction:column; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="index.html" class="logo" id="logo-text" title="返回主页 / Back to Home">东乡语翻译</a>
+    <button class="lang-toggle" id="langBtn" type="button" title="切换语言 / Switch language">English</button>
+  </header>
+
+  <div class="container">
+    <nav aria-label="侧边导航">
+      <div>
+        <ul>
+          <li><a href="bilingual.html" id="menu-1">双语翻译</a></li>
+          <li><a href="dictionary.html" id="menu-2">字典</a></li>
+          <li><a href="overview.html"  id="menu-3">概况</a></li>
+          <li><a href="history.html"   id="menu-4">历史沿革</a></li>
+          <li><a href="customs.html"   id="menu-5">风俗习惯</a></li>
+          <li><a href="status.html"    id="menu-6">发展现状</a></li>
+          <li><a href="about.html"     id="menu-7">关于我们</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main id="main" role="main">
+      <div>
+        <h1 id="main-title">欢迎使用东乡语翻译平台</h1>
+        <p id="main-desc">请选择左侧内容开始使用。</p>
+      </div>
+
+      <!-- 内容卡片：中英两块，通过 display 切换 -->
+      <section class="card">
+        <div id="en-content" style="display:none; line-height:2;">
+          <iframe>
+            src="https://gradio-hello-world.hf.space"
+            width="100%" height="640"
+            style="border:1px solid #ddd; border-radius:8px;"
+            allow="clipboard-read; clipboard-write; microphone"
+            loading="lazy">
+          </iframe>
+        </div>
+
+        <div id="zh-content" style="line-height:2; color:#333;">
+          <iframe>
+            src="https://gradio-hello-world.hf.space"
+            width="100%" height="640"
+            style="border:1px solid #ddd; border-radius:8px;"
+            allow="clipboard-read; clipboard-write; microphone"
+            loading="lazy">
+          </iframe>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <footer>
+    <p>&copy; 2025 东乡语翻译平台 · All rights reserved.</p>
+  </footer>
+
+  <script>
+    // ===== 文案字典（沿用你的结构，并补上页面标题位于索引 11） =====
+    const menuItems = {
+      zh:['双语翻译','字典','概况','历史沿革','风俗习惯','发展现状','关于我们','东乡语翻译','欢迎使用东乡语翻译平台','请选择左侧内容开始使用。','English','东乡语翻译平台'],
+      en:['Bilingual Translation','Dictionary','Overview','History','Customs','Current Status','About Us','Dongxiang Language Translation','Welcome to the Dongxiang Translation Platform','Please choose a menu item from the left.','中文','Dongxiang Translation Platform']
+    };
+
+    let currentLang = 'zh';
+
+    function setLang(lang){
+      currentLang = lang;
+      localStorage.setItem('preferredLang', lang);
+
+      // 字体/语言属性
+      document.body.classList.toggle('en-mode', lang === 'en');
+      document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'zh');
+
+      const labels = menuItems[lang];
+
+      // 菜单文本
+      for (let i = 1; i <= 7; i++) {
+        const el = document.getElementById(`menu-${i}`);
+        if (el) el.textContent = labels[i - 1];
+      }
+      // 头部与主文案
+      const logo = document.getElementById('logo-text');
+      if (logo) logo.textContent = labels[7];
+      const title = document.getElementById('main-title');
+      if (title) title.textContent = labels[8];
+      const desc = document.getElementById('main-desc');
+      if (desc) desc.textContent = labels[9];
+      const btn = document.getElementById('langBtn');
+      if (btn){
+        btn.textContent = labels[10];
+        btn.title = (lang === 'en' ? 'Switch language / 切换语言' : '切换语言 / Switch language');
+      }
+      // 页面标题
+      document.title = labels[11] || document.title;
+
+      // 内容切换
+      const zh = document.getElementById('zh-content');
+      const enC = document.getElementById('en-content');
+      if (zh && enC){
+        zh.style.display = (lang === 'zh' ? 'block' : 'none');
+        enC.style.display = (lang === 'en' ? 'block' : 'none');
+      }
+    }
+
+    function toggleLang(){ setLang(currentLang === 'zh' ? 'en' : 'zh'); }
+
+    // 事件绑定 & 初始化
+    document.getElementById('langBtn').addEventListener('click', toggleLang);
+    const savedLang = localStorage.getItem('preferredLang');
+    const userLang = navigator.language || 'en';
+    setLang(savedLang || (userLang.startsWith('zh') ? 'zh' : 'en'));
+  </script>
 </body>
 </html>
