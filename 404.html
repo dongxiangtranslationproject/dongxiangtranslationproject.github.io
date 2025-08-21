@@ -4,227 +4,112 @@
   <meta charset="UTF-8">
   <title>404 未找到</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
   <style>
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  body {
-    font-family: 'Microsoft YaHei', sans-serif;
-    min-height: 100vh;
-  }
-
-  body.en-mode {
-    font-family: 'Calibri', sans-serif;
-  }
-
-  header {
-    background-color: #8B0000;
-    color: white;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-
-  .logo {
-    font-size: 20px;
-  }
-
-  .lang-toggle {
-    background: white;
-    color: #8B0000;
-    border: none;
-    padding: 8px 16px;
-    font-size: 14px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-
-  .container {
-    display: flex;
-  }
-
-  nav {
-    position: fixed;
-    top: 60px; /* 60px = header 高度 */
-    left: 0;
-    width: 220px;
-    height: calc(100vh - 60px);
-    background-color: #fff;
-    border-right: 1px solid #ddd;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow-y: auto;
-    z-index: 999;
-  }
-
-  nav ul {
-    list-style: none;
-    flex-grow: 1;
-  }
-
-  nav li {
-    border-bottom: 1px solid #ddd;
-  }
-
-  nav a {
-    display: block;
-    padding: 16px;
-    text-decoration: none;
-    color: #222;
-    transition: background 0.3s;
-  }
-
-  nav a:hover {
-    background-color: #eee;
-  }
-
-  nav a.active {
-    background-color: #004f97;
-    color: white;
-    position: relative;
-  }
-
-  nav a.active::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    border-left: 10px solid white;
-  }
-
-  .ad-space {
-    height: 120px;
-    border-top: 1px solid #ddd;
-    text-align: center;
-    padding: 10px;
-    font-size: 14px;
-    color: #999;
-  }
-
-  html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-body {
-  font-family: 'Microsoft YaHei', sans-serif;
-  flex: 1;
-}
-
-body.en-mode {
-  font-family: 'Calibri', sans-serif;
-}
-
-.container {
-  display: flex;
-  flex: 1;
-}
-
-main {
-  margin-left: 220px;
-  padding: 20px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow-x: auto;
-}
-
-.main-content {
-  flex: 1;
-}
-
-footer {
-  background-color: #f8f8f8;
-  text-align: center;
-  padding: 15px;
-  font-size: 14px;
-  border-top: 1px solid #ddd;
-}
-
-  @media (max-width: 768px) {
-    nav {
-      position: relative;
-      top: 0;
-      width: 100%;
-      height: auto;
-      border-right: none;
-      border-bottom: 1px solid #ccc;
+    :root{
+      --brand:#8B0000;
+      --brand-ink:#8B0000;
+      --header-h:56px;
+      --radius:10px;
     }
-
-    main {
-      margin-left: 0;
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      min-height:100vh; display:flex; flex-direction:column;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+                   "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      line-height:1.6;
     }
-
-    .container {
-      flex-direction: column;
+    body.en-mode{
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+                   Arial, sans-serif;
     }
-  }
-</style>
+    header{
+      position:sticky; top:0; z-index:1000;
+      height:var(--header-h);
+      background:var(--brand); color:#fff;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:0 16px;
+    }
+    .logo{font-size:18px; text-decoration:none; color:#fff}
+    .lang-toggle{
+      type:button;
+      background:#fff; color:var(--brand-ink);
+      border:none; padding:8px 14px; border-radius:var(--radius); cursor:pointer;
+    }
+    .lang-toggle:focus-visible, a:focus-visible{
+      outline:3px solid #000; outline-offset:3px;
+    }
+    main[role="main"]{
+      flex:1; max-width:720px; width:100%;
+      margin:0 auto; padding:24px 16px;
+      display:flex; flex-direction:column; gap:12px;
+    }
+    .lead{color:#444}
+    .actions{margin-top:8px}
+    .btn{
+      display:inline-block; text-decoration:none;
+      padding:10px 16px; border-radius:var(--radius);
+      background:#004f97; color:#fff;
+    }
+    @media (prefers-color-scheme: dark){
+      body{background:#111; color:#eee}
+      header{background:#5f0000}
+      .lang-toggle{background:#222; color:#eee}
+      .btn{background:#2b74c8}
+      .lead{color:#ccc}
+    }
+  </style>
 </head>
 <body>
-
   <header>
-    <a href="index.html" class="logo" id="logo-text" title="返回主页/Back to Home" style="text-decoration: none; color: white;">东乡语翻译</a>
-    <button class="lang-toggle" onclick="toggleLang()" title="切换语言 / Switch language">English</button>
+    <a href="index.html" class="logo" id="logo-text" title="返回主页 / Back to Home" rel="home">东乡语翻译</a>
+    <button class="lang-toggle" id="langBtn" type="button" title="切换语言 / Switch language">English</button>
   </header>
 
-  <main>
+  <main role="main">
     <h1 id="title">404</h1>
-    <p id="desc">对不起，您访问的页面不存在。</p>
-    <a id="back" href="index.html" title="回到主页 / Back to main page">返回首页</a>
+    <p class="lead" id="desc">对不起，您访问的页面不存在。</p>
+    <div class="actions">
+      <a id="back" class="btn" href="index.html" aria-label="返回东乡语翻译首页">返回首页</a>
+    </div>
   </main>
 
   <script>
     let currentLang = 'zh';
 
-    function setLang(lang) {
+    function applyLang(lang){
       currentLang = lang;
-      const toggleBtn = document.querySelector('.lang-toggle');
+      const toggleBtn = document.getElementById('langBtn');
       const logoText = document.getElementById('logo-text');
+      const isEN = lang === 'en';
 
-      if (lang === 'en') {
-        document.body.classList.add('en-mode');
-        logoText.innerText = 'Dongxiang Language Translation';
-        document.getElementById('title').innerText = '404';
-        document.getElementById('desc').innerText = 'Sorry, the page you visited does not exist.';
-        document.getElementById('back').innerText = 'Back to main page';
-        document.getElementById('back').setAttribute('title', 'Back to main page / 回到主页');
-        toggleBtn.innerText = '中文';
-        toggleBtn.setAttribute('title', 'Switch language / 切换语言');
-      } else {
-        document.body.classList.remove('en-mode');
-        logoText.innerText = '东乡语翻译';
-        document.getElementById('title').innerText = '404';
-        document.getElementById('desc').innerText = '对不起，您访问的页面不存在。';
-        document.getElementById('back').innerText = '返回首页';
-        document.getElementById('back').setAttribute('title', '回到主页 / Back to main page');
-        toggleBtn.innerText = 'English';
-        toggleBtn.setAttribute('title', '切换语言 / Switch language');
-      }
+      document.documentElement.setAttribute('lang', isEN ? 'en' : 'zh');
+      document.body.classList.toggle('en-mode', isEN);
+
+      logoText.textContent = isEN ? 'Dongxiang Language Translation' : '东乡语翻译';
+      document.getElementById('title').textContent = '404';
+      document.getElementById('desc').textContent =
+        isEN ? 'Sorry, the page you visited does not exist.' : '对不起，您访问的页面不存在。';
+      const back = document.getElementById('back');
+      back.textContent = isEN ? 'Back to main page' : '返回首页';
+      back.setAttribute('title', isEN ? 'Back to main page / 回到主页' : '回到主页 / Back to main page');
+      back.setAttribute('aria-label', isEN ? 'Back to Dongxiang Translation home' : '返回东乡语翻译首页');
+      toggleBtn.textContent = isEN ? '中文' : 'English';
+      toggleBtn.setAttribute('title', isEN ? 'Switch language / 切换语言' : '切换语言 / Switch language');
+      document.title = isEN ? '404 Not Found' : '404 未找到';
     }
 
-    function toggleLang() {
-      setLang(currentLang === 'zh' ? 'en' : 'zh');
-    }
+    function toggleLang(){ applyLang(currentLang === 'zh' ? 'en' : 'zh'); }
+
+    document.getElementById('langBtn').addEventListener('click', toggleLang);
+
     const userLang = navigator.language || 'en';
-    setLang(userLang.startsWith('zh') ? 'zh' : 'en');
+    applyLang(userLang.startsWith('zh') ? 'zh' : 'en');
   </script>
-
 </body>
+</html>
+
 </html>
 
 
