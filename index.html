@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>东乡语翻译平台</title>
+  <style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  header {
+    background-color: #8B0000;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  .logo {
+    font-size: 20px;
+  }
+  .lang-toggle {
+    background: white;
+    color: #8B0000;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .container {
+    display: flex;
+  }
+
+  nav {
+    position: fixed;
+    top: 60px; /* 60px = header 高度 */
+    left: 0;
+    width: 220px;
+    height: calc(100vh - 60px);
+    background-color: #fff;
+    border-right: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: auto;
+    z-index: 999;
+  }
+
+  nav ul {
+    list-style: none;
+    flex-grow: 1;
+  }
+
+  nav li {
+    border-bottom: 1px solid #ddd;
+  }
+
+  nav a {
+    display: block;
+    padding: 16px;
+    text-decoration: none;
+    color: #222;
+    transition: background 0.3s;
+  }
+
+  nav a:hover {
+    background-color: #eee;
+  }
+
+  nav a.active {
+    background-color: #004f97;
+    color: white;
+    position: relative;
+  }
+
+  nav a.active::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid white;
+  }
+
+  .ad-space {
+    height: 120px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    color: #999;
+  }
+  html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+  body {
+  font-family: 'Microsoft YaHei', sans-serif;
+  flex: 1;
+  }
+  body.en-mode {
+    font-family: 'Calibri', sans-serif;}
+
+.container {
+  display: flex;
+  flex: 1;
+}
+
+main {
+  margin-left: 220px;
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
+}
+
+.main-content {
+  flex: 1;
+}
+
+footer {
+  background-color: #f8f8f8;
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+  border-top: 1px solid #ddd;
+}
+.carousel {
+  position: relative;
+  width: 90%;
+  max-width: 700px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #f5f5f5;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+  flex: 0 0 100%;
+  text-align: center;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover; /* 自动裁剪填满容器 */
+  border-bottom: 1px solid #ccc;
+}
+
+.caption {
+  font-size: 14px;
+  color: #333;
+  padding: 10px 0;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.4);
+  color: white;
+  border: none;
+  font-size: 24px;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.carousel-btn.left { left: 10px; }
+.carousel-btn.right { right: 10px; }
+
+.carousel-btn:hover {
+  background-color: rgba(0,0,0,0.6);
+}
+  @media (max-width: 768px) {
+    nav {
+      position: relative;
+      top: 0;
+      width: 100%;
+      height: auto;
+      border-right: none;
+      border-bottom: 1px solid #ccc;
+    }
+
+    main {
+      margin-left: 0;
+    }
+
+    .container {
+      flex-direction: column;
+    }
+  }
+</style>
+</head>
+
+<body>
+  <header>
+    <a href="index.html" class="logo" id="logo-text" title="返回主页/Back to Home" style="text-decoration: none; color: white;">东乡语翻译</a>
+    <button class="lang-toggle" onclick="toggleLang()" title="切换语言 / Switch language">English</button>
+  </header>
+
+  <div class="container">
+    <nav>
+      <div>
+        <ul>
+          <li><a href="bilingual.html" id="menu-1">双语翻译</a></li>
+          <li><a href="dictionary.html" id="menu-2">字典</a></li>
+          <li><a href="overview.html" id="menu-3">概况</a></li>
+          <li><a href="history.html" id="menu-4">历史沿革</a></li>
+          <li><a href="customs.html" id="menu-5">风俗习惯</a></li>
+          <li><a href="status.html" id="menu-6">发展现状</a></li>
+          <li><a href="about.html" id="menu-7">关于我们</a></li>
+        </ul>
+      </div>
+      <div class="ad-space">此处预留 Google 广告位</div>
+    </nav>
+
+    <main>
+      <div class="main-content">
+        <h1 id="main-title">欢迎使用东乡语翻译平台</h1>
+        <p id="main-desc">请选择左侧内容开始使用。</p>
+      </div>
+      <section style="background-color: #f5f5f5; padding: 18px; margin: 20px;">
+        <div id="en-content" style="display: none; line-height: 2;">
+          <p style="text-indent: 2em; font-size: 12pt; font-family: Calibri, sans-serif; margin-bottom: 1em;">
+            Here is a display of Dongxiang culture-related images:
+          </p>
+          <div class="carousel">
+            <button class="carousel-btn left" onclick="prevSlideEn()">‹</button>
+            <div class="carousel-track" id="carousel-track-en">
+              <div class="carousel-item">
+                <img src="./img/dx1.jpg" alt="Dongxiang Clothing">
+                <p class="caption">Traditional Dongxiang Clothing</p>
+              </div>
+              <div class="carousel-item">
+                <img src="./img/dx2.jpg" alt="Dongxiang Village">
+                <p class="caption">Dongxiang Village Scenery</p></div>
+              <div class="carousel-item">
+                <img src="./img/dx3.jpg" alt="Dongxiang Class">
+                <p class="caption">Dongxiang Language Class</p>
+              </div>
+            </div>
+            <button class="carousel-btn right" onclick="nextSlideEn()">›</button>
+          </div>
+        </div>
+      <div id="zh-content" style="font-family: 'Microsoft YaHei', sans-serif; font-size: 12pt; line-height: 2; color: #333;">
+        <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">东乡族相关图片：</p>
+          <div class="carousel">
+            <button class="carousel-btn left" onclick="prevSlide()">‹</button>
+            <div class="carousel-track" id="carousel-track">
+              <div class="carousel-item">
+                <img src="./img/dx1.jpg" alt="图片1">
+                <p class="caption">东乡族传统服饰</p>
+              </div>
+              <div class="carousel-item">
+                <img src="./img/dx2.jpg" alt="图片2">
+                <p class="caption">东乡村庄景观</p>
+              </div>
+              <div class="carousel-item">
+                <img src="./img/dx3.jpg" alt="图片3">
+                <p class="caption">东乡语课堂现场</p>
+              </div>
+            </div>
+            <button class="carousel-btn right" onclick="nextSlide()">›</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+    <footer>
+        <p>&copy; 2025 东乡语翻译平台 · All rights reserved.</p>
+      </footer>
+  <script>
+    let currentLang = 'zh';
+
+    const menuItems = {
+      zh: [
+        '双语翻译',
+        '字典',
+        '概况',
+        '历史沿革',
+        '风俗习惯',
+        '发展现状',
+        '关于我们',
+        '东乡语翻译',
+        '欢迎使用东乡语翻译平台',
+        '请选择左侧内容开始使用。',
+        'English'
+      ],
+      en: [
+        'Bilingual Translation',
+        'Dictionary',
+        'Overview',
+        'History',
+        'Customs',
+        'Current Status',
+        'About Us',
+        'Dongxiang Language Translation',
+        'Welcome to the Dongxiang Translation Platform',
+        'Please choose a menu item from the left.',
+        '中文'
+      ]
+    };
+
+
+
+    function toggleLang() {
+      setLang(currentLang === 'zh' ? 'en' : 'zh');
+    }
+    function setLang(lang) {
+      currentLang = lang;
+      localStorage.setItem('preferredLang', lang);
+      document.body.classList.toggle('en-mode', lang === 'en');
+      const labels = menuItems[lang];
+      for (let i = 1; i <= 7; i++) {
+        document.getElementById(`menu-${i}`).innerText = labels[i - 1];
+      }
+      document.getElementById('logo-text').innerText = labels[7];
+      document.getElementById('main-title').innerText = labels[8];
+      document.getElementById('main-desc').innerText = labels[9];
+      document.querySelector('.lang-toggle').innerText = labels[10];
+      document.getElementById('zh-content').style.display = lang === 'zh' ? 'block' : 'none';
+      document.getElementById('en-content').style.display = lang === 'en' ? 'block' : 'none';}
+    const savedLang = localStorage.getItem('preferredLang');
+    const userLang = navigator.language || 'en';
+    const defaultLang = savedLang || (userLang.startsWith('zh') ? 'zh' : 'en');
+    setLang(defaultLang);
+
+    let currentIndex = 0;
+    const track = document.getElementById('carousel-track');
+    const items = document.querySelectorAll('.carousel-item');
+    const total = items.length;
+    let autoSlideTimer = setInterval(() => {
+      nextSlide(false);
+      }, 4000);
+    function updateSlide(index) {
+      track.style.transform = `translateX(-${index * 100}%)`;
+    }
+    function nextSlide(userTriggered = true) {
+      currentIndex = (currentIndex + 1) % total;
+      updateSlide(currentIndex);
+      if (userTriggered) stopAutoSlide();
+    }
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + total) % total;
+      updateSlide(currentIndex);
+      stopAutoSlide();
+    }
+    function stopAutoSlide() {
+      if (autoSlideTimer) {
+        clearInterval(autoSlideTimer);
+        autoSlideTimer = null;
+      }
+    }
+    let currentIndexEn = 0;
+    const trackEn = document.getElementById('carousel-track-en');
+    const itemsEn = trackEn.querySelectorAll('.carousel-item');
+    const totalEn = itemsEn.length;
+    let autoSlideTimerEn = setInterval(() => {
+      nextSlideEn(false);
+      }, 4000);
+    function updateSlideEn(index) {
+      trackEn.style.transform = `translateX(-${index * 100}%)`;
+    }
+    function nextSlideEn(userTriggered = true) {
+      currentIndexEn = (currentIndexEn + 1) % totalEn;
+      updateSlideEn(currentIndexEn);
+      if (userTriggered) stopAutoSlideEn();
+    }
+    function prevSlideEn() {
+      currentIndexEn = (currentIndexEn - 1 + totalEn) % totalEn;
+      updateSlideEn(currentIndexEn);
+      stopAutoSlideEn();
+    }
+    function stopAutoSlideEn() {
+      if (autoSlideTimerEn) {
+        clearInterval(autoSlideTimerEn);
+        autoSlideTimerEn = null;
+      }
+    }
+  </script>
+</body>
+</html>
+
+
+
