@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>东乡语翻译平台</title>
+  <style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Microsoft YaHei', sans-serif;
+    min-height: 100vh;
+  }
+
+  body.en-mode {
+    font-family: 'Calibri', sans-serif;
+  }
+
+  header {
+    background-color: #8B0000;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .lang-toggle {
+    background: white;
+    color: #8B0000;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .container {
+    display: flex;
+  }
+
+  nav {
+    position: fixed;
+    top: 60px; /* 60px = header 高度 */
+    left: 0;
+    width: 220px;
+    height: calc(100vh - 60px);
+    background-color: #fff;
+    border-right: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: auto;
+    z-index: 999;
+  }
+
+  nav ul {
+    list-style: none;
+    flex-grow: 1;
+  }
+
+  nav li {
+    border-bottom: 1px solid #ddd;
+  }
+
+  nav a {
+    display: block;
+    padding: 16px;
+    text-decoration: none;
+    color: #222;
+    transition: background 0.3s;
+  }
+
+  nav a:hover {
+    background-color: #eee;
+  }
+
+  nav a.active {
+    background-color: #004f97;
+    color: white;
+    position: relative;
+  }
+
+  nav a.active::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid white;
+  }
+
+  .ad-space {
+    height: 120px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    color: #999;
+  }
+
+  html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  font-family: 'Microsoft YaHei', sans-serif;
+  flex: 1;
+}
+
+body.en-mode {
+  font-family: 'Calibri', sans-serif;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+}
+
+main {
+  margin-left: 220px;
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
+}
+
+.main-content {
+  flex: 1;
+}
+
+footer {
+  background-color: #f8f8f8;
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+  border-top: 1px solid #ddd;
+}
+
+  @media (max-width: 768px) {
+    nav {
+      position: relative;
+      top: 0;
+      width: 100%;
+      height: auto;
+      border-right: none;
+      border-bottom: 1px solid #ccc;
+    }
+
+    main {
+      margin-left: 0;
+    }
+
+    .container {
+      flex-direction: column;
+    }
+  }
+</style>
+</head>
+
+<body>
+  <header>
+    <a href="index.html" class="logo" id="logo-text" title="返回主页/Back to Home" style="text-decoration: none; color: white;">东乡语翻译</a>
+    <button class="lang-toggle" onclick="toggleLang()" title="切换语言 / Switch language">English</button>
+  </header>
+
+  <div class="container">
+    <nav>
+      <div>
+        <ul>
+          <li><a href="bilingual.html" id="menu-1">双语翻译</a></li>
+          <li><a href="dictionary.html" id="menu-2">字典</a></li>
+          <li><a href="overview.html" id="menu-3">概况</a></li>
+          <li><a href="history.html" id="menu-4">历史沿革</a></li>
+          <li><a href="customs.html" id="menu-5">风俗习惯</a></li>
+          <li><a href="status.html" id="menu-6">发展现状</a></li>
+          <li><a href="about.html" id="menu-7">关于我们</a></li>
+        </ul>
+      </div>
+      <div class="ad-space">此处预留 Google 广告位</div>
+    </nav>
+
+    <main>
+      <div class="main-content">
+        <h1 id="main-title">欢迎使用东乡语翻译平台</h1>
+        <p id="main-desc">请选择左侧内容开始使用。</p>
+      </div>
+      <section style="background-color: #f5f5f5; padding: 18px; margin: 20px;">
+      <div id="en-content" style="display: none;  line-height: 2;" >
+        <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
+          This platform was co-initiated and developed by <strong>Kaixuan Chen</strong> (Han) and <strong>Bo Ma</strong> (Dongxiang),
+          with the goal of addressing the long-standing lack of systematic translation tools between the Dongxiang and Chinese/English languages.
+          Through technological means, we aim to support the preservation, learning, and communication of Dongxiang,
+          and to promote the digital protection and sustainable dissemination of minority languages.
+        </p>
+        <h3 style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">Team Members</h3>
+        <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
+          <strong>Kaixuan Chen</strong> is an undergraduate at the University of North Carolina at Chapel Hill (UNC),
+          majoring in Statistics and Biology, Class of 2025. He is currently pursuing a Master's degree in Machine Learning and Data Science (MLDS)
+          at Northwestern University (Class of 2026). His long-standing interests include natural language processing, machine learning,
+          and cross-cultural communication.</p>
+        <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
+          <strong>Bo Ma</strong> is an undergraduate at the University of North Carolina at Chapel Hill (UNC),
+          majoring in Statistics and, Class of 2025. He is a native speaker of Dongxiang.
+          He has been actively involved in fieldwork and documentation of regional languages
+          and is committed to the digital development of his native language.</p>
+        <h3 style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">Methodology</h3>
+        <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
+          To be added.</p>
+        <h3 style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">Contact Us</h3>
+        <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
+          📧 Email: <a href="mailto:chenkaixuann77@gmail.com">chenkaixuann77@gmail.com</a></p>
+      </div>
+
+      <div id="zh-content" style="font-family: 'Microsoft YaHei', sans-serif; font-size: 12pt; line-height: 2; color: #333;">
+        <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
+          本平台由 <strong>陈凯旋</strong>（汉族）与 <strong>马波</strong>（东乡族） 共同发起与开发，旨在填补东乡语与汉语/英语之间长期缺乏系统翻译工具的空白。
+          我们希望通过技术手段为东乡语的传承、学习与交流提供支持，推动少数民族语言的数字化保护与可持续传播。
+        </p>
+        <h3 style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">团队成员介绍</h3>
+        <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
+          <strong>陈凯旋</strong>，美国北卡罗来纳大学教堂山分校（UNC）统计学与生物学双主修本科生（2025届），
+          现为西北大学机器学习与数据科学硕士项目（MLDS）2026届在读研究生，长期关注自然语言处理、机器学习与跨文化交流。</p>
+        <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
+          <strong>马波</strong>，美国北卡罗来纳大学教堂山分校（UNC）统计学本科生(2025届)，东乡语使用者，长期参与地方语言的田野调查与整理工作，致力于推动本民族语言的数字化建设。
+        </p>
+        <h3 style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">方法简介</h3>
+        <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
+          等待补充</p>
+        <h3 style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">联系我们</h3>
+        <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
+          📧 邮箱：<a href="mailto:chenkaixuann77@gmail.com">chenkaixuann77@gmail.com</a></p></div></section>
+    </main>
+        </div>
+    <footer>
+        <p>&copy; 2025 东乡语翻译平台 · All rights reserved.</p>
+      </footer>
+  <script>
+    let currentLang = 'zh';
+
+    const menuItems = {
+      zh: [
+        '双语翻译',
+        '字典',
+        '概况',
+        '历史沿革',
+        '风俗习惯',
+        '发展现状',
+        '关于我们',
+        '东乡语翻译',
+        '欢迎使用东乡语翻译平台',
+        '请选择左侧内容开始使用。',
+        'English'
+      ],
+      en: [
+        'Bilingual Translation',
+        'Dictionary',
+        'Overview',
+        'History',
+        'Customs',
+        'Current Status',
+        'About Us',
+        'Dongxiang Language Translation',
+        'Welcome to the Dongxiang Translation Platform',
+        'Please choose a menu item from the left.',
+        '中文'
+      ]
+    };
+
+
+
+    function toggleLang() {
+      setLang(currentLang === 'zh' ? 'en' : 'zh');
+    }
+    function setLang(lang) {
+      currentLang = lang;
+      localStorage.setItem('preferredLang', lang);
+      document.body.classList.toggle('en-mode', lang === 'en');
+      const labels = menuItems[lang];
+      for (let i = 1; i <= 7; i++) {
+        document.getElementById(`menu-${i}`).innerText = labels[i - 1];
+      }
+      document.getElementById('logo-text').innerText = labels[7];
+      document.getElementById('main-title').innerText = labels[8];
+      document.getElementById('main-desc').innerText = labels[9];
+      document.querySelector('.lang-toggle').innerText = labels[10];
+      document.getElementById('zh-content').style.display = lang === 'zh' ? 'block' : 'none';
+      document.getElementById('en-content').style.display = lang === 'en' ? 'block' : 'none';}
+    const savedLang = localStorage.getItem('preferredLang');
+    const userLang = navigator.language || 'en';
+    const defaultLang = savedLang || (userLang.startsWith('zh') ? 'zh' : 'en');
+    setLang(defaultLang);
+  </script>
+</body>
+</html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>东乡语翻译平台</title>
+  <style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Microsoft YaHei', sans-serif;
+    min-height: 100vh;
+  }
+
+  body.en-mode {
+    font-family: 'Calibri', sans-serif;
+  }
+
+  header {
+    background-color: #8B0000;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .lang-toggle {
+    background: white;
+    color: #8B0000;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .container {
+    display: flex;
+  }
+
+  nav {
+    position: fixed;
+    top: 60px; /* 60px = header 高度 */
+    left: 0;
+    width: 220px;
+    height: calc(100vh - 60px);
+    background-color: #fff;
+    border-right: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: auto;
+    z-index: 999;
+  }
+
+  nav ul {
+    list-style: none;
+    flex-grow: 1;
+  }
+
+  nav li {
+    border-bottom: 1px solid #ddd;
+  }
+
+  nav a {
+    display: block;
+    padding: 16px;
+    text-decoration: none;
+    color: #222;
+    transition: background 0.3s;
+  }
+
+  nav a:hover {
+    background-color: #eee;
+  }
+
+  nav a.active {
+    background-color: #004f97;
+    color: white;
+    position: relative;
+  }
+
+  nav a.active::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid white;
+  }
+
+  .ad-space {
+    height: 120px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    color: #999;
+  }
+
+  main {
+    margin-left: 220px; /* 留出 nav 的宽度 */
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+  }
+
+  .main-content {
+    flex: 1;
+  }
+
+  .side-widget {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #f4f4f4;
+    border-left: 4px solid #8B0000;
+    line-height: 1.6;
+  }
+
+  .gallery {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .carousel-container {
+    width: 100%;
+    max-width: 720px;
+    margin: 40px auto 20px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  .carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  footer {
+    background-color: #f8f8f8;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    border-top: 1px solid #ddd;
+  }
+
+  @media (max-width: 768px) {
+    nav {
+      position: relative;
+      top: 0;
+      width: 100%;
+      height: auto;
+      border-right: none;
+      border-bottom: 1px solid #ccc;
+    }
+
+    main {
+      margin-left: 0;
+    }
+
+    .container {
+      flex-direction: column;
+    }
+  }
+</style>
+
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="logo" id="logo-text" title="返回主页/Back to Home" style="text-decoration: none; color: white;">东乡语翻译</a>
+    <button class="lang-toggle" onclick="toggleLang()" title="切换语言 / Switch language">English</button>
+  </header>
+
+  <div class="container">
+    <nav>
+      <div>
+        <ul>
+          <li><a href="bilingual.html" id="menu-1">双语翻译</a></li>
+          <li><a href="dictionary.html" id="menu-2">字典</a></li>
+          <li><a href="overview.html" id="menu-3">概况</a></li>
+          <li><a href="history.html" id="menu-4">历史沿革</a></li>
+          <li><a href="customs.html" id="menu-5">风俗习惯</a></li>
+          <li><a href="status.html" id="menu-6">发展现状</a></li>
+          <li><a href="about.html" id="menu-7">关于我们</a></li>
+        </ul>
+      </div>
+      <div class="ad-space">此处预留 Google 广告位</div>
+    </nav>
+
+    <main>
+      <div class="main-content">
+        <h1 id="main-title">欢迎使用东乡语翻译平台</h1>
+        <p id="main-desc">请选择左侧内容开始使用。</p>
+      </div>
+      <section style="background-color: #f5f5f5; padding: 18px; margin: 20px;">
+      <div id="en-content" style="display: none;  line-height: 2;" >
+      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
+        The historical origins of the Dongxiang people lack direct and comprehensive documentation;
+        only scattered records and fragmented legends exist. Even the <em>Hezhou Gazetteer</em>,
+        which chronicles the region where the Dongxiang have lived for generations, offers no dedicated account of their history.
+        Theories regarding their origins vary widely, with the most common attributing their ancestry to Hui (Semu) populations,
+        Mongol lineages, or multiple ethnic groups.</p>
+      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
+        <strong>The Hui (Semu) Ancestry Theory.</strong>
+        This explanation is primarily derived from the oral traditions of the Dongxiang people.
+        According to legend, their ancestors were the <em> Sart </em> people from Central and Western Asia who came to present-day Gansu Province as part of the Mongol army
+        during Genghis Khan’s campaigns. After settling in the region, they gradually assimilated with local Han, Mongol,
+        and other ethnic groups, eventually forming the Dongxiang ethnicity. For this reason, the Dongxiang people traditionally
+        refer to themselves as <em> Sarta </em>." </p>
+      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
+        By the late 12th and early 13th centuries, the Mongol tribes had risen to prominence across the northern and southern reaches of the Mongolian Plateau.
+        Under Genghis Khan’s leadership, the Mongol armies launched a series of major westward campaigns. During these conquests, large numbers of Hui (Semu) soldiers
+        and skilled artisans from the <em> Sart </em> regions of Central and Western Asia were conscripted to serve the Mongols.
+        In March 1227, Genghis Khan occupied the Gansu provience where the Dongxiang people currently reside.
+        As part of his military strategy, Genghis Khan incorporated many <em> Sart</em> captives into a specialized cavalry unit known as the
+        <em>Tamachin</em> (Tammachi). Among these individuals were weaponsmiths, naval engineers, gunners, merchants, nobles, and islamic scholars.
+        The Mongol conquerors settled these Sarta people within garrisoned territories, grouping artisans by trade and naming their settlements accordingly.
+        Place names that remain in present-day Dongxiang County, Gansu Province bear witness to the presence and occupations of these early <em> Sart </em> inhabitants.
+        For instance, villages such as <em>Mianguchi</em> (silversmiths), <em>Aleuchi</em> (weavers), <em>Tomuchi</em> (blacksmiths), <em>Yihachi</em> (metal bowl makers), and <em>Taomaochi</em> (leatherworkers)
+        all reflect their respective trades. Other toponyms such as <em>Basuchi</em>, <em>Shaheichi</em>, and <em>Daruhuachi</em> mean “guardians” or “defenders,” indicating a military presence.
+        Physiological traits among the Dongxiang people also suggest links to Central Asian ancestry. Many Dongxiang men have prominent nasal bridges, deep-set eyes,
+        long beards, and oval-shaped faces; Dongxiang women are often light-skinned. These characteristics further support the hypothesis of a genealogical connection between the Dongxiang people
+        and the <em> Sart </em> people of Central Asia.</p>
+      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
+        According to Dongxiang oral tradition, their ancestors are believed to have originated from the Western Regions (Central and Western Asia).
+        It is said that six to seven centuries ago, forty <em>Shaihei Gudubu</em> (missionaries) came to Hezhou to spread their faith.
+        Among them, thirteen settled permanently in present-day Dongxiang County.
+        Their leader, Hamuze, was said to have made his home there, and areas such as Nalhuang, Sale, and Shilati are believed to be places where their descendants reside today.</p>
+      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
+        <strong>The Mongol Origin Theory.</strong> This theory, which traces the Dongxiang people's ancestry to the Mongols, includes two distinct versions:</p>
+      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
+        Another theory holds that the Dongxiang people are descendants of Mongol soldiers during Genghis Khan’s western campaigns.
+        Over time, these soldiers gradually transitioned from a military role to a civilian one. According to local legends,
+        many Mongol troops were once garrisoned in Gansu during the reign of Genghis Khan. While most were eventually redeployed,
+        a small contingent remained in what is now Dongxiang County. Later, Islam spread into the region from the northwest,
+        passing through Qinghai and Xunhua before reaching Dongxiang County.
+        Most of the Mongols who had remained in the area eventually converted to Islam and, over generations,
+        formed what became known as the Dongxiang ethnic group. Several local place names are believed to reflect this historical legacy—such as
+        <em>Da Zi Di</em> ("land of the Dazi," with "Dazi" being a derogatory historical term for Mongols),
+        <em>Zhayingtan</em> ("campground of Mongol troops"), and <em>Mading</em> ("horse pasture" used by the Mongol cavalry).</p>
+      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
+        This legend is considered to have some basis in historical fact. In 1226, during Genghis Khan’s campaign against the Western Xia,
+        the Mongol army captured Jishi Prefecture (modern-day Xunhua area). Following this, present-day Dongxiang County became a significant
+        military settlement for the Mongol forces. During the reign of Möngke Khan, Dongxiang County further developed as a key military stronghold,
+        strategically positioned to control access to Tibet from the west. In the Yuan Dynasty, when Kublai Khan pacified the regions of Kham and Tibet
+        and established the capital in Beijing, royal clans, the Office of the Myriarch (Wanhu Fu), and the Pacification Commission for Tibet (Tubo Xuanweisi)
+        were all stationed in Dongxiang County. By the late 13th century, during the reign of Temür Khan, Ananda—Kublai Khan’s grandson and a Mongol prince stationed
+        in the Tangwu region (which includes present-day Dongxiang County)—converted to Islam. Historical records state that among his more than 150,000 followers,
+        the majority also embraced the Islamic faith after his conversion.</p>
+      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
+        Another theory suggests that the Dongxiang people are descendants of a group of Mongols from the era of the Yuan Dynasty,
+        specifically from the Ulus of Ögedei Khan. These Mongols are believed to have converted to Islam under the influence of neighboring
+        Muslim communities. Their new faith brought them into conflict with the mainstream Mongol population, which largely practiced Buddhism at the time.
+        Branded as religious traitors, they were forced to migrate eastward. According to legend,
+        they crossed Xingxing Gorge and moved further inland, arriving first in Zhenfan (present-day Minqin County, Gansu Province).
+        From there, they split into two groups. One group settled near the Helan Mountains and in the Hetao region, eventually becoming today’s Muslim Mongols of
+        Alxa Left Banner in Inner Mongolia. The other group migrated southward, crossing the Yellow River into the Hezhou region. Over time,
+        as they became geographically and culturally isolated from the broader Mongol community—and because the Arabic script used in Islamic religious practice
+        differed from traditional Mongolian script—they continued to speak a form of Mongolic language but ceased to use the Mongolian written script.</p>
+      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
+        <strong>The Multi-ethnic Integration Theory.</strong> This theory holds that the Dongxiang people originated primarily from the Hui population in the Dongxiang region,
+        and gradually formed through long-term integration with local Mongol, Han, and Tibetan communities.</p>
+      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
+        According to legend, the formation of the Dongxiang ethnic group initially included some Muslim migrants from the northwest. Later,
+        Mongols and some Han Chinese who settled in the region also converted to Islam. It is said that during the Hui uprisings in Shaanxi and
+        Gansu—specifically in the third year of the Tongzhi reign (1864) and the twenty-first year of the Guangxu reign (1895)—a significant number of Han Chinese adopted Islam.
+        Post-1949 investigations conducted after the founding of the People’s Republic of China confirmed that the Dongxiang people are composed of various ethnic origins, including Hui,
+        Han, Tibetan, and others. Among them, those bearing the surnames Ma and Mu are mostly of Hui descent. Many Dongxiang people with surnames such as Wang, Kang, Zhang, Gao,
+        and Huang trace their ancestry to Han Chinese. In Tangwangchuan, for instance, Han and Dongxiang families with the same surnames still maintain clear generational ranks and genealogical records.
+        Place names in Dongxiang areas—such as Tangwangchuan, Wangjiajie, Zhangjiacun, Gaojiazhuang, and Miaoling—reflect the historical presence of Han Chinese settlements.
+        The name “Suihui Valley” (“Following the Hui”) also suggests a history of ethnic integration. In addition, Dongxiang families bearing the surname Yang in the locality known as Yangzhijia claim Tibetan ancestry.
+        The inclusion of Mongol lineage within the Dongxiang population has also been documented and supported by scholarly research.</p>
+      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑;">
+        According to both legend and historical records, it is generally believed that the Dongxiang ethnic group was formed during the latter half of the 14th century
+        through the integration of various ethnic groups residing in the Dongxiang region. The primary ancestral components are thought to be the
+        Semu people and Mongols who had embraced Islam. Since the 13th century, the Dongxiang County had been a garrison and agricultural settlement for Mongol troops,
+        which included Semu Muslims and Mongols. In the late 13th century, Ananda, the Prince of Anxi under the Yuan Dynasty and governor of Shaanxi, Gansu, and Ningxia, converted to Islam,
+        and most of the Mongols under his command followed suit. Meanwhile, large numbers of Semu Muslims were also gathering throughout the northwest region of China.
+        In the early 14th century, following the death of Temür Khan, Ananda, together with Empress Bayan Zhen, plotted a coup but was executed when the conspiracy was discovered.
+        Although Ananda was killed, his followers remained influential. His son later joined forces with local Muslim populations in a rebellion,
+        which was ultimately suppressed by the Yuan government. Many of Ananda’s former retainers fled in the aftermath.
+        Dongxiang County became one of the refuge areas for Ananda’s Muslim-aligned Semu and Mongol followers.
+        There, they coexisted with local Han and Tibetan populations, gradually intermarried,
+        and over generations formed what is now known as the Dongxiang ethnic group.
+      </p>
+      <p style="font-size: 14px; color: #555; margin-bottom: 1em;font-family: 微软雅黑;">— Source: <a href="https://www.neac.gov.cn/seac/ztzl/dxz/gk.shtml" target="_blank" rel="noopener">
+        National Ethnic Affairs Commission of the P.R.China</a></p></div>
+
+
+      <div id="zh-content" style="font-family: 'Microsoft YaHei', sans-serif; font-size: 12pt; line-height: 2; color: #333;">
+      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
+        关于东乡族的历史来源，缺乏直接的、完整的文献记录，只有零星史料和片段传说，就连东乡族世世代代居住的河州州志上，也没有单独记载，说法很不一致。主要有源于回回色目人、蒙古人和多民族融合说。</p>
+      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
+        <strong>回回色目人说。</strong> 这种说法主要来自于东乡族的传说。据说，东乡族的祖先是中亚西亚的撒尔塔人，他们随成吉思汗西征的蒙古军队回返时来到今东乡地区定居下来，并融合了当地的汉、蒙古等民族，逐渐形成了东乡族。所以，东乡族自称“撒尔塔”。</p>
+      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
+        12世纪末至13世纪初，蒙古部崛起于大漠南北，成吉思汗挥军西向，发动了大规模的西征。蒙古军队在征服撒尔塔各地的过程中，组织了大量的回回军和大批回回工匠为其服劳役。1227年3月，成吉思汗占领了河州和西宁地区，而当时这一带地方，正是东乡人活动的地区。成吉思汗曾把在征服中亚各国时掳掠而来的撒尔塔人，编入“探马赤军”。
+        这些撒尔塔人中，有军械匠、水军、炮手，也有商人、贵族、传教士。征服者在自己的屯戍地内，把撒尔塔的各类工匠，分别集中到一个地方居住，并根据分工命名居住区的名称。
+        至今东乡地区保留的许多地名也印证了撒尔塔人在这里居住、生活，如东乡县的“勉古赤”（银匠）乡、“阿类赤”（编织匠）村、“托木赤”（铁匠）村、“依哈赤”（钉碗匠）村、“陶毛赤”（制革匠）村等，均与他们从事的工作有关。
+        还有“八素赤”、“沙黑赤”、“达鲁花赤”，都是“镇守者”的意思。此外，东乡族分布地区有“屯田”、“屯地”、“民地”、“新屯地”等遗留地名，也说明了“探马赤军”当时在东乡地区屯田的情况。
+        从体质特征上看，东乡族与中亚人也有相似之处。东乡族许多男子鼻梁高，眼窝深，胡须长，脸型椭圆，女子白暂。这些都说明了东乡族与中亚信仰伊斯兰教的撤尔塔人的渊源关系。</p>
+      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
+        东乡族的民间有传说他们的祖先是从西域来的。据说，早在六七百年前，就有40个晒黑古杜卜（传教者）到河州传教，其中有13人定居于东乡，其首领哈木则就是在该地定居的，东乡的那勒晃、洒勒、石拉提等地，都是他们的后裔定居的地方。
+        还有传说称，从西域来的八个“赛义德”（首领、主人的意思），也到过东乡，其中有个叫阿里阿答的，便在卜隆固村定居下来。阿里阿答逝世以后，就埋葬在达板的赛汉坪上。卜隆固村的人至今还说阿里阿答是他们的祖先。</p>
+      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
+        <strong>蒙古族说。</strong> 源于蒙古人说，又有两种不同的说法：</p>
+      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
+        一说，东乡族是成吉思汗西征时留驻河州一带的蒙古军的后裔，逐渐由“兵”变为“民”的。传说成吉思汗时期，有许多蒙古军驻守在河州一带，以后大部分调走，但仍有小部分继续留驻在东乡地区。
+        后来伊斯兰教自西北传入，经青海、循化到达河州一带，当地大多数蒙古人也都改信了伊斯兰教，发展而为东乡族。东乡一些地名，如所谓“鞑子地”（“鞑子”系对蒙古族的侮称）或“扎营滩”（即蒙古军驻扎营盘之地）、“马丁”（蒙古军放马之地）等，据说就是当时蒙古军驻兵之地。</p>
+      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
+        这种传说是有一定史实根据的。1226年，成吉思汗进攻西夏，攻下金属积石州（今循化一带）后，河州曾是蒙古军的重要屯居点。
+        蒙哥汗时，为了西控吐蕃，河州一带更成为蒙古军重镇。元世祖平定康藏，建都北京，派宗王、万户府、吐蕃宣慰使俱驻河州。
+        13世纪末（元成宗铁木耳时），驻守唐兀（河州在内）地区的蒙古宗王阿难答（忽必烈孙）信奉了伊斯兰教，其部下15万余人，“闻从而信教者居其大半。”</p>
+      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
+        另一说，东乡族是元代窝阔台汗国的一部分蒙古人的后裔。这部分蒙古人当时因受到周围信仰伊斯兰教民族的影响，改信了伊斯兰教，从而与原信佛教的蒙古族发生了冲突。
+        他们被认为是宗教叛徒，被迫东迁，经猩猩峡向内地迁徙，到达“镇番”（今甘肃省民勤县），之后又分二路：一路入贺兰山到河套地区定居，即今阿拉善左旗信仰伊斯兰教的蒙民；
+        另一路则南迁渡黄河进入河州地区，因与蒙古族隔绝，蒙文和伊斯兰教使用的阿拉伯文又不一致，所以虽仍说蒙语，但不使用蒙文。</p>
+      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
+        <strong>多民族融合说。</strong> 此说认为，东乡族是以东乡地区的回族为主，融合了当地的蒙古族、汉族和藏族，经过长期发展而成。
+      </p>
+      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑; margin-bottom: 1em;">
+        传说中最初东乡族的形成就包含一部分从西北来的伊斯兰教徒，以后这里定居的蒙古族和部分汉族也“随下来”（入教之意）。
+        据说在清同治三年（1864年）和光绪二十一年（1895年）西北回民起义时，汉民“随下来”的最多。
+        从新中国成立后的一些调查材料看，东乡族确有回、汉、藏和其他民族成分。马、穆两姓大都是回族成分；王、康、张、高、黄等姓的东乡族，许多人都说自己的先人来自汉族。
+        唐汪川的汉族和东乡族同姓之间，仍然班辈分明，家系清楚。一些东乡地区的地名如唐汪川、汪家集、张家村、高家庄、庙儿岭等都反映是过去汉民的居地。“随回沟”的地名也反映了类似的历史关系。
+        此外，东乡地区的羊脂家（地名）的杨姓东乡族，则说自己的祖先是藏族。至于包含蒙族成分，则更是人所共知的事了。</p>
+      <p style="text-indent: 2em; font-size: 12pt; font-family: 微软雅黑;">
+        根据传说和史料，一般认为东乡族是14世纪后半叶由聚居在东乡的许多不同民族成分融合而成的。
+        构成其族源的主要成分，是信仰伊斯兰教的色目人和蒙古人。从13世纪以来，河州一带就是包括色目人和蒙古人在内的蒙古军驻守、屯田之地。
+        13世纪末，镇抚陕西、甘肃、宁夏等地的元朝安西王阿难答皈依伊斯兰教，其属下蒙古人大部相从。信仰伊斯兰教的色目人也相聚在西北地区。
+        14世纪初，元成宗死，安西王阿难答与皇后伯要贞氏等策谋政变，事泄被杀，但其属下势力仍很强大。其子曾联合伊斯兰教群众反叛，为元朝政府镇压，阿难答属下纷纷逃避。
+        当时交通不便、偏僻闭塞的东乡，就成为阿难答属下信仰伊斯兰教的色目人、蒙古人退避的地区之一。他们在这里与当地汉族、藏族等长期共同生活，互相婚嫁，逐渐融合成为东乡族。</p>
+      <p style="font-size: 14px; color: #555;">—— 摘自《中国少数民族》（《民族问题五种丛书》），来源：
+        <a href="https://www.neac.gov.cn/seac/ztzl/dxz/lsyg.shtml" target="_blank" rel="noopener noreferrer">中国国家民族事务委员会官网</a></p></div></section>
+    </main>
+      </div>
+
+  <footer>
+    <p>&copy; 2025 东乡语翻译平台 · All rights reserved.</p>
+  </footer>
+
+  <script>
+    let currentLang = 'zh';
+
+    const menuItems = {
+      zh: [
+        '双语翻译',
+        '字典',
+        '概况',
+        '历史沿革',
+        '风俗习惯',
+        '发展现状',
+        '关于我们',
+        '东乡语翻译',
+        '欢迎使用东乡语翻译平台',
+        '请选择左侧内容开始使用。',
+        'English'
+      ],
+      en: [
+        'Bilingual Translation',
+        'Dictionary',
+        'Overview',
+        'History',
+        'Customs',
+        'Current Status',
+        'About Us',
+        'Dongxiang Language Translation',
+        'Welcome to the Dongxiang Translation Platform',
+        'Please choose a menu item from the left.',
+        '中文'
+      ]
+    };
+
+
+
+    function toggleLang() {
+      setLang(currentLang === 'zh' ? 'en' : 'zh');
+    }
+    function setLang(lang) {
+      currentLang = lang;
+      localStorage.setItem('preferredLang', lang);
+      document.body.classList.toggle('en-mode', lang === 'en');
+      const labels = menuItems[lang];
+      for (let i = 1; i <= 7; i++) {
+        document.getElementById(`menu-${i}`).innerText = labels[i - 1];
+      }
+      document.getElementById('logo-text').innerText = labels[7];
+      document.getElementById('main-title').innerText = labels[8];
+      document.getElementById('main-desc').innerText = labels[9];
+      document.querySelector('.lang-toggle').innerText = labels[10];
+      document.getElementById('zh-content').style.display = lang === 'zh' ? 'block' : 'none';
+      document.getElementById('en-content').style.display = lang === 'en' ? 'block' : 'none';}
+    const savedLang = localStorage.getItem('preferredLang');
+    const userLang = navigator.language || 'en';
+    const defaultLang = savedLang || (userLang.startsWith('zh') ? 'zh' : 'en');
+    setLang(defaultLang);
+  </script>
+</body>
+</html>
