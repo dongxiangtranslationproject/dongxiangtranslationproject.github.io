@@ -2,328 +2,322 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>东乡语翻译平台</title>
+  <meta name="description" content="东乡语翻译平台：提供双语翻译、字典、历史文化与发展现状介绍。Dongxiang language translation, dictionary, and cultural overview.">
+
+  <!-- 固定主 URL，避免重复收录 -->
+  <link rel="canonical" href="https://dongxiangtranslationproject.github.io/">
+
+  <!-- Search Console 验证（把 content 换成你的） -->
+  <meta name="google-site-verification" content="替换为你的验证字符串">
+
+  <!-- 展示优化 -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="东乡语翻译平台">
+  <meta property="og:description" content="东乡语翻译、字典、历史与现状介绍。">
+  <meta property="og:url" content="https://dongxiangtranslationproject.github.io/">
+  <!-- <meta property="og:image" content="https://dongxiangtranslationproject.github.io/img/cover.jpg"> -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#8B0000">
+
   <style>
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  header {
-    background-color: #8B0000;
-    color: white;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-  .logo {
-    font-size: 20px;
-  }
-  .lang-toggle {
-    background: white;
-    color: #8B0000;
-    border: none;
-    padding: 8px 16px;
-    font-size: 14px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-
-  .container {
-    display: flex;
-  }
-
-  nav {
-    position: fixed;
-    top: 60px; /* 60px = header 高度 */
-    left: 0;
-    width: 220px;
-    height: calc(100vh - 60px);
-    background-color: #fff;
-    border-right: 1px solid #ddd;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow-y: auto;
-    z-index: 999;
-  }
-
-  nav ul {
-    list-style: none;
-    flex-grow: 1;
-  }
-
-  nav li {
-    border-bottom: 1px solid #ddd;
-  }
-
-  nav a {
-    display: block;
-    padding: 16px;
-    text-decoration: none;
-    color: #222;
-    transition: background 0.3s;
-  }
-
-  nav a:hover {
-    background-color: #eee;
-  }
-
-  nav a.active {
-    background-color: #004f97;
-    color: white;
-    position: relative;
-  }
-
-  nav a.active::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    border-left: 10px solid white;
-  }
-
-  .ad-space {
-    height: 120px;
-    border-top: 1px solid #ddd;
-    text-align: center;
-    padding: 10px;
-    font-size: 14px;
-    color: #999;
-  }
-  html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-}
-  body {
-  font-family: 'Microsoft YaHei', sans-serif;
-  flex: 1;
-  }
-  body.en-mode {
-    font-family: 'Calibri', sans-serif;}
-
-.container {
-  display: flex;
-  flex: 1;
-}
-
-main {
-  margin-left: 220px;
-  padding: 20px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow-x: auto;
-}
-
-.main-content {
-  flex: 1;
-}
-
-footer {
-  background-color: #f8f8f8;
-  text-align: center;
-  padding: 15px;
-  font-size: 14px;
-  border-top: 1px solid #ddd;
-}
-.carousel {
-  position: relative;
-  width: 90%;
-  max-width: 700px;
-  margin: 0 auto;
-  overflow: hidden;
-  border-radius: 8px;
-  background: #f5f5f5;
-}
-
-.carousel-track {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-}
-
-.carousel-item {
-  flex: 0 0 100%;
-  text-align: center;
-}
-
-.carousel-item img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover; /* 自动裁剪填满容器 */
-  border-bottom: 1px solid #ccc;
-}
-
-.caption {
-  font-size: 14px;
-  color: #333;
-  padding: 10px 0;
-}
-
-.carousel-btn {
-  position: absolute;
-  top: 45%;
-  transform: translateY(-50%);
-  background-color: rgba(0,0,0,0.4);
-  color: white;
-  border: none;
-  font-size: 24px;
-  padding: 10px 15px;
-  cursor: pointer;
-  z-index: 10;
-}
-
-.carousel-btn.left { left: 10px; }
-.carousel-btn.right { right: 10px; }
-
-.carousel-btn:hover {
-  background-color: rgba(0,0,0,0.6);
-}
-  @media (max-width: 768px) {
-    nav {
-      position: relative;
-      top: 0;
-      width: 100%;
-      height: auto;
-      border-right: none;
-      border-bottom: 1px solid #ccc;
+    :root{
+      --brand:#8B0000;
+      --accent:#004f97;
+      --header-h:60px;
+      --nav-w:220px;
+      --radius:8px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      min-height:100vh;
+      display:flex;           /* 关键：列布局，footer 自动贴底 */
+      flex-direction:column;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+                   "PingFang SC","Hiragino Sans GB","Microsoft YaHei", Arial, sans-serif;
+      color:#222;
+      line-height:1.6;
+    }
+    body.en-mode{
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
     }
 
-    main {
-      margin-left: 0;
+    /* Header */
+    header{
+      background-color:var(--brand); color:#fff;
+      padding:15px 20px; height:var(--header-h);
+      display:flex; justify-content:space-between; align-items:center;
+      position:sticky; top:0; z-index:1000;
+    }
+    .logo{font-size:20px; text-decoration:none; color:#fff}
+    .lang-toggle{
+      background:#fff; color:var(--brand); border:none;
+      padding:8px 16px; font-size:14px; border-radius:4px; cursor:pointer;
+    }
+    .lang-toggle:focus-visible, a:focus-visible, button:focus-visible{
+      outline:3px solid #000; outline-offset:3px;
     }
 
-    .container {
-      flex-direction: column;
+    /* Layout */
+    .container{display:flex; flex:1}   /* 占满剩余高度，使 footer 贴底 */
+    nav{
+      position:fixed; left:0; top:var(--header-h);
+      width:var(--nav-w); height:calc(100vh - var(--header-h));
+      background:#fff; border-right:1px solid #ddd;
+      display:flex; flex-direction:column; justify-content:space-between;
+      overflow-y:auto; z-index:999;
     }
-  }
-</style>
+    nav ul{list-style:none; flex-grow:1}
+    nav li{border-bottom:1px solid #ddd}
+    nav a{
+      display:block; padding:16px; text-decoration:none; color:#222; transition:background .3s;
+    }
+    nav a:hover{background:#eee}
+    nav a.active{
+      background:var(--accent); color:#fff; position:relative;
+    }
+    nav a.active::after{
+      content:""; position:absolute; right:0; top:50%; transform:translateY(-50%);
+      border-top:10px solid transparent; border-bottom:10px solid transparent; border-left:10px solid #fff;
+    }
+    .ad-space{
+      height:120px; border-top:1px solid #ddd; text-align:center;
+      padding:10px; font-size:14px; color:#999;
+    }
+
+    main{
+      margin-left:var(--nav-w);
+      padding:20px; flex:1; display:flex; flex-direction:column; overflow-x:auto;
+    }
+    .main-content{flex:1}
+
+    /* Carousel */
+    .carousel{
+      position:relative; width:90%; max-width:700px; margin:20px auto 0;
+      overflow:hidden; border-radius:8px; background:#f5f5f5;
+    }
+    .carousel-track{ display:flex; transition:transform .5s ease-in-out; }
+    @media (prefers-reduced-motion: reduce){ .carousel-track{ transition:none; } }
+    .carousel-item{ flex:0 0 100%; text-align:center; background:#fff; }
+    .carousel-item img{
+      width:100%; height:300px; object-fit:cover; border-bottom:1px solid #ccc; display:block;
+    }
+    .caption{ font-size:14px; color:#333; padding:10px 12px; }
+    .carousel-btn{
+      position:absolute; top:45%; transform:translateY(-50%); z-index:10;
+      background-color:rgba(0,0,0,.4); color:#fff; border:none; font-size:24px;
+      padding:10px 15px; cursor:pointer; border-radius:6px;
+    }
+    .carousel-btn.left{ left:10px } .carousel-btn.right{ right:10px }
+    .carousel-btn:hover{ background-color:rgba(0,0,0,.6); }
+
+    /* Footer */
+    footer{
+      background:#f8f8f8; text-align:center; padding:15px; font-size:14px; border-top:1px solid #ddd;
+    }
+
+    /* Mobile */
+    @media (max-width:768px){
+      nav{position:relative; top:0; width:100%; height:auto; border-right:none; border-bottom:1px solid #ccc}
+      main{margin-left:0}
+      .container{flex-direction:column}
+    }
+
+    /* Dark mode */
+    @media (prefers-color-scheme: dark){
+      body{background:#111; color:#eee}
+      header{background:#5f0000}
+      nav{background:#151515; border-color:#333}
+      .carousel{background:#1a1a1a}
+      .caption{color:#ddd}
+    }
+  </style>
 </head>
 
 <body>
+  <!-- 跳到主内容（无障碍） -->
+  <a href="#main" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
+    跳到主内容
+  </a>
+
   <header>
-    <a href="index.html" class="logo" id="logo-text" title="返回主页/Back to Home" style="text-decoration: none; color: white;">东乡语翻译</a>
-    <button class="lang-toggle" onclick="toggleLang()" title="切换语言 / Switch language">English</button>
+    <a href="index.html" class="logo" id="logo-text" title="返回主页 / Back to Home">东乡语翻译</a>
+    <button class="lang-toggle" id="langBtn" type="button" title="切换语言 / Switch language">English</button>
   </header>
 
   <div class="container">
-    <nav>
+    <nav aria-label="侧边导航">
       <div>
         <ul>
-          <li><a href="bilingual.html" id="menu-1">双语翻译</a></li>
-          <li><a href="dictionary.html" id="menu-2">字典</a></li>
-          <li><a href="overview.html" id="menu-3">概况</a></li>
-          <li><a href="history.html" id="menu-4">历史沿革</a></li>
-          <li><a href="customs.html" id="menu-5">风俗习惯</a></li>
-          <li><a href="status.html" id="menu-6">发展现状</a></li>
-          <li><a href="about.html" id="menu-7">关于我们</a></li>
+          <li><a href="bilingual.html" id="menu-1" data-i18n="menu1">双语翻译</a></li>
+          <li><a href="dictionary.html" id="menu-2" data-i18n="menu2">字典</a></li>
+          <li><a href="overview.html" id="menu-3" data-i18n="menu3">概况</a></li>
+          <li><a href="history.html" id="menu-4" data-i18n="menu4">历史沿革</a></li>
+          <li><a href="customs.html" id="menu-5" data-i18n="menu5">风俗习惯</a></li>
+          <li><a href="status.html" id="menu-6" data-i18n="menu6">发展现状</a></li>
+          <li><a href="about.html" id="menu-7" data-i18n="menu7">关于我们</a></li>
         </ul>
       </div>
-      <div class="ad-space">此处预留 Google 广告位</div>
+      <div class="ad-space" aria-hidden="true">此处预留 Google 广告位</div>
     </nav>
 
-    <main>
+    <main id="main" role="main" tabindex="-1">
       <div class="main-content">
-        <h1 id="main-title">欢迎使用东乡语翻译平台</h1>
-        <p id="main-desc">请选择左侧内容开始使用。</p>
-    <footer>
-        <p>&copy; 2025 东乡语翻译平台 · All rights reserved.</p>
-      </footer>
-  <script>
-    let currentLang = 'zh';
+        <h1 id="main-title" data-i18n="title">欢迎使用东乡语翻译平台</h1>
+        <p id="main-desc" data-i18n="desc">请选择左侧内容开始使用。</p>
 
-    const menuItems = {
-      zh: [
-        '双语翻译',
-        '字典',
-        '概况',
-        '历史沿革',
-        '风俗习惯',
-        '发展现状',
-        '关于我们',
-        '东乡语翻译',
-        '欢迎使用东乡语翻译平台',
-        '请选择左侧内容开始使用。',
-        'English'
-      ],
-      en: [
-        'Bilingual Translation',
-        'Dictionary',
-        'Overview',
-        'History',
-        'Customs',
-        'Current Status',
-        'About Us',
-        'Dongxiang Language Translation',
-        'Welcome to the Dongxiang Translation Platform',
-        'Please choose a menu item from the left.',
-        '中文'
-      ]
+        <!-- 单实例轮播（中英通过字幕切换） -->
+        <section class="carousel" aria-roledescription="carousel" aria-label="Dongxiang images" tabindex="0">
+          <button class="carousel-btn left" type="button" aria-label="上一张">‹</button>
+
+          <div class="carousel-track" id="carousel-track" role="group" aria-live="polite">
+            <figure class="carousel-item">
+              <img src="./img/dx1.jpg" alt="东乡族传统服饰" loading="lazy" width="1200" height="800">
+              <figcaption class="caption" data-i18n-cap="cap1">东乡族传统服饰</figcaption>
+            </figure>
+            <figure class="carousel-item">
+              <img src="./img/dx2.jpg" alt="东乡村庄景观" loading="lazy" width="1200" height="800">
+              <figcaption class="caption" data-i18n-cap="cap2">东乡村庄景观</figcaption>
+            </figure>
+            <figure class="carousel-item">
+              <img src="./img/dx3.jpg" alt="东乡语课堂现场" loading="lazy" width="1200" height="800">
+              <figcaption class="caption" data-i18n-cap="cap3">东乡语课堂现场</figcaption>
+            </figure>
+          </div>
+
+          <button class="carousel-btn right" type="button" aria-label="下一张">›</button>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- ✅ footer 永远在最底部 -->
+  <footer>
+    <p>&copy; 2025 东乡语翻译平台 · All rights reserved.</p>
+  </footer>
+
+  <script>
+    /* ======== I18N 文案 ======== */
+    const i18n = {
+      zh: {
+        menu1:'双语翻译', menu2:'字典', menu3:'概况', menu4:'历史沿革',
+        menu5:'风俗习惯', menu6:'发展现状', menu7:'关于我们',
+        logo:'东乡语翻译',
+        title:'欢迎使用东乡语翻译平台',
+        desc:'请选择左侧内容开始使用。',
+        langBtn:'English',
+        pageTitle:'东乡语翻译平台',
+        captions:['东乡族传统服饰','东乡村庄景观','东乡语课堂现场']
+      },
+      en: {
+        menu1:'Bilingual Translation', menu2:'Dictionary', menu3:'Overview', menu4:'History',
+        menu5:'Customs', menu6:'Current Status', menu7:'About Us',
+        logo:'Dongxiang Language Translation',
+        title:'Welcome to the Dongxiang Translation Platform',
+        desc:'Please choose a menu item from the left.',
+        langBtn:'中文',
+        pageTitle:'Dongxiang Translation Platform',
+        captions:['Traditional Dongxiang Clothing','Dongxiang Village Scenery','Dongxiang Language Class']
+      }
     };
 
+    let currentLang = 'zh';
 
-
-    function toggleLang() {
-      setLang(currentLang === 'zh' ? 'en' : 'zh');
-    }
-    function setLang(lang) {
+    function applyLang(lang){
       currentLang = lang;
       localStorage.setItem('preferredLang', lang);
+
+      const dict = i18n[lang];
       document.body.classList.toggle('en-mode', lang === 'en');
-      const labels = menuItems[lang];
-      for (let i = 1; i <= 7; i++) {
-        document.getElementById(`menu-${i}`).innerText = labels[i - 1];
+      document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'zh');
+      document.title = dict.pageTitle;
+
+      // 顶部/主文案
+      const map = {
+        'logo-text':'logo',
+        'main-title':'title',
+        'main-desc':'desc',
+        'langBtn':'langBtn'
+      };
+      Object.entries(map).forEach(([id,key])=>{
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (id === 'langBtn'){
+          el.textContent = dict[key];
+          el.setAttribute('title', lang === 'en' ? 'Switch language / 切换语言' : '切换语言 / Switch language');
+        }else{
+          el.textContent = dict[key];
+        }
+      });
+
+      // 菜单
+      for (let i=1;i<=7;i++){
+        const k = 'menu'+i;
+        const el = document.getElementById('menu-'+i);
+        if (el && dict[k]) el.textContent = dict[k];
       }
-      document.getElementById('logo-text').innerText = labels[7];
-      document.getElementById('main-title').innerText = labels[8];
-      document.getElementById('main-desc').innerText = labels[9];
-      document.querySelector('.lang-toggle').innerText = labels[10];
-      document.getElementById('zh-content').style.display = lang === 'zh' ? 'block' : 'none';
-      document.getElementById('en-content').style.display = lang === 'en' ? 'block' : 'none';}
+
+      // 轮播字幕 + 同步 img alt
+      document.querySelectorAll('[data-i18n-cap]').forEach((cap, idx)=>{
+        const text = dict.captions[idx] || cap.textContent;
+        cap.textContent = text;
+        const img = cap.closest('.carousel-item')?.querySelector('img');
+        if (img) img.alt = text;
+      });
+    }
+
+    function toggleLang(){ applyLang(currentLang === 'zh' ? 'en' : 'zh'); }
+
+    document.getElementById('langBtn').addEventListener('click', toggleLang);
+
     const savedLang = localStorage.getItem('preferredLang');
     const userLang = navigator.language || 'en';
-    const defaultLang = savedLang || (userLang.startsWith('zh') ? 'zh' : 'en');
-    setLang(defaultLang);
+    applyLang(savedLang || (userLang.startsWith('zh') ? 'zh' : 'en'));
 
-    let currentIndex = 0;
-    const track = document.getElementById('carousel-track');
-    const items = document.querySelectorAll('.carousel-item');
-    const total = items.length;
-    let autoSlideTimer = setInterval(() => {
-      nextSlide(false);
-      }, 4000);
-    function updateSlide(index) {
-      track.style.transform = `translateX(-${index * 100}%)`;
-    }
-    function nextSlide(userTriggered = true) {
-      currentIndex = (currentIndex + 1) % total;
-      updateSlide(currentIndex);
-      if (userTriggered) stopAutoSlide();
-    }
-    function prevSlide() {
-      currentIndex = (currentIndex - 1 + total) % total;
-      updateSlide(currentIndex);
-      stopAutoSlide();
-    }
-    function stopAutoSlide() {
-      if (autoSlideTimer) {
-        clearInterval(autoSlideTimer);
-        autoSlideTimer = null;
+    /* ======== 轮播 ======== */
+    class Carousel{
+      constructor(root){
+        this.root = root;
+        this.track = root.querySelector('.carousel-track');
+        this.items = Array.from(root.querySelectorAll('.carousel-item'));
+        this.total = this.items.length;
+        this.index = 0;
+        this.timer = null;
+        this.interval = 4000;
+
+        root.querySelector('.carousel-btn.left').addEventListener('click', ()=>this.prev(true));
+        root.querySelector('.carousel-btn.right').addEventListener('click', ()=>this.next(true));
+
+        // 悬停/触摸暂停
+        root.addEventListener('mouseenter', ()=>this.pause());
+        root.addEventListener('mouseleave', ()=>this.play());
+        root.addEventListener('touchstart', ()=>this.pause(), {passive:true});
+        root.addEventListener('touchend', ()=>this.play());
+
+        // 键盘左右键
+        root.addEventListener('keydown', (e)=>{
+          if (e.key === 'ArrowRight') this.next(true);
+          if (e.key === 'ArrowLeft') this.prev(true);
+        });
+
+        // 页面隐藏时暂停
+        document.addEventListener('visibilitychange', ()=>{
+          if (document.hidden) this.pause(); else this.play();
+        });
+
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!reduce) this.play();
       }
+      update(){ this.track.style.transform = `translateX(-${this.index * 100}%)`; }
+      next(user=false){ this.index = (this.index + 1) % this.total; this.update(); if(user) this.pause(); }
+      prev(user=false){ this.index = (this.index - 1 + this.total) % this.total; this.update(); if(user) this.pause(); }
+      play(){ if(!this.timer) this.timer = setInterval(()=>this.next(false), this.interval); }
+      pause(){ if(this.timer){ clearInterval(this.timer); this.timer = null; } }
     }
-    let currentIndexEn = 0;
-    
+    const carousel = new Carousel(document.querySelector('.carousel'));
   </script>
 </body>
 </html>
