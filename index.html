@@ -6,14 +6,10 @@
 
   <title>东乡语翻译平台</title>
   <meta name="description" content="东乡语翻译平台：提供双语翻译、字典、历史文化与发展现状介绍。Dongxiang language translation, dictionary, and cultural overview.">
-
-  <!-- 固定主 URL，避免重复收录 -->
   <link rel="canonical" href="https://dongxiangtranslationproject.github.io/">
+  <meta name="google-site-verification" content="5KqVhuOKKLB6-XCwTJYD6beJLOXC6ckNZ0H4x7A5780" />
 
-  <!-- Search Console 验证（把 content 换成你的） -->
-  <meta name="google-site-verification" content="替换为你的验证字符串">
 
-  <!-- 展示优化 -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="东乡语翻译平台">
   <meta property="og:description" content="东乡语翻译、字典、历史与现状介绍。">
@@ -34,7 +30,7 @@
     html,body{height:100%}
     body{
       min-height:100vh;
-      display:flex;           /* 关键：列布局，footer 自动贴底 */
+      display:flex;         
       flex-direction:column;
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
                    "PingFang SC","Hiragino Sans GB","Microsoft YaHei", Arial, sans-serif;
@@ -62,7 +58,7 @@
     }
 
     /* Layout */
-    .container{display:flex; flex:1}   /* 占满剩余高度，使 footer 贴底 */
+    .container{display:flex; flex:1}   
     nav{
       position:fixed; left:0; top:var(--header-h);
       width:var(--nav-w); height:calc(100vh - var(--header-h));
