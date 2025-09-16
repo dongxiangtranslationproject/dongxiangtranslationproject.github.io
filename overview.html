@@ -26,16 +26,27 @@
     .lang-toggle{ background:#fff; color:var(--brand); border:0; padding:8px 16px; border-radius:4px; cursor:pointer; }
 
     .container{ display:flex; flex:1; } /* 占满剩余高度，保证 footer 贴底 */
-    .ratio-4x3 {
-      aspect-ratio: 4 / 3;  /* 宽:高 = 4:3，横图 */
+    figure {
+  max-width: 600px;      
+  margin: 20px auto;    
+  text-align: center;    
 }
-.ratio-4x3 img {
+
+figure img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;     
+  height: auto;          
   display: block;
   border-radius: 8px;    
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
 }
+
+figcaption {
+  margin-top: 8px;
+  font-size: 13px;       
+  color: #666;           
+  line-height: 1.4;
+}
+
 
     nav{
       position:fixed; left:0; top:var(--header-h);
@@ -98,7 +109,6 @@
         <p id="main-desc">请选择左侧内容开始使用。</p>
       </div>
 
-      <!-- 内容卡片：中英两块，通过 display 切换 -->
       <section class="card">
         <div id="en-content" style="display:none; line-height:2;">
           <p style="text-indent:2em; margin-bottom:1em;">
@@ -116,6 +126,12 @@
           <p style="text-indent:2em; margin-bottom:1em;">
             Dongxiang County, where the Dongxiang people predominantly reside, is located in the transitional zone between the Qinghai-Tibet Plateau and the Loess Plateau. The area is characterized by shallow highland hills, with an average elevation of around 2,000 meters. One-third of the region consists of river valleys and terraces, another third comprises arid loess hills, and the remaining third is marked by cold, damp highlands. The region has a temperate continental climate, featuring mild winters and cool summers. With four distinct seasons and a generally pleasant climate, the area is well-suited for human habitation and agricultural activity.
           </p>
+           <figure class="ratio-4x3">
+            <a href="photos/景色.jpg">
+              <img src="photos/景色.jpg" alt="natural scenery" />
+            </a>
+            <figcaption>Scenic view of the Yellow River Gorge</figcaption>
+            </figure>
           <p style="text-indent:2em; margin-bottom:1em;">
             The Dongxiang people living on this land primarily rely on agriculture. Major crops include potatoes, wheat, highland barley, barley, millet, corn, and broad beans, among which potatoes are the most renowned. The locally grown potatoes are low in moisture, rich in texture, sandy yet sweet, and have a high starch content. They can be used to produce a variety of foods such as pastries, liquor, vinegar, and vermicelli, and are highly favored by people of all ethnic groups. Cash crops in the region include hemp, flaxseed, and rapeseed. Along the Tao River and Daxia River valleys, a wide variety of fruits and melons are cultivated. Among them, the peach-apricots of Tangwangchuan are particularly famous. These fruits are distinct from both peaches and apricots, featuring large size, vibrant color, thin skin, and thick flesh. They carry the delicate fragrance of Hami melons and are known for their sweet and refreshing taste. The mountainous areas are also rich in wild medicinal herbs, including gentian, winter aconite, wolf’s bane (aconitum), licorice root, saposhnikovia, bupleurum, and ephedra, among many others.
           </p>
@@ -141,6 +157,12 @@
           <p style="text-indent:2em; margin-bottom:1em;">
             东乡族聚居的地区，处于青藏高原与黄土高原的过渡地带，属高原浅山丘陵区，平均海拔2000米。该地区三分之一面积为河谷川塬地区， 三分之一面积是黄土干旱山区，三分之一面积则高寒阴湿。这里属温带大陆性气候，冬无严寒，夏无酷暑，四季分明，气候适宜。
           </p>
+          <figure class="ratio-4x3">
+            <a href="photos/景色.jpg">
+              <img src="photos/景色.jpg" alt="东乡景色" />
+            </a>
+            <figcaption>黄河峡谷</figcaption>
+            </figure>
           <p style="text-indent:2em; margin-bottom:1em;">
             生活在这片土地上的东乡族，以农业生产为主，农作物有土豆、小麦、青稞、大麦、糜谷、玉米、蚕豆等，其中以土豆最为有名。这里出产的土豆， 水少面饱，沙而甜，含淀粉量高，可制点心、酒、醋、粉条等多种食品，深受各族人民的喜爱。经济作物有大麻、胡麻籽、油菜籽等。沿洮河、大夏河地区， 还出产大量瓜果，其中以唐汪川的桃杏最为出名，它既不同于桃，又不同于杏，个儿大，色泽美，皮薄肉厚，带有白兰瓜的醇香，甘甜爽口。山区还生长有秦艽、 冬花、狼毒、甘草、防风、柴胡、麻黄等多种野生药材。
           </p>
@@ -218,6 +240,7 @@
   </script>
 </body>
 </html>
+
 
 
 
