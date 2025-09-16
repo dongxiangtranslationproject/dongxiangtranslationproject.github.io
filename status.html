@@ -26,7 +26,26 @@
     .lang-toggle{ background:#fff; color:var(--brand); border:0; padding:8px 16px; border-radius:4px; cursor:pointer; }
 
     .container{ display:flex; flex:1; } /* 占满剩余高度，保证 footer 贴底 */
+    figure {
+  max-width: 600px;      
+  margin: 20px auto;    
+  text-align: center;    
+}
 
+figure img {
+  width: 100%;
+  height: auto;          
+  display: block;
+  border-radius: 8px;    
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+}
+
+figcaption {
+  margin-top: 8px;
+  font-size: 13px;       
+  color: #666;           
+  line-height: 1.4;
+}
     nav{
       position:fixed; left:0; top:var(--header-h);
       width:var(--nav-w); height:calc(100vh - var(--header-h));
@@ -103,6 +122,12 @@
             In Dongxiang Autonomous County, the region with the largest Dongxiang population, there were 165 minority officials in 1951.
             By 2005, that number had risen to 1,890, with Dongxiang individuals comprising approximately 55% of the total.
           </p>
+          <figure class="ratio-4x3">
+            <a href="photos/政府.jpg">
+              <img src="photos/政府.jpg" alt="received by local officers" />
+            </a>
+            <figcaption>Co-founder Kaixuan Chen and Bo Ma were received by Ren Shengqiang, Member of the Standing Committee of the Dongxiang County Party Committee and Minister of the Publicity Department</figcaption>
+            </figure>
           <p style="text-indent:2em; margin-bottom:1em;">
             Following the establishment of the People's Republic of China, significant efforts were made in Dongxiang-inhabited areas to advance soil and water conservation as well as afforestation. 
             Extensive irrigation development initiatives were undertaken, resulting in the gradual transformation of the region’s formerly arid and deforested terrain. 
@@ -159,6 +184,12 @@
             酒泉市玉门小金湾东乡族乡。东乡族干部队伍也得了不断发展壮大， 以东乡族最大聚居区东乡族自治县为例，1951年自治县的少数民族干部只有165人，
             到2005年已经增加到1890人，其中东乡族干部占到了55％。
           </p>
+          <figure class="ratio-4x3">
+            <a href="photos/政府.jpg">
+              <img src="photos/政府.jpg" alt="接见" />
+            </a>
+            <figcaption>东乡语翻译平台联合创始人陈凯旋、马波受到东乡县委常委、宣传部部长任胜强的接见</figcaption>
+            </figure>
           <p style="text-indent:2em; margin-bottom:1em;">
             新中国成立后，东乡族人民大力发展水土保持和植树造林工作，积极兴修水利，
             使境内一改过去干旱秃山的旧面貌。改革开放以来，在党和政府的关心和帮助下，达板新农渠、河滩东干渠、 
@@ -253,6 +284,7 @@
   </script>
 </body>
 </html>
+
 
 
 
