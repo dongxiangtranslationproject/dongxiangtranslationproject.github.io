@@ -26,7 +26,26 @@
     .lang-toggle{ background:#fff; color:var(--brand); border:0; padding:8px 16px; border-radius:4px; cursor:pointer; }
 
     .container{ display:flex; flex:1; } /* 占满剩余高度，保证 footer 贴底 */
+    figure {
+  max-width: 600px;      
+  margin: 20px auto;    
+  text-align: center;    
+}
 
+figure img {
+  width: 100%;
+  height: auto;          
+  display: block;
+  border-radius: 8px;    
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+}
+
+figcaption {
+  margin-top: 8px;
+  font-size: 13px;       
+  color: #666;           
+  line-height: 1.4;
+}
     nav{
       position:fixed; left:0; top:var(--header-h);
       width:var(--nav-w); height:calc(100vh - var(--header-h));
@@ -248,6 +267,7 @@
   </script>
 </body>
 </html>
+
 
 
 
