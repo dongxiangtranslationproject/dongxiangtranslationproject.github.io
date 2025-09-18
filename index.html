@@ -154,22 +154,22 @@
         <h1 id="main-title" data-i18n="title">欢迎使用东乡语翻译平台</h1>
         <p id="main-desc" data-i18n="desc">请选择左侧内容开始使用。</p>
 
-        <!-- 单实例轮播（中英通过字幕切换） -->
+    
         <section class="carousel" aria-roledescription="carousel" aria-label="Dongxiang images" tabindex="0">
           <button class="carousel-btn left" type="button" aria-label="上一张">‹</button>
 
           <div class="carousel-track" id="carousel-track" role="group" aria-live="polite">
             <figure class="carousel-item">
-              <img src="./img/dx1.jpg" alt="东乡族传统服饰" loading="lazy" width="1200" height="800">
-              <figcaption class="caption" data-i18n-cap="cap1">东乡族传统服饰</figcaption>
+              <img src="./photos/习惯3.jpg" alt="加工羊毛的手艺人" loading="lazy" width="1200" height="800">
+              <figcaption class="caption" data-i18n-cap="cap1">加工羊毛的手艺人</figcaption>
             </figure>
             <figure class="carousel-item">
-              <img src="./img/dx2.jpg" alt="东乡村庄景观" loading="lazy" width="1200" height="800">
-              <figcaption class="caption" data-i18n-cap="cap2">东乡村庄景观</figcaption>
+              <img src="./photos/水库.jpg" alt="水库" loading="lazy" width="1200" height="800">
+              <figcaption class="caption" data-i18n-cap="cap2">东乡族自治县附近的刘家峡水坝</figcaption>
             </figure>
             <figure class="carousel-item">
-              <img src="./img/dx3.jpg" alt="东乡语课堂现场" loading="lazy" width="1200" height="800">
-              <figcaption class="caption" data-i18n-cap="cap3">东乡语课堂现场</figcaption>
+              <img src="./photos/合影.jpg" alt="合影" loading="lazy" width="1200" height="800">
+              <figcaption class="caption" data-i18n-cap="cap3">东乡语翻译平台核心成员合影（从左至右：马文效，小小艾卜信息网络传媒有限责任公司法定代表人；马波，本平台联合创始人；陈元龙，甘肃省委统战部副部长、东乡语–汉语词典作者；陈凯旋，本平台联合创始人；陈玮，甘肃政法大学讲师）</figcaption>
             </figure>
           </div>
 
@@ -180,7 +180,7 @@
   </div>
 
   <script>
-    /* ======== I18N 文案 ======== */
+  
     const i18n = {
       zh: {
         menu1:'双语翻译', menu2:'字典', menu3:'概况', menu4:'历史沿革',
@@ -200,7 +200,7 @@
         desc:'Please choose a menu item from the left.',
         langBtn:'中文',
         pageTitle:'Dongxiang Translation Platform',
-        captions:['Traditional Dongxiang Clothing','Dongxiang Village Scenery','Dongxiang Language Class']
+        captions:['A craftsman processing wool','Liujiaxia Hydroelectric Dam near Dongxiang Autonomous County','Core members of the Dongxiang Translation Platform (from left to right: Ma Wenxiao, Legal Representative of Xiaoxiao Aibu Information Network Media Co., Ltd.; Bo Ma, Co-founder of the platform; Chen Yuanlong, Deputy Minister of the United Front Work Department of the CPC Gansu Provincial Committee and author of the Dongxiang–Chinese Dictionary; Kaixuan Chen, Co-founder of the platform; and Chen Wei, Lecturer at Gansu University of Political Science and Law)']
       }
     };
 
@@ -233,14 +233,14 @@
         }
       });
 
-      // 菜单
+      
       for (let i=1;i<=7;i++){
         const k = 'menu'+i;
         const el = document.getElementById('menu-'+i);
         if (el && dict[k]) el.textContent = dict[k];
       }
 
-      // 轮播字幕 + 同步 img alt
+    
       document.querySelectorAll('[data-i18n-cap]').forEach((cap, idx)=>{
         const text = dict.captions[idx] || cap.textContent;
         cap.textContent = text;
@@ -257,7 +257,6 @@
     const userLang = navigator.language || 'en';
     applyLang(savedLang || (userLang.startsWith('zh') ? 'zh' : 'en'));
 
-    /* ======== 轮播 ======== */
     class Carousel{
       constructor(root){
         this.root = root;
@@ -271,19 +270,16 @@
         root.querySelector('.carousel-btn.left').addEventListener('click', ()=>this.prev(true));
         root.querySelector('.carousel-btn.right').addEventListener('click', ()=>this.next(true));
 
-        // 悬停/触摸暂停
         root.addEventListener('mouseenter', ()=>this.pause());
         root.addEventListener('mouseleave', ()=>this.play());
         root.addEventListener('touchstart', ()=>this.pause(), {passive:true});
         root.addEventListener('touchend', ()=>this.play());
 
-        // 键盘左右键
         root.addEventListener('keydown', (e)=>{
           if (e.key === 'ArrowRight') this.next(true);
           if (e.key === 'ArrowLeft') this.prev(true);
         });
 
-        // 页面隐藏时暂停
         document.addEventListener('visibilitychange', ()=>{
           if (document.hidden) this.pause(); else this.play();
         });
