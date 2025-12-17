@@ -8,16 +8,12 @@
   <meta name="description" content="东乡语翻译平台：提供双语翻译、字典、历史文化与发展现状介绍。Dongxiang language translation, dictionary, and cultural overview.">
   <link rel="canonical" href="https://dongxiangtranslationproject.github.io/">
   <meta name="google-site-verification" content="5KqVhuOKKLB6-XCwTJYD6beJLOXC6ckNZ0H4x7A5780" />
-
-
   <meta property="og:type" content="website">
   <meta property="og:title" content="东乡语翻译平台">
   <meta property="og:description" content="东乡语翻译、字典、历史与现状介绍。">
   <meta property="og:url" content="https://dongxiangtranslationproject.github.io/">
-  <!-- <meta property="og:image" content="https://dongxiangtranslationproject.github.io/img/cover.jpg"> -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#8B0000">
-
   <style>
     :root{
       --brand:#8B0000;
@@ -40,8 +36,6 @@
     body.en-mode{
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
     }
-
-    /* Header */
     header{
       background-color:var(--brand); color:#fff;
       padding:15px 20px; height:var(--header-h);
@@ -56,8 +50,6 @@
     .lang-toggle:focus-visible, a:focus-visible, button:focus-visible{
       outline:3px solid #000; outline-offset:3px;
     }
-
-    /* Layout */
     .container{display:flex; flex:1}   
     nav{
       position:fixed; left:0; top:var(--header-h);
@@ -89,7 +81,6 @@
       padding:20px; flex:1; display:flex; flex-direction:column; overflow-x:auto;
     }
     .main-content{flex:1}
-    /* Carousel */
     .carousel{
       position:relative; width:90%; max-width:700px; margin:20px auto 0;
       overflow:hidden; border-radius:8px; background:#f5f5f5;
@@ -98,14 +89,13 @@
     @media (prefers-reduced-motion: reduce){ .carousel-track{ transition:none; } }
     .carousel-item{ flex:0 0 100%; text-align:center; background:#fff; }
     .carousel-item img {
-  width: 100%;
-  height: auto;            
-  max-height: 75vh;        
-  object-fit: cover;
-  border-bottom: 1px solid #ccc;
-  display: block;
-}
-
+      width: 100%;
+      height: auto;            
+      max-height: 75vh;        
+      object-fit: cover;
+      border-bottom: 1px solid #ccc;
+      display: block;
+    }
     .caption{ font-size:14px; color:#333; padding:10px 12px; }
     .carousel-btn{
       position:absolute; top:45%; transform:translateY(-50%); z-index:10;
@@ -114,13 +104,9 @@
     }
     .carousel-btn.left{ left:10px } .carousel-btn.right{ right:10px }
     .carousel-btn:hover{ background-color:rgba(0,0,0,.6); }
-
-    /* Footer */
     footer{
       background:#f8f8f8; text-align:center; padding:15px; font-size:14px; border-top:1px solid #ddd;
     }
-
-    /* Mobile */
     @media (max-width:768px){
       nav{position:relative; top:0; width:100%; height:auto; border-right:none; border-bottom:1px solid #ccc}
       main{margin-left:0}
@@ -130,11 +116,6 @@
 </head>
 
 <body>
-  <!-- 跳到主内容（无障碍） -->
-  <a href="#main" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
-    跳到主内容
-  </a>
-
   <header>
     <a href="index.html" class="logo" id="logo-text" title="返回主页 / Back to Home">东乡语翻译</a>
     <button class="lang-toggle" id="langBtn" type="button" title="切换语言 / Switch language">English</button>
@@ -159,11 +140,8 @@
       <div class="main-content">
         <h1 id="main-title" data-i18n="title">欢迎使用东乡语翻译平台</h1>
         <p id="main-desc" data-i18n="desc">请选择左侧内容开始使用。</p>
-
-    
         <section class="carousel" aria-roledescription="carousel" aria-label="Dongxiang images" tabindex="0">
           <button class="carousel-btn left" type="button" aria-label="上一张">‹</button>
-
           <div class="carousel-track" id="carousel-track" role="group" aria-live="polite">
             <figure class="carousel-item">
               <img src="./photos/习惯3.jpg" alt="加工羊毛的手艺人" loading="lazy" width="1200" height="800">
@@ -178,7 +156,6 @@
               <figcaption class="caption" data-i18n-cap="cap3">东乡语翻译平台核心成员合影（从左至右：马文效，小小艾卜信息网络传媒有限责任公司法定代表人；马波，本平台联合创始人；陈元龙，甘肃省委统战部副部长、《东乡语汉语词典》作者；陈凯旋，本平台联合创始人；陈玮，甘肃政法大学讲师）</figcaption>
             </figure>
           </div>
-
           <button class="carousel-btn right" type="button" aria-label="下一张">›</button>
         </section>
       </div>
@@ -186,7 +163,6 @@
   </div>
 
   <script>
-  
     const i18n = {
       zh: {
         menu1:'双语翻译', menu2:'字典', menu3:'概况', menu4:'历史沿革',
@@ -211,7 +187,6 @@
     };
 
     let currentLang = 'zh';
-
     function applyLang(lang){
       currentLang = lang;
       localStorage.setItem('preferredLang', lang);
@@ -220,8 +195,6 @@
       document.body.classList.toggle('en-mode', lang === 'en');
       document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'zh');
       document.title = dict.pageTitle;
-
-      // 顶部/主文案
       const map = {
         'logo-text':'logo',
         'main-title':'title',
@@ -237,16 +210,12 @@
         }else{
           el.textContent = dict[key];
         }
-      });
-
-      
+      }); 
       for (let i=1;i<=7;i++){
         const k = 'menu'+i;
         const el = document.getElementById('menu-'+i);
         if (el && dict[k]) el.textContent = dict[k];
-      }
-
-    
+      }  
       document.querySelectorAll('[data-i18n-cap]').forEach((cap, idx)=>{
         const text = dict.captions[idx] || cap.textContent;
         cap.textContent = text;
@@ -254,11 +223,8 @@
         if (img) img.alt = text;
       });
     }
-
     function toggleLang(){ applyLang(currentLang === 'zh' ? 'en' : 'zh'); }
-
     document.getElementById('langBtn').addEventListener('click', toggleLang);
-
     const savedLang = localStorage.getItem('preferredLang');
     const userLang = navigator.language || 'en';
     applyLang(savedLang || (userLang.startsWith('zh') ? 'zh' : 'en'));
@@ -272,24 +238,19 @@
         this.index = 0;
         this.timer = null;
         this.interval = 4000;
-
         root.querySelector('.carousel-btn.left').addEventListener('click', ()=>this.prev(true));
         root.querySelector('.carousel-btn.right').addEventListener('click', ()=>this.next(true));
-
         root.addEventListener('mouseenter', ()=>this.pause());
         root.addEventListener('mouseleave', ()=>this.play());
         root.addEventListener('touchstart', ()=>this.pause(), {passive:true});
         root.addEventListener('touchend', ()=>this.play());
-
         root.addEventListener('keydown', (e)=>{
           if (e.key === 'ArrowRight') this.next(true);
           if (e.key === 'ArrowLeft') this.prev(true);
         });
-
         document.addEventListener('visibilitychange', ()=>{
           if (document.hidden) this.pause(); else this.play();
         });
-
         const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (!reduce) this.play();
       }
