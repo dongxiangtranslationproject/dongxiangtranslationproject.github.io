@@ -16,7 +16,6 @@
       color:#222; line-height:1.6;
     }
     body.en-mode{ font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
-
     header{
       background:var(--brand); color:#fff; padding:15px 20px; height:var(--header-h);
       display:flex; justify-content:space-between; align-items:center;
@@ -24,8 +23,7 @@
     }
     .logo{ font-size:20px; text-decoration:none; color:#fff; }
     .lang-toggle{ background:#fff; color:var(--brand); border:0; padding:8px 16px; border-radius:4px; cursor:pointer; }
-
-    .container{ display:flex; flex:1; } /* 占满剩余高度 => footer 贴底 */
+    .container{ display:flex; flex:1; } 
     nav{
       position:fixed; left:0; top:var(--header-h);
       width:var(--nav-w); height:calc(100vh - var(--header-h));
@@ -47,11 +45,9 @@
       margin-left:var(--nav-w); padding:20px; flex:1; display:flex; flex-direction:column; gap:16px;
     }
     .card{ background:#f5f5f5; padding:18px; border-radius:8px; }
-
     footer{
       background:#f8f8f8; text-align:center; padding:15px; font-size:14px; border-top:1px solid #ddd;
     }
-
     @media (max-width:768px){
       nav{ position:relative; top:0; width:100%; height:auto; border-right:none; border-bottom:1px solid #ccc; }
       main{ margin-left:0; }
@@ -59,6 +55,7 @@
     }
   </style>
 </head>
+  
 <body>
   <header>
     <a href="index.html" class="logo" id="logo-text" title="返回主页 / Back to Home">东乡语翻译</a>
@@ -85,75 +82,79 @@
         <h1 id="main-title">欢迎使用东乡语翻译平台</h1>
         <p id="main-desc">请选择左侧内容开始使用。</p>
       </div>
-
       <section class="card">
         <div id="en-content" style="display:none; line-height:2; color:#333;">
-  <p style="text-indent:2em; margin-bottom:1em;">
-    This platform was initiated to address the long-standing lack of systematic translation tools between the Dongxiang language and Chinese. 
-    By leveraging modern technologies in natural language processing and machine learning, 
-    we aim to support the preservation, learning, and communication of the Dongxiang language, 
-    while contributing to the digital protection and dissemination of minority languages.
-  </p>
-
-  <h3 style="margin:1.5em 0 .6em; border-left:4px solid #8B0000; padding-left:.6em; font-size:18px;">
-    Core Team Members
-  </h3>
-
-  <div style="display:flex; align-items:flex-start; margin-bottom:1.5em;">
-    <img src="./photos/chen.jpg" alt="Kaixuan Chen" 
-         style="width:120px; height:120px; border-radius:50%; object-fit:cover; margin-right:1em; flex-shrink:0; border:2px solid #ccc;">
-    <div style="flex:1; text-align:justify; line-height:1.7;">
-      <p style="margin:0.2em 0 1em; font-size:14px; color:#555;">
-        Dongxiang Translation Platform · Co-founder &  Chief Technology Officer<br>
-        Tencent WeChat Division · Data Science Intern (2025)<br>
-        Northwestern University · M.S. in Machine Learning & Data Science (Class of 2026)<br>
-        University of North Carolina at Chapel Hill · B.S. in Statistics & Biology (Class of 2025)<br>
-        East China University of Political Science and Law · National College Entrance Exam Admission (2021)
-      </p>
-      <p style="margin:0;">
-        Has a solid foundation in data science and machine learning, 
-        with research interests spanning natural language processing and deep learning. Proficient in SQL, Python, and R, 
-        and experienced in leveraging libraries such as pandas, NumPy, scikit-learn, and SciPy for data analysis and modeling. 
-        Skilled in both supervised and unsupervised learning algorithms and their practical applications. In this project, 
-        led the development of the Dongxiang ↔ Chinese translation system based on Meta’s NLLB model, integrated AI agent–driven grammar-rule–based 
-        data generation methods, and oversaw end-to-end data processing, including cleaning, feature engineering, and statistical analysis.
-        Additionally, designed and deployed the project website.      </p>
-    </div>
-  </div>
-
-  <div style="display:flex; align-items:flex-start; margin-bottom:1.5em;">
-    <img src="./photos/Ma.jpg" alt="Bo Ma" 
-         style="width:120px; height:120px; border-radius:50%; object-fit:cover; margin-right:1em; flex-shrink:0; border:2px solid #ccc;">
-    <div style="flex:1; text-align:justify; line-height:1.7;">
-      <p style="margin:0.2em 0 1em; font-size:14px; color:#555;">
-        Dongxiang Translation Platform · Co-Founder & Chief Scientist <br>
-        Space Auto · Business Analytics Intern (2024) <br>
-        China Energy Investment Corporation, North China Region · Intern (2025) <br>
-        University of California, San Diego · M.S. in Quantitative Finance (Class of 2026) <br>
-        University of North Carolina at Chapel Hill · B.S. in Statistics & Data Science (Class of 2025) 
-      </p>
-      <p style="margin:0;">
-        Possesses a solid background in data science and machine learning, with research interests spanning natural language processing and deep learning. 
-        Participated in designing the overall technical roadmap and core algorithmic framework of the platform, and the development of a Dongxiang ↔ Chinese translation engine based on the Transformer architecture.
-        In the project, proposed and implemented innovative model optimization strategies, significantly improving translation performance under low-resource conditions, 
-        and spearheaded the design of a grammar rule–based data generation method.
-        Beyond model development, contributed to the entire data processing pipeline, focusing on the collection, construction, cleaning, and alignment of Dongxiang language corpora. 
-        As Chief Scientist, with proficiency in SQL, Python, and R as well as major machine learning frameworks, emphasized both academic research 
-        (multilingual translation, digital preservation of minority languages) and practical applications. Integrated cutting-edge AI techniques into real-world deployment, 
-        advancing the platform into a stable and scalable research and engineering system.
-      </p>
-    </div>
-  </div>  
-
-  <h3 style="text-indent:2em; margin:1em 0 .5em;">Methodology Overview</h3>
-  <p style="text-indent:2em; margin-bottom:1em;">To be added.</p>
-
-  <h3 style="text-indent:2em; margin:1em 0 .5em;">Contact Us</h3>
-  <p style="text-indent:2em; margin-bottom:1em;">
-    Email: <a href="mailto:dongxiangtranslationproject77@gmail.com">dongxiangtranslationproject77@gmail.com</a>
-  </p>
-</div>
-
+          <p style="text-indent:2em; margin-bottom:1em;">
+            This platform was initiated to address the long-standing lack of systematic translation tools between the Dongxiang language and Chinese. 
+            By leveraging modern technologies in natural language processing and machine learning, 
+            we aim to support the preservation, learning, and communication of the Dongxiang language, 
+            while contributing to the digital protection and dissemination of minority languages.
+          </p>
+          <h3 style="margin:1.5em 0 .6em; border-left:4px solid #8B0000; padding-left:.6em; font-size:18px;">Core Team Members</h3>
+          
+          <div style="display:flex; align-items:flex-start; margin-bottom:1.5em;">
+            <img src="./photos/chen.jpg" alt="Kaixuan Chen" 
+              style="width:120px; height:120px; border-radius:50%; object-fit:cover; margin-right:1em; flex-shrink:0; border:2px solid #ccc;">
+            <div style="flex:1; text-align:justify; line-height:1.7;">
+              <p style="margin:0.2em 0 1em; font-size:14px; color:#555;">
+                Dongxiang Translation Platform · Co-founder &  Chief Technology Officer<br>
+                Tencent WeChat Division · Data Science Intern (2025)<br>
+                Northwestern University · M.S. in Machine Learning & Data Science (Class of 2026)<br>
+                University of North Carolina at Chapel Hill · B.S. in Statistics & Biology (Class of 2025)<br>
+                East China University of Political Science and Law · National College Entrance Exam Admission (2021)
+              </p>
+              <p style="margin:0;">
+                Has a solid foundation in data science and machine learning, 
+                with research interests spanning natural language processing and deep learning. Proficient in SQL, Python, and R, 
+                and experienced in leveraging libraries such as pandas, NumPy, scikit-learn, and SciPy for data analysis and modeling. 
+                Skilled in both supervised and unsupervised learning algorithms and their practical applications. In this project, 
+                led the development of the Dongxiang ↔ Chinese translation system based on Meta’s NLLB model, integrated AI agent–driven grammar-rule–based 
+                data generation methods, and oversaw end-to-end data processing, including cleaning, feature engineering, and statistical analysis.
+                Additionally, designed and deployed the project website.      
+              </p>
+            </div>
+          </div>
+          
+          <div style="display:flex; align-items:flex-start; margin-bottom:1.5em;">
+            <img src="./photos/Ma.jpg" alt="Bo Ma" 
+              style="width:120px; height:120px; border-radius:50%; object-fit:cover; margin-right:1em; flex-shrink:0; border:2px solid #ccc;">
+            <div style="flex:1; text-align:justify; line-height:1.7;">
+              <p style="margin:0.2em 0 1em; font-size:14px; color:#555;">
+                Dongxiang Translation Platform · Co-Founder & Chief Scientist <br>
+                Space Auto · Business Analytics Intern (2024) <br>
+                China Energy Investment Corporation, North China Region · Intern (2025) <br>
+                University of California, San Diego · M.S. in Quantitative Finance (Class of 2026) <br>
+                University of North Carolina at Chapel Hill · B.S. in Statistics & Data Science (Class of 2025) 
+              </p>
+              <p style="margin:0;">
+                Possesses a solid background in data science and machine learning, with research interests spanning natural language processing and deep learning. 
+                Participated in designing the overall technical roadmap and core algorithmic framework of the platform, and the development of a Dongxiang ↔ Chinese translation engine based on the Transformer architecture.
+                In the project, proposed and implemented innovative model optimization strategies, significantly improving translation performance under low-resource conditions, 
+                and spearheaded the design of a grammar rule–based data generation method.
+                Beyond model development, contributed to the entire data processing pipeline, focusing on the collection, construction, cleaning, and alignment of Dongxiang language corpora. 
+                As Chief Scientist, with proficiency in SQL, Python, and R as well as major machine learning frameworks, emphasized both academic research 
+                (multilingual translation, digital preservation of minority languages) and practical applications. Integrated cutting-edge AI techniques into real-world deployment, 
+                advancing the platform into a stable and scalable research and engineering system.
+              </p>
+            </div>
+          </div>  
+          <h3 style="margin:1.5em 0 .6em; border-left:4px solid #8B0000; padding-left:.6em; font-size:18px;">Contact Us</h3>
+          <p style="text-indent:2em; margin-bottom:1em;">
+            E-mail：
+            <a href="mailto:dongxiangtranslationproject@gmail.com">
+              dongxiangtranslationproject@gmail.com
+            </a>
+            <br>
+            GitHub：
+            <a
+              href="https://github.com/dongxiangtranslationproject/dongxiangtranslationproject.github.io"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://github.com/dongxiangtranslationproject/dongxiangtranslationproject.github.io
+            </a>
+          </p>
+        </div>
 
         <div id="zh-content" style="line-height:2; color:#333;">
           <p style="text-indent:2em; margin-bottom:1em;">
@@ -200,14 +201,23 @@
               </p>
             </div>
           </div>  
-          <h3 style="text-indent:2em; margin:1em 0 .5em;">方法简介</h3>
-          <p style="text-indent:2em; margin-bottom:1em;">等待补充。</p>
-          <h3 style="text-indent:2em; margin:1em 0 .5em;">联系我们</h3>
+          <h3 style="margin:1.5em 0 .6em; border-left:4px solid #8B0000; padding-left:.6em; font-size:18px;">联系我们</h3>
           <p style="text-indent:2em; margin-bottom:1em;">
-            邮箱：<a href="mailto:dongxiangtranslationproject@gmail.com">dongxiangtranslationproject@gmail.com</a>
+            邮箱：
+            <a href="mailto:dongxiangtranslationproject@gmail.com">
+              dongxiangtranslationproject@gmail.com
+            </a>
+            <br>
+            GitHub：
+            <a
+              href="https://github.com/dongxiangtranslationproject/dongxiangtranslationproject.github.io"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://github.com/dongxiangtranslationproject/dongxiangtranslationproject.github.io
+            </a>
           </p>
         </div>
-        
       </section>
     </main>
   </div>
@@ -217,44 +227,35 @@
   </footer>
 
   <script>
-    // 文案字典（保持你的原始结构）
     const menuItems = {
       zh:['双语翻译','字典','概况','历史沿革','风俗习惯','发展现状','关于我们','东乡语翻译','欢迎使用东乡语翻译平台','请选择左侧内容开始使用。','English','东乡语翻译平台'],
       en:['Bilingual Translation','Dictionary','Overview','History','Customs','Current Status','About Us','Dongxiang Language Translation','Welcome to the Dongxiang Translation Platform','Please choose a menu item from the left.','中文','Dongxiang Translation Platform']
     };
     let currentLang = 'zh';
-
     function setLang(lang){
       currentLang = lang;
       localStorage.setItem('preferredLang', lang);
       document.body.classList.toggle('en-mode', lang==='en');
       document.documentElement.setAttribute('lang', lang==='en' ? 'en' : 'zh');
-
       const labels = menuItems[lang];
-      // 菜单
       for(let i=1;i<=7;i++){ const el=document.getElementById(`menu-${i}`); if(el) el.textContent = labels[i-1]; }
-      // 头部与主文案
       const idsMap = { 'logo-text':7, 'main-title':8, 'main-desc':9 };
       Object.entries(idsMap).forEach(([id,idx])=>{ const el=document.getElementById(id); if(el) el.textContent = labels[idx]; });
-      // 按钮文案与提示
       const btn = document.getElementById('langBtn');
       if(btn){ btn.textContent = labels[10]; btn.title = (lang==='en' ? 'Switch language / 切换语言' : '切换语言 / Switch language'); }
-      // 页面标题
       document.title = labels[11] || document.title;
-      // 显示对应内容
       const zh=document.getElementById('zh-content'), enC=document.getElementById('en-content');
       if(zh && enC){ zh.style.display = (lang==='zh'?'block':'none'); enC.style.display = (lang==='en'?'block':'none'); }
     }
-
     function toggleLang(){ setLang(currentLang==='zh' ? 'en' : 'zh'); }
     document.getElementById('langBtn').addEventListener('click', toggleLang);
-
     const savedLang = localStorage.getItem('preferredLang');
     const userLang = navigator.language || 'en';
     setLang(savedLang || (userLang.startsWith('zh') ? 'zh' : 'en'));
   </script>
 </body>
 </html>
+
 
 
 
