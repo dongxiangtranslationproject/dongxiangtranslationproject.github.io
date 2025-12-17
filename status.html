@@ -16,7 +16,6 @@
       color:#222; line-height:1.6;
     }
     body.en-mode{ font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
-
     header{
       background:var(--brand); color:#fff; padding:15px 20px; height:var(--header-h);
       display:flex; justify-content:space-between; align-items:center;
@@ -24,28 +23,25 @@
     }
     .logo{ font-size:20px; text-decoration:none; color:#fff; }
     .lang-toggle{ background:#fff; color:var(--brand); border:0; padding:8px 16px; border-radius:4px; cursor:pointer; }
-
-    .container{ display:flex; flex:1; } /* 占满剩余高度，保证 footer 贴底 */
+    .container{ display:flex; flex:1; } 
     figure {
-  max-width: 600px;      
-  margin: 20px auto;    
-  text-align: center;    
-}
-
-figure img {
-  width: 100%;
-  height: auto;          
-  display: block;
-  border-radius: 8px;    
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
-}
-
-figcaption {
-  margin-top: 8px;
-  font-size: 13px;       
-  color: #666;           
-  line-height: 1.4;
-}
+      max-width: 600px;      
+      margin: 20px auto;    
+      text-align: center;    
+    }
+    figure img {
+      width: 100%;
+      height: auto;          
+      display: block;
+      border-radius: 8px;    
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+    }
+    figcaption {
+      margin-top: 8px;
+      font-size: 13px;       
+      color: #666;           
+      line-height: 1.4;
+    }
     nav{
       position:fixed; left:0; top:var(--header-h);
       width:var(--nav-w); height:calc(100vh - var(--header-h));
@@ -61,7 +57,6 @@ figcaption {
       content:""; position:absolute; right:0; top:50%; transform:translateY(-50%);
       border-top:10px solid transparent; border-bottom:10px solid transparent; border-left:10px solid #fff;
     }
-
     main{
       margin-left:var(--nav-w); padding:20px; flex:1;
       display:flex; flex-direction:column; gap:16px; overflow-x:auto;
@@ -71,7 +66,6 @@ figcaption {
     footer{
       background:#f8f8f8; text-align:center; padding:15px; font-size:14px; border-top:1px solid #ddd;
     }
-
     @media (max-width:768px){
       nav{ position:relative; top:0; width:100%; height:auto; border-right:none; border-bottom:1px solid #ccc; }
       main{ margin-left:0; }
@@ -85,7 +79,6 @@ figcaption {
     <a href="index.html" class="logo" id="logo-text" title="返回主页 / Back to Home">东乡语翻译</a>
     <button class="lang-toggle" id="langBtn" type="button" title="切换语言 / Switch language">English</button>
   </header>
-
   <div class="container">
     <nav aria-label="侧边导航">
       <div>
@@ -106,8 +99,6 @@ figcaption {
         <h1 id="main-title">欢迎使用东乡语翻译平台</h1>
         <p id="main-desc">请选择左侧内容开始使用。</p>
       </div>
-
-      <!-- 内容卡片：中英两块，通过 display 切换 -->
       <section class="card">
         <div id="en-content" style="display:none; line-height:2;">
           <p style="text-indent:2em; margin-bottom:1em;">
@@ -251,7 +242,6 @@ figcaption {
   </footer>
 
   <script>
-    // ===== 文案字典（沿用你的结构，并补上页面标题位于索引 11） =====
     const menuItems = {
       zh:['双语翻译','字典','概况','历史沿革','风俗习惯','发展现状','关于我们','东乡语翻译','欢迎使用东乡语翻译平台','请选择左侧内容开始使用。','English','东乡语翻译平台'],
       en:['Bilingual Translation','Dictionary','Overview','History','Customs','Current Status','About Us','Dongxiang Language Translation','Welcome to the Dongxiang Translation Platform','Please choose a menu item from the left.','中文','Dongxiang Translation Platform']
@@ -262,19 +252,15 @@ figcaption {
     function setLang(lang){
       currentLang = lang;
       localStorage.setItem('preferredLang', lang);
-
-      // 字体/语言属性
       document.body.classList.toggle('en-mode', lang === 'en');
       document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'zh');
 
       const labels = menuItems[lang];
 
-      // 菜单文本
       for (let i = 1; i <= 7; i++) {
         const el = document.getElementById(`menu-${i}`);
         if (el) el.textContent = labels[i - 1];
       }
-      // 头部与主文案
       const logo = document.getElementById('logo-text');
       if (logo) logo.textContent = labels[7];
       const title = document.getElementById('main-title');
@@ -286,10 +272,8 @@ figcaption {
         btn.textContent = labels[10];
         btn.title = (lang === 'en' ? 'Switch language / 切换语言' : '切换语言 / Switch language');
       }
-      // 页面标题
       document.title = labels[11] || document.title;
 
-      // 内容切换
       const zh = document.getElementById('zh-content');
       const enC = document.getElementById('en-content');
       if (zh && enC){
@@ -300,7 +284,6 @@ figcaption {
 
     function toggleLang(){ setLang(currentLang === 'zh' ? 'en' : 'zh'); }
 
-    // 事件绑定 & 初始化
     document.getElementById('langBtn').addEventListener('click', toggleLang);
     const savedLang = localStorage.getItem('preferredLang');
     const userLang = navigator.language || 'en';
@@ -308,6 +291,7 @@ figcaption {
   </script>
 </body>
 </html>
+
 
 
 
