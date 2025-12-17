@@ -16,7 +16,6 @@
       color:#222; line-height:1.6;
     }
     body.en-mode{ font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
-
     header{
       background:var(--brand); color:#fff; padding:15px 20px; height:var(--header-h);
       display:flex; justify-content:space-between; align-items:center;
@@ -24,28 +23,25 @@
     }
     .logo{ font-size:20px; text-decoration:none; color:#fff; }
     .lang-toggle{ background:#fff; color:var(--brand); border:0; padding:8px 16px; border-radius:4px; cursor:pointer; }
-
-    .container{ display:flex; flex:1; } /* 占满剩余高度，保证 footer 贴底 */
+    .container{ display:flex; flex:1; } 
     figure {
-  max-width: 600px;      
-  margin: 20px auto;    
-  text-align: center;    
-}
-
-figure img {
-  width: 100%;
-  height: auto;          
-  display: block;
-  border-radius: 8px;    
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
-}
-
-figcaption {
-  margin-top: 8px;
-  font-size: 13px;       
-  color: #666;           
-  line-height: 1.4;
-}
+      max-width: 600px;      
+      margin: 20px auto;    
+      text-align: center;    
+    }  
+    figure img {
+      width: 100%;
+      height: auto;          
+      display: block;
+      border-radius: 8px;    
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+    }  
+    figcaption {
+      margin-top: 8px;
+      font-size: 13px;       
+      color: #666;           
+      line-height: 1.4;
+    }
     nav{
       position:fixed; left:0; top:var(--header-h);
       width:var(--nav-w); height:calc(100vh - var(--header-h));
@@ -61,17 +57,14 @@ figcaption {
       content:""; position:absolute; right:0; top:50%; transform:translateY(-50%);
       border-top:10px solid transparent; border-bottom:10px solid transparent; border-left:10px solid #fff;
     }
-
     main{
       margin-left:var(--nav-w); padding:20px; flex:1;
       display:flex; flex-direction:column; gap:16px; overflow-x:auto;
     }
     .card{ background:#f5f5f5; padding:18px; border-radius:8px; }
-
     footer{
       background:#f8f8f8; text-align:center; padding:15px; font-size:14px; border-top:1px solid #ddd;
     }
-
     @media (max-width:768px){
       nav{ position:relative; top:0; width:100%; height:auto; border-right:none; border-bottom:1px solid #ccc; }
       main{ margin-left:0; }
@@ -107,14 +100,20 @@ figcaption {
         <p id="main-desc">请选择左侧内容开始使用。</p>
       </div>
 
-      <!-- 内容卡片：中英两块，通过 display 切换 -->
       <section class="card">
         <div id="en-content" style="display:none; line-height:2;">
           <p style="text-indent:2em; margin-bottom:1em;">
             Over the course of their long historical development, the Dongxiang people have cultivated distinctive production and lifestyle practices and have created a rich and diverse body of cultural and artistic traditions.
           </p>
           <p style="text-indent:2em; margin-bottom:1em;">
-            The traditional attire of the Dongxiang people is characterized by simplicity, neatness, and modest elegance. Historically, women favored embroidered garments featuring stand-up collars, overlapping front panels, and wide sleeves. The cuffs were often trimmed with decorative lace or embroidery. For the lower body, they wore layered trousers with embroidered bands along the pant legs and small slits at the back of the cuffs, which were tied with decorative ribbons. On festive or ceremonial occasions, women would wear embroidered skirts known as guomei (过美), which held particular cultural significance. Footwear typically consisted of delicately embroidered shoes with heels approximately an inch high. In earlier times, women did not wear head veils but instead wrapped their hair with headscarves, often adorning their hair buns with decorative pins and wearing silver ornaments on their chests. It was also common for women’s sleeves to be composed of several fabric segments stitched together, each embroidered with floral or lace patterns. Over time, women's clothing evolved. Most Dongxiang women came to wear head veils (gaitou), typically in green, black, or white. Young women and newlyweds wore green silk or satin veils; women married for one or two years and middle-aged women wore black; elderly women typically wore white. Outer garments were usually made of dark navy or black-blue cloth, while younger women occasionally wore red or green. The tunics were wide and knee-length, with the front panel extending to the back, often layered with a similarly long vest. The trousers were long and extended down to the tops of the feet.
+            The traditional attire of the Dongxiang people is characterized by simplicity, neatness, and modest elegance. Historically, women favored embroidered garments featuring stand-up collars, overlapping front panels, and wide sleeves. 
+            The cuffs were often trimmed with decorative lace or embroidery. For the lower body, they wore layered trousers with embroidered bands along the pant legs and small slits at the back of the cuffs, which were tied with decorative ribbons. 
+            On festive or ceremonial occasions, women would wear embroidered skirts known as guomei (过美), which held particular cultural significance. Footwear typically consisted of delicately embroidered shoes with heels approximately an inch high. 
+            In earlier times, women did not wear head veils but instead wrapped their hair with headscarves, often adorning their hair buns with decorative pins and wearing silver ornaments on their chests. 
+            It was also common for women’s sleeves to be composed of several fabric segments stitched together, each embroidered with floral or lace patterns. Over time, women's clothing evolved. Most Dongxiang women came to wear head veils (gaitou),
+            typically in green, black, or white. Young women and newlyweds wore green silk or satin veils; women married for one or two years and middle-aged women wore black; elderly women typically wore white. 
+            Outer garments were usually made of dark navy or black-blue cloth, while younger women occasionally wore red or green. The tunics were wide and knee-length, with the front panel extending to the back, 
+            often layered with a similarly long vest. The trousers were long and extended down to the tops of the feet.
           </p>
           <figure class="ratio-4x3">
             <a href="photos/习惯1.jpg">
@@ -123,13 +122,20 @@ figcaption {
             <figcaption>A traditional craftsman is repairing metal tools</figcaption>
             </figure>
           <p style="text-indent:2em; margin-bottom:1em;">
-            Historically, Dongxiang men typically wore loose, long robes secured with wide sashes around the waist. Various personal items—such as small knives, embroidered pouches, snuff bottles, and eyeglass cases — were commonly suspended from the belt. On their heads, they wore soft, flat-topped caps in either black or white. Middle-aged and elderly men often favored traditional long robes and a garment known as zhongbai (仲白), which closely resembles the front-opening robe worn by the Uyghur ethnic group. The zhongbai was usually made from black or gray cloth and was expected to be worn in a neat and orderly manner, with buttons properly fastened and the garment kept clean and presentable.
+            Historically, Dongxiang men typically wore loose, long robes secured with wide sashes around the waist. Various personal items—such as small knives, embroidered pouches, snuff bottles, 
+            and eyeglass cases — were commonly suspended from the belt. On their heads, they wore soft, flat-topped caps in either black or white. Middle-aged and elderly men often favored traditional long robes and a garment known as zhongbai (仲白), 
+            which closely resembles the front-opening robe worn by the Uyghur ethnic group. The zhongbai was usually made from black or gray cloth and was expected to be worn in a neat and orderly manner, 
+            with buttons properly fastened and the garment kept clean and presentable.
           </p>
           <p style="text-indent:2em; margin-bottom:1em;">
-            The Dongxiang people have a deep appreciation for tea and traditionally include it in every meal. Their preferred varieties include Yunnan Chunjian and Shaanxi Green Tea (Shanqing). Guests are welcomed with a special offering known as Three-Fragrance Tea, which is served in a covered bowl containing tea leaves, rock sugar, and dried fruits such as longan, cooked red dates, or raisins. This distinctive preparation is referred to as Sanpao Tai. Smoking and alcohol consumption are generally avoided in Dongxiang culture.
+            The Dongxiang people have a deep appreciation for tea and traditionally include it in every meal. Their preferred varieties include Yunnan Chunjian and Shaanxi Green Tea (Shanqing). 
+            Guests are welcomed with a special offering known as Three-Fragrance Tea, which is served in a covered bowl containing tea leaves, rock sugar, and dried fruits such as longan, cooked red dates, 
+            or raisins. This distinctive preparation is referred to as Sanpao Tai. Smoking and alcohol consumption are generally avoided in Dongxiang culture.
           </p>
           <p style="text-indent:2em; margin-bottom:1em;">
-            The Dongxiang people are known for their deep respect for elders, care for the young, and generous hospitality. When guests arrive, they are immediately invited to sit on the kang (heated brick bed) and are served the finest tea and food available. While the host remains present during the meal, they typically do not eat or drink with the guest. Instead, they serve food and pour tea while standing nearby, demonstrating courtesy and respect. Common dishes offered to guests include fried dough pastries, hand-pulled mutton (shouzhuayangrou), and stewed chicken. In Dongxiang tradition, a whole chicken is divided into thirteen distinct portions. The tail is considered the most prized part and is served to the eldest or most honored guest.
+            The Dongxiang people are known for their deep respect for elders, care for the young, and generous hospitality. When guests arrive, they are immediately invited to sit on the kang (heated brick bed) and are served the finest tea and food available. 
+            While the host remains present during the meal, they typically do not eat or drink with the guest. Instead, they serve food and pour tea while standing nearby, demonstrating courtesy and respect. Common dishes offered to guests include fried dough pastries, 
+            hand-pulled mutton (shouzhuayangrou), and stewed chicken. In Dongxiang tradition, a whole chicken is divided into thirteen distinct portions. The tail is considered the most prized part and is served to the eldest or most honored guest.
           </p>
           <figure class="ratio-4x3">
             <a href="photos/习惯2.jpg">
@@ -138,7 +144,10 @@ figcaption {
             <figcaption>Eid al-Fitr gathering</figcaption>
             </figure>
           <p style="text-indent:2em; margin-bottom:1em;">
-            The Dongxiang people have preserved a rich tradition of oral narrative poetry and folklore. Many of their epic poems are performed or chanted in the Dongxiang language and follow a spoken-sung style (shuochangti) characterized by flexible form. These narrative poems often include frequent changes in rhyme and lack a fixed melodic structure. The rhythm expands or contracts according to the phrasing of the lyrics, and two alternating melodic motifs are repeated throughout the performance, creating a distinctly chant-like quality. Notable examples still performed today include Milagahai, Zhan Heinam, Shi Sinibi, Hezhe Agu, and Putao E’er. Dongxiang folklore also includes a wealth of legends and tales, which are generally classified into personal legends, place-name legends, and object or landscape-related stories. According to ethnographic surveys, over 1,600 well-documented legends and folk narratives have been collected.
+            The Dongxiang people have preserved a rich tradition of oral narrative poetry and folklore. Many of their epic poems are performed or chanted in the Dongxiang language and follow a spoken-sung style (shuochangti) characterized by flexible form. 
+            These narrative poems often include frequent changes in rhyme and lack a fixed melodic structure. The rhythm expands or contracts according to the phrasing of the lyrics, and two alternating melodic motifs are repeated throughout the performance, 
+            creating a distinctly chant-like quality. Notable examples still performed today include Milagahai, Zhan Heinam, Shi Sinibi, Hezhe Agu, and Putao E’er. Dongxiang folklore also includes a wealth of legends and tales, 
+            which are generally classified into personal legends, place-name legends, and object or landscape-related stories. According to ethnographic surveys, over 1,600 well-documented legends and folk narratives have been collected.
           </p>
           <p style="font-size:14px; color:#555; margin-bottom:1em;">
             — Source: <a href="https://www.neac.gov.cn/seac/ztzl/dxz/fsxg.shtml" target="_blank" rel="noopener noreferrer">
@@ -151,7 +160,9 @@ figcaption {
             东乡族在长期的历史的发展过程中，形成了自己独特的生产、生活习俗，创造了丰富多彩的文化艺术。
           </p>
           <p style="text-indent:2em; margin-bottom:1em;">
-            东乡族的服饰衣着大方整洁。古时的妇女爱穿一种有领圈、大襟和宽袖的绣花衣服，袖子宽大，袖口上镶一道花边。下穿套裤，裤管镶两道绣花边，裤管的后面开小叉，用飘带束住脚管。 逢喜庆大事，穿绣花裙子，他们把这种绣花裙子叫“过美”。足登后跟高寸许的绣花鞋，当时不戴盖头，只戴包头巾，发髻上插饰物，胸前一般都佩带银饰。当时妇女的上衣还流行用各色布缝成数段的假袖， 并在假袖各段绣有花边。后来，妇女的服饰逐渐变化。女的一般都戴盖头，分绿、黑、白3种颜色。少女和新媳妇戴绿绸和绿缎子盖头，结婚一两年后的妇女和中年妇女戴黑盖头，老年妇女戴白盖头。 衣着都是藏青色或黑蓝色布衣，青年妇女穿红的或绿的，上衣宽大，齐膝盖，大襟在后边，并外加一件齐膝的坎肩，长裤一直拖到脚面。
+            东乡族的服饰衣着大方整洁。古时的妇女爱穿一种有领圈、大襟和宽袖的绣花衣服，袖子宽大，袖口上镶一道花边。下穿套裤，裤管镶两道绣花边，裤管的后面开小叉，用飘带束住脚管。 逢喜庆大事，穿绣花裙子，他们把这种绣花裙子叫“过美”。足登后跟高寸许的绣花鞋，
+            当时不戴盖头，只戴包头巾，发髻上插饰物，胸前一般都佩带银饰。当时妇女的上衣还流行用各色布缝成数段的假袖， 并在假袖各段绣有花边。后来，妇女的服饰逐渐变化。女的一般都戴盖头，分绿、黑、白3种颜色。少女和新媳妇戴绿绸和绿缎子盖头，结婚一两年后的妇女和中年妇女戴黑盖头，
+            老年妇女戴白盖头。 衣着都是藏青色或黑蓝色布衣，青年妇女穿红的或绿的，上衣宽大，齐膝盖，大襟在后边，并外加一件齐膝的坎肩，长裤一直拖到脚面。
           </p>
           <figure class="ratio-4x3">
             <a href="photos/习惯1.jpg">
@@ -175,7 +186,8 @@ figcaption {
             <figcaption>庆祝开斋节</figcaption>
             </figure>
           <p style="text-indent:2em; margin-bottom:1em;">
-            东乡族还有不少流传在民间的叙事诗和故事。用东乡语演唱吟诵的民间叙事长诗，都是说唱体，形式比较自由，中途换韵较多，旋律结构不甚定型，随着唱词的长短和变化自由伸缩，两段曲谱交替， 不断地反复，有较强的吟诵性，至今尚在流传的有《米拉尕黑》、《战黑那姆》、《诗司尼比》、《和哲阿姑》、《葡萄蛾儿》等。东乡族民间的传说和故事，按其内容可分为人物传说、地名传说、风物传说等，据调查， 已基本定型的传说和故事多达1600多种。
+            东乡族还有不少流传在民间的叙事诗和故事。用东乡语演唱吟诵的民间叙事长诗，都是说唱体，形式比较自由，中途换韵较多，旋律结构不甚定型，随着唱词的长短和变化自由伸缩，两段曲谱交替， 不断地反复，有较强的吟诵性，至今尚在流传的有
+            《米拉尕黑》、《战黑那姆》、《诗司尼比》、《和哲阿姑》、《葡萄蛾儿》等。东乡族民间的传说和故事，按其内容可分为人物传说、地名传说、风物传说等，据调查， 已基本定型的传说和故事多达1600多种。
           </p>
           <p style="font-size:14px; color:#555; margin-bottom:1em;">
             —— 摘自《中国少数民族》（《民族问题五种丛书》），来源：
@@ -191,30 +203,21 @@ figcaption {
   </footer>
 
   <script>
-    // ===== 文案字典（沿用你的结构，并补上页面标题位于索引 11） =====
     const menuItems = {
       zh:['双语翻译','字典','概况','历史沿革','风俗习惯','发展现状','关于我们','东乡语翻译','欢迎使用东乡语翻译平台','请选择左侧内容开始使用。','English','东乡语翻译平台'],
       en:['Bilingual Translation','Dictionary','Overview','History','Customs','Current Status','About Us','Dongxiang Language Translation','Welcome to the Dongxiang Translation Platform','Please choose a menu item from the left.','中文','Dongxiang Translation Platform']
     };
-
     let currentLang = 'zh';
-
     function setLang(lang){
       currentLang = lang;
       localStorage.setItem('preferredLang', lang);
-
-      // 字体/语言属性
       document.body.classList.toggle('en-mode', lang === 'en');
       document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'zh');
-
       const labels = menuItems[lang];
-
-      // 菜单文本
       for (let i = 1; i <= 7; i++) {
         const el = document.getElementById(`menu-${i}`);
         if (el) el.textContent = labels[i - 1];
       }
-      // 头部与主文案
       const logo = document.getElementById('logo-text');
       if (logo) logo.textContent = labels[7];
       const title = document.getElementById('main-title');
@@ -226,10 +229,7 @@ figcaption {
         btn.textContent = labels[10];
         btn.title = (lang === 'en' ? 'Switch language / 切换语言' : '切换语言 / Switch language');
       }
-      // 页面标题
       document.title = labels[11] || document.title;
-
-      // 内容切换
       const zh = document.getElementById('zh-content');
       const enC = document.getElementById('en-content');
       if (zh && enC){
@@ -237,10 +237,7 @@ figcaption {
         enC.style.display = (lang === 'en' ? 'block' : 'none');
       }
     }
-
     function toggleLang(){ setLang(currentLang === 'zh' ? 'en' : 'zh'); }
-
-    // 事件绑定 & 初始化
     document.getElementById('langBtn').addEventListener('click', toggleLang);
     const savedLang = localStorage.getItem('preferredLang');
     const userLang = navigator.language || 'en';
@@ -248,6 +245,7 @@ figcaption {
   </script>
 </body>
 </html>
+
 
 
 
