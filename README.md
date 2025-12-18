@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-The **Dongxiang–Chinese Translation Project** is an open, non-profit initiative dedicated to building high-quality bilingual resources and translation tools for **Dongxiang**, a low-resource and underrepresented language, with the goal of supporting language preservation, accessibility, and computational research.
+The **Dongxiang–Chinese Translation Project** is an open, non-profit initiative dedicated to building high-quality bilingual resources and translation tools for Dongxiang, a low-resource and underrepresented language, with the goal of supporting language preservation, accessibility, and computational research.
 
 ## Background
 
@@ -18,12 +18,12 @@ Dongxiang (Santa) is a minority language spoken primarily in **Gansu Province, C
 
 ## License and Data Usage
 
-This project is an **open, non-profit initiative** intended for **research, educational, and language preservation purposes only**. Unless otherwise stated, the source code and project materials are provided under the **MIT License**.  
+This project is an open, non-profit initiative intended for research, educational, and language preservation purposes only. Unless otherwise stated, the source code and project materials are provided under the **MIT License**.
 Please refer to the `LICENSE` file for full license text.
 
 ### Data Usage Statement
 
-All datasets released as part of this project have been reviewed and published with appropriate consent. 
+All datasets released as part of this project have been reviewed and published with appropriate consent.
 The Dongxiang–Chinese linguistic data, including dictionary entries and aligned text resources, are shared with the permission of relevant contributors and are intended to support low-resource language research and cultural preservation.
 
 ## Acknowledgements
