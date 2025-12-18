@@ -16,3 +16,23 @@ Dongxiang (Santa) is a minority language spoken primarily in **Gansu Province, C
 - **Public-facing web platform**, providing accessible translation tools while promoting Dongxiang language and cultural awareness;
 - **Extensible and research-friendly project structure**, allowing seamless integration of new data, models, and evaluation strategies.
 
+## License and Data Usage
+
+This project is an **open, non-profit initiative** intended for **research, educational, and language preservation purposes only**. Unless otherwise stated, the source code and project materials are provided under the **MIT License**.  
+Please refer to the `LICENSE` file for full license text.
+
+### Data Usage Statement
+
+All datasets released as part of this project have been reviewed and published with appropriate consent. 
+The Dongxiang–Chinese linguistic data, including dictionary entries and aligned text resources, are shared with the permission of relevant contributors and are intended to support low-resource language research and cultural preservation.
+
+## Acknowledgements
+
+This project would not have been possible without the generous support of institutions and individuals dedicated to the documentation and preservation of the Dongxiang language.
+
+We would like to express our sincere gratitude to:
+
+- The People’s Government of Dongxiang County for its support of Dongxiang language documentation and preservation efforts.
+- Mr. Chen Yuanlong (陈元龙), Deputy Director of the United Front Work Department of the Gansu Provincial Party Committee, one of the compilers of the *Dongxiang–Chinese Dictionary*, who oversaw the collection and provision of relevant internal Dongxiang–Chinese bilingual datasets for this project.
+
+We are grateful to everyone who supports open research, linguistic diversity, and responsible data sharing.
