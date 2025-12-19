@@ -68,9 +68,29 @@ All relevant training configurations, hyperparameters, and experiment settings a
 
 ## How to use 
 
+- **Use the project directly (no setup required):**  
+  Visit the GitHub-hosted website: https://dongxiangtranslationproject.github.io/  
+  The site provides a bilingual translation interface and also includes background explanations on the development status and cultural context of the Dongxiang people.
+
+- **Use the published models on Hugging Face:**  
+  Both translation directions are available:
+  - Chinese → Dongxiang: https://huggingface.co/DXlanguage/ChineseDongxiangTranslation  
+  - Dongxiang → Chinese: https://huggingface.co/DXlanguage/DongxiangChineseTranslation  
+
+- **Reproduce the full pipeline:**  
+  If you want to follow every step in detail, start from those `process.ipynb` notebooks, then proceed to run the NLLB training workflow. Each step includes detailed comments and explanations to make the pipeline easy to trace and reproduce in our codes. Therefore, no further elaboration will be made here.
+
+- **Tokenizer note (important for training another language):**  
+  Dongxiang, in our current data format, is whitespace-delimited (similar to English) and uses the 26 Latin letters. We found that an English tokenizer can already perform tokenization effectively in this setting.  
+  However, if you plan to fine-tune the NLLB model for other languages (especially those without whitespace word boundaries or without a Latin script), you may need to train a dedicated tokenizer as an additional preprocessing step.
+
 ## Why This Project Matters
 
+
+
 ## Roadmap
+
+
 
 ## License and Data Usage
 
