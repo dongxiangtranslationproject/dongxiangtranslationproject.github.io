@@ -1,1 +1,1 @@
-These photos are the intellectual property of Kaixuan Chen, Bo Ma, and other associated parties. Unauthorized use, reproduction, or distribution in any form is strictly prohibited without prior written consent.
+These photos are the intellectual property of Kaixuan Chen, and Bo Ma. Unauthorized use, reproduction, or distribution in any form is strictly prohibited without prior written consent.
