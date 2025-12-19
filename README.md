@@ -16,6 +16,35 @@ Dongxiang (Santa) is a minority language spoken primarily in **Gansu Province, C
 - **Public-facing web platform**, providing accessible translation tools while promoting Dongxiang language and cultural awareness;
 - **Extensible and research-friendly project structure**, allowing seamless integration of new data, models, and evaluation strategies.
 
+## Project Structure
+
+The repository is organized to clearly separate data resources, processing logic, experimental components, and the public-facing website. This structure is designed to support both linguistic data curation and future NLP model development.
+
+.
+├── data/
+│   ├── raw/                 # Original dictionary and bilingual resources
+│   ├── cleaned/             # Cleaned and normalized Dongxiang–Chinese data
+│   ├── aligned/             # Aligned word- and sentence-level bilingual pairs
+│   └── metadata/            # Linguistic tags, annotations, and auxiliary files
+│
+├── scripts/
+│   ├── preprocessing/       # Data cleaning, normalization, and deduplication
+│   ├── alignment/           # Word and sentence alignment utilities
+│   └── evaluation/          # Analysis and evaluation scripts
+│
+├── models/
+│   ├── baselines/           # Dictionary-based and rule-based translation methods
+│   └── neural/              # Experimental neural translation models (WIP)
+│
+├── website/
+│   ├── public/              # Static assets for the GitHub Pages site
+│   └── src/                 # Website source files and configuration
+│
+├── docs/                    # Project documentation and technical notes
+├── README.md                # Project overview and usage instructions
+└── LICENSE                  # Open-source license
+
+
 ## License and Data Usage
 
 This project is an open, non-profit initiative intended for research, educational, and language preservation purposes only. Unless otherwise stated, the source code and project materials are provided under the **MIT License**.
