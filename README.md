@@ -20,30 +20,41 @@ Dongxiang (Santa) is a minority language spoken primarily in **Gansu Province, C
 
 The repository is organized to clearly separate data resources, processing logic, experimental components, and the public-facing website. This structure is designed to support both linguistic data curation and future NLP model development.
 
+```bash
 .
-├── data/
-│   ├── raw/                 # Original dictionary and bilingual resources
-│   ├── cleaned/             # Cleaned and normalized Dongxiang–Chinese data
-│   ├── aligned/             # Aligned word- and sentence-level bilingual pairs
-│   └── metadata/            # Linguistic tags, annotations, and auxiliary files
+├── about.html                                          # Project website
+├── bilingual.html                
+├── customs.html                
+├── dictionary.html                
+├── history.html                
+├── index.html
+├── overview.html
+├── status.html
+├── 404.html                  
 │
-├── scripts/
-│   ├── preprocessing/       # Data cleaning, normalization, and deduplication
-│   ├── alignment/           # Word and sentence alignment utilities
-│   └── evaluation/          # Analysis and evaluation scripts
+├── photos/                                             # Images used by the website and documentation
 │
-├── models/
-│   ├── baselines/           # Dictionary-based and rule-based translation methods
-│   └── neural/              # Experimental neural translation models (WIP)
+├── src/                                                # Source code and data for the translation project
+│   ├── Dongxiang_bilingual_book_process.ipynb          # Processes bilingual book data
+│   ├── Dongxiang_dictionary_process_and_analysis.ipynb # Parses and analyzes the raw Dongxiang–Chinese dictionary
+│   ├── Dongxiang_unpublished_data_process.ipynb        # Processes unpublished Dongxiang language data
+│   ├── NLLB_training(Chinese___Dongxiang).ipynb        # Fine-tunes an NLLB model for Chinese → Dongxiang translation
+│   ├── NLLB_training(Dongxiang___Chinese).ipynb        # Fine-tunes an NLLB model for Dongxiang → Chinese translation
+│   ├── Test.ipynb                                      # Testing and exploratory experiments
+│   ├── word_search.ipynb                               # Converts the raw dictionary into a searchable display
+│   │
+│   └── data/                                           # Linguistic data resources
+│       ├── Dongxian_Dictionary11.txt                   # Raw Dongxiang–Chinese dictionary 
+│       ├── df_bilingual_book.csv                       # Processed bilingual book data
+│       ├── df_interior.csv                             # Processed internal dataset
+│       ├── 东乡语366句会话句 少数民族语汉英日俄对照.txt   # Raw bilingual book
+│       ├── 东乡语料文字部分1.txt                        # Raw internal dataset
+│       ├── 东乡语料文字部分2.txt                        # Raw internal dataset
+│       └── word_search.csv                             # CSV derived from Dongxian_Dictionary11.txt for word lookup
 │
-├── website/
-│   ├── public/              # Static assets for the GitHub Pages site
-│   └── src/                 # Website source files and configuration
-│
-├── docs/                    # Project documentation and technical notes
-├── README.md                # Project overview and usage instructions
-└── LICENSE                  # Open-source license
-
+├── README.md                                           # Project overview and usage instructions
+└── LICENSE                                             # Open-source license
+```
 
 ## License and Data Usage
 
