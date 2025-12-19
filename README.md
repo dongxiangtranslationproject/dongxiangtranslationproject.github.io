@@ -18,8 +18,6 @@ Dongxiang (Santa) is a minority language spoken primarily in **Gansu Province, C
 
 ## Project Structure
 
-The repository is organized to clearly separate data resources, processing logic, experimental components, and the public-facing website. This structure is designed to support both linguistic data curation and future NLP model development.
-
 ```bash
 .
 ├── about.html                                          # Project website
@@ -55,6 +53,24 @@ The repository is organized to clearly separate data resources, processing logic
 ├── README.md                                           # Project overview and usage instructions
 └── LICENSE                                             # Open-source license
 ```
+
+## Data Description
+
+The Dongxiang–Chinese Translation Project is built on both lexical and sentence-level bilingual data. At the lexical level, a Dongxiang–Chinese dictionary is used to construct a searchable word lookup engine. The dictionary is also used in our EDA process. At the sentence level, bilingual training data is compiled from publicly published materials, as well as internal datasets provided by the Dongxiang County government and Mr. Chen Yuanlong. These sources offer aligned Dongxiang–Chinese sentence pairs suitable for downstream translation modeling. We provide both raw and cleaned datasets to support transparency, reproducibility, and flexible reuse for further experiments and modeling.
+
+## Models
+
+We build our translation system on top of **NLLB-200-distilled-600M**, a multilingual neural machine translation model released by Meta as part of the No Language Left Behind (NLLB) project. NLLB-200 is designed to support translation across more than 200 languages, with a particular emphasis on low-resource and underrepresented languages. This broad multilingual coverage makes the model a practical and principled choice for low-resource translation research.
+
+Our model was fine-tuned using **42,868 Dongxiang–Chinese bilingual sentence pairs**, which were processed and cleaned in previous steps. Given the limited size of the training corpus, fine-tuning the baseline NLLB model is more appropriate than introducing aggressive architectural modifications. We used Adafactor as the optimizer during training. Adafactor is a memory-efficient adaptive optimization algorithm. Benefiting from the distilled model size and the use of Adafactor, the full fine-tuning process can be completed within 12 hours on a single NVIDIA A100 GPU, and can also be executed on Google Colab.
+
+All relevant training configurations, hyperparameters, and experiment settings are documented in detail across **two NLLB Jupyter notebooks (`.ipynb`)** included in the repository. An early stopping mechanism was initially planned to prevent overfitting; however, due to the limited size and variability of the training data, the validation loss did not exhibit stable or informative behavior. As a result, early stopping was effectively disabled through our hyperparameter settings.
+
+## How to use 
+
+## Why This Project Matters
+
+## Roadmap
 
 ## License and Data Usage
 
