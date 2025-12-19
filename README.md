@@ -86,11 +86,12 @@ All relevant training configurations, hyperparameters, and experiment settings a
 
 ## Why This Project Matters
 
-
+This project represents one of the earliest systematic efforts to digitize and computationally model Dongxiang–Chinese bilingual resources. Up till now, Dongxiang is actively used alongside Chinese in bilingual education programs at the local primary school level in the ethnic autonomous county. By digitizing and structuring traditional paper-based Dongxiang–Chinese dictionaries, this project not only preserves valuable linguistic knowledge but also makes it accessible for education, research, and modern NLP applications.
 
 ## Roadmap
 
-
+A portion of the bilingual data has undergone automated preprocessing and cleaning. However, during subsequent manual review, we identified a non-trivial number of residual errors, including misalignments and incorrect translations.  
+While this data has been used internally to improve model generalization during experimentation, it is not released publicly at this stage to ensure overall data quality. Once the cleaning and validation process is complete, we plan to release the curated bilingual corpus to support reproducibility and further research in low-resource language translation.
 
 ## License and Data Usage
 
